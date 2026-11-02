@@ -9,7 +9,7 @@ import { site } from '../config/site';
 
 const page = Astro.url.pathname;
 const id = (n: string) => `f-${n}`;
-const field = 'mt-2 block w-full border-0 border-b-2 border-ink-muted bg-surface px-4 py-3 text-ink outline-none ring-2 ring-transparent transition-shadow placeholder:text-ink-muted focus:ring-brand aria-[invalid=true]:border-[#b3261e]';
+const field = 'mt-2 block w-full border-0 border-b-2 border-muted bg-surface px-4 py-3 text-ink outline-none ring-2 ring-transparent transition-shadow placeholder:text-muted focus:ring-ink aria-[invalid=true]:border-[#b3261e]';
 ---
 
 <form action="/api/contact" method="post" enctype="multipart/form-data" class="grid gap-5 bg-ground p-5 text-ink sm:grid-cols-2 sm:p-8" data-contact-form novalidate>
@@ -31,13 +31,13 @@ const field = 'mt-2 block w-full border-0 border-b-2 border-ink-muted bg-surface
     <input id={id('phone')} name="phone-1" type="tel" autocomplete="tel" class={field} />
   </div>
   <div class="sm:col-span-2">
-    <label for={id('upload')} class="font-semibold">Photos of your project <span class="font-normal text-ink-muted">(optional)</span></label>
-    <label for={id('upload')} class="mt-2 flex cursor-pointer items-center gap-3 border-b-2 border-dashed border-ink-muted bg-surface px-4 py-4 transition-colors hover:bg-surface-deep has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand">
-      <Icon name="upload" class="icon size-6 text-brand-text" />
+    <label for={id('upload')} class="font-semibold">Photos of your project <span class="font-normal text-muted">(optional)</span></label>
+    <label for={id('upload')} class="mt-2 flex cursor-pointer items-center gap-3 border-b-2 border-dashed border-muted bg-surface px-4 py-4 transition-colors hover:bg-surface-2 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ink">
+      <Icon name="upload" class="icon size-6 text-ink" />
       <span data-upload-label>Choose photos or drag them here</span>
     </label>
     <input id={id('upload')} name="upload-1[]" type="file" multiple accept="image/*,.heic,.heif,.pdf" class="sr-only" aria-describedby={id('upload-help')} data-upload />
-    <p id={id('upload-help')} class="mt-2 text-small text-ink-muted">Up to 5 files, 15 MB in total. Photos or PDF drawings.</p>
+    <p id={id('upload-help')} class="mt-2 text-small text-muted">Up to 5 files, 15 MB in total. Photos or PDF drawings.</p>
   </div>
   <div class="sm:col-span-2">
     <label for={id('message')} class="font-semibold">Message</label>
@@ -46,12 +46,12 @@ const field = 'mt-2 block w-full border-0 border-b-2 border-ink-muted bg-surface
   <div class="sm:col-span-2" data-turnstile-slot data-sitekey={site.turnstileSiteKey}></div>
   <div class="flex flex-wrap items-center gap-4 sm:col-span-2">
     <button type="submit" class="btn btn-accent min-w-40" data-submit>Submit</button>
-    <p class="text-small text-ink-muted" role="status" aria-live="polite" data-form-status></p>
+    <p class="text-small text-muted" role="status" aria-live="polite" data-form-status></p>
   </div>
 </form>
 
 <div class="hidden bg-ground p-8 text-ink" data-form-success tabindex="-1">
-  <Icon name="checkCircle" class="icon size-10 text-brand-text" />
+  <Icon name="checkCircle" class="icon size-10 text-ink" />
   <p class="mt-4 font-display text-title">Thank you</p>
-  <p class="mt-3">Your message has reached us. We’ll be in touch soon, usually within a working day. If it’s urgent, call <a class="font-semibold text-brand-text underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+  <p class="mt-3">Your message has reached us. We’ll be in touch soon, usually within a working day. If it’s urgent, call <a class="font-semibold text-ink underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
 </div>

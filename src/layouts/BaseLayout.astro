@@ -21,7 +21,8 @@ const { contactHref = '/contact-us/', ...seo } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#f6f7f7" />
+    <meta name="theme-color" content="#f2f3f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14191e" media="(prefers-color-scheme: dark)" />
     <link rel="preload" href={cinzel} as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -29,7 +30,7 @@ const { contactHref = '/contact-us/', ...seo } = Astro.props;
     <slot name="head" />
   </head>
   <body class="bg-ground text-ink antialiased">
-    <a href="#main" class="sr-only z-50 bg-ink px-4 py-3 text-on-brand focus:not-sr-only focus:fixed focus:top-2 focus:left-2">Skip to content</a>
+    <a href="#main" class="sr-only z-50 bg-deep px-4 py-3 text-on-deep focus:not-sr-only focus:fixed focus:top-2 focus:left-2">Skip to content</a>
     <Header />
     <main id="main">
       <slot />

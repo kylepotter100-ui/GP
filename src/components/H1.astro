@@ -1,0 +1,28 @@
+---
+/**
+ * The page H1, wording unchanged (decision C4), set as a large Cinzel display line plus a quieter
+ * Open Sans line. Separators and spaces stay in the markup (a block's edge spaces do not render),
+ * so the H1's text is identical.
+ */
+import { splitH1 } from '../lib/h1';
+
+interface Props { html: string; class?: string; animate?: boolean }
+const { html, class: className, animate = true } = Astro.props;
+const { segments, size } = splitH1(html);
+const sizeClass = { xl: 'text-hero-xl', l: 'text-hero-l', m: 'text-hero-m' }[size];
+let i = 0;
+---
+
+<h1 class:list={['flex flex-col', className]}>
+  {
+    segments.map((s) => {
+      if (s.role === 'hidden') return <span class="sr-only">{s.text}</span>;
+      const d = 120 + 140 * i++;
+      return s.role === 'display' ? (
+        <span class:list={['display hero-rise block', sizeClass]} style={`--d:${d}`}>{s.text}</span>
+      ) : (
+        <span class="hero-rise block font-sans text-lead font-semibold tracking-normal opacity-90 [text-wrap:balance]" style={`--d:${d}`}>{s.text}</span>
+      );
+    })
+  }
+</h1>

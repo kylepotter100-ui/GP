@@ -3,154 +3,290 @@
 @import "@fontsource-variable/open-sans/wght.css";
 
 /*
- * Brand tokens (Step 2, lever 3).
- * Blue and coral are the logo's own colours, kept exactly.
- * Coral is the single accent and belongs to actions; blue carries identity, links and one closing colour block.
- * Light theme, locked (decision D11). One radius: 0 (square corners everywhere).
+ * Overhaul design system: "Slate and Coral" (docs/redesign/overhaul/02-mode-and-levers.md).
+ * - Coral #F07957 (from the logo) is the single accent, kept exactly. Blue lives only in the logo.
+ * - Light and dark themes follow the visitor's system setting; each page is one theme.
+ * - Cinzel is display-only (H1 display line, figures, footer name). Open Sans does everything else.
+ * - One radius: 0. No pure black or white.
  */
-@theme {
+
+:root {
+  color-scheme: light dark;
+  --ground: #f2f3f1;      /* plaster */
+  --surface: #e4e7e6;
+  --surface-2: #d8dcdb;
+  --ink: #14191e;
+  --muted: #5a636b;
+  --line: rgb(20 25 30 / 0.14);
+  --deep: #14191e;        /* the one deliberate dark block (contact close) */
+  --deep-surface: #1e252c;
+  --on-deep: #eef1f2;
+  --on-deep-muted: #a7afb6;
+  --accent: #f07957;      /* logo coral, kept exactly */
+  --accent-press: #e9663f;
+  --on-accent: #14191e;   /* 6.4:1 on coral */
+  --plate: #f2f3f1;       /* the logo always sits on this light plate */
+  --focus: #14191e;
+  --scrim: 20 25 30;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #14191e;    /* slate */
+    --surface: #1e252c;
+    --surface-2: #28313a;
+    --ink: #eef1f2;
+    --muted: #a7afb6;
+    --line: rgb(238 241 242 / 0.16);
+    --deep: #1e252c;
+    --deep-surface: #28313a;
+    --focus: #eef1f2;
+  }
+}
+
+@theme inline {
   --font-display: "Cinzel Variable", "Cinzel", "Trajan Pro", Georgia, serif;
   --font-sans: "Open Sans Variable", "Open Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --color-ground: #f6f7f7;
-  --color-surface: #eceeef;
-  --color-surface-deep: #dfe3e5;
-  --color-ink: #15191d;
-  --color-ink-muted: #4b535c;
-  --color-brand: #0c74bb;
-  --color-brand-press: #095e98;
-  /* Same blue, one step deeper, for link text: 5.1:1 on the surface tone (the logo blue is 4.3:1 there). */
-  --color-brand-text: #0b67a6;
-  --color-accent: #f07957;
-  --color-accent-press: #e9663f;
-  --color-on-brand: #f6f7f7;
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-deep: var(--deep);
+  --color-deep-surface: var(--deep-surface);
+  --color-on-deep: var(--on-deep);
+  --color-on-deep-muted: var(--on-deep-muted);
+  --color-accent: var(--accent);
+  --color-accent-press: var(--accent-press);
+  --color-on-accent: var(--on-accent);
+  --color-plate: var(--plate);
 
-  --text-display: clamp(1.4rem, 0.85rem + 2.75vw, 3.25rem);
-  --text-display--line-height: 1.08;
-  --text-title: clamp(1.25rem, 0.95rem + 1.2vw, 2.125rem);
-  --text-title--line-height: 1.15;
-  --text-sub: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
-  --text-sub--line-height: 1.3;
-  --text-body: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem);
+  /* Display (Cinzel): sized by the length of the display line so it never runs past two lines on desktop. */
+  --text-hero-xl: clamp(3rem, 1rem + 8.5vw, 9rem);
+  --text-hero-xl--line-height: 0.95;
+  --text-hero-l: clamp(2.25rem, 0.9rem + 5.6vw, 6rem);
+  --text-hero-l--line-height: 0.98;
+  --text-hero-m: clamp(1.875rem, 0.9rem + 4vw, 4.25rem);
+  --text-hero-m--line-height: 1.02;
+  --text-figure: clamp(3rem, 1.5rem + 5vw, 6.5rem);
+  --text-figure--line-height: 0.9;
+  /* Open Sans roles */
+  --text-title: clamp(1.75rem, 1.1rem + 2.2vw, 3.25rem);
+  --text-title--line-height: 1.08;
+  /* Review quotes: sized so every quote fits three lines (Section 4.10). */
+  --text-quote-lead: clamp(1.25rem, 0.95rem + 1.55vw, 2.5rem);
+  --text-quote-lead--line-height: 1.25;
+  --text-quote: clamp(1.0625rem, 0.98rem + 0.45vw, 1.375rem);
+  --text-quote--line-height: 1.5;
+  /* Long headings (over 60 characters, mostly town pages) step down one size so they stay at about 3 lines. */
+  --text-title-s: clamp(1.5rem, 1.05rem + 1.5vw, 2.5rem);
+  --text-title-s--line-height: 1.12;
+  --text-lead: clamp(1.1875rem, 1rem + 0.7vw, 1.625rem);
+  --text-lead--line-height: 1.45;
+  --text-sub: clamp(1.15rem, 1rem + 0.5vw, 1.5rem);
+  --text-sub--line-height: 1.25;
+  --text-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --text-body--line-height: 1.6;
   --text-small: 0.875rem;
   --text-small--line-height: 1.45;
 
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @layer base {
   :root {
-    color-scheme: light;
     --gutter: 1rem;
     --header-h: 4rem;
     scroll-padding-top: calc(var(--header-h) + 1rem);
   }
-  @media (min-width: 768px) {
-    :root { --gutter: 1.5rem; }
-  }
-  @media (min-width: 1024px) {
-    :root { --gutter: 2rem; --header-h: 4.5rem; }
-  }
+  @media (min-width: 768px) { :root { --gutter: 1.5rem; } }
+  @media (min-width: 1024px) { :root { --gutter: 2.5rem; --header-h: 4.5rem; } }
 
   html {
-    background: var(--color-ground);
-    color: var(--color-ink);
+    background: var(--ground);
+    color: var(--ink);
     font-family: var(--font-sans);
-    font-size: 100%;
     -webkit-text-size-adjust: 100%;
-    text-rendering: optimizeLegibility;
   }
   body {
     font-size: var(--text-body);
     line-height: var(--text-body--line-height);
     min-height: 100dvh;
   }
-  h1, h2, h3, h4 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: 0.005em;
-    text-wrap: balance;
-  }
+  h1, h2, h3, h4 { text-wrap: balance; }
+  h2, h3, h4 { font-family: var(--font-sans); font-weight: 650; letter-spacing: -0.022em; }
   p, li { text-wrap: pretty; }
-  ::selection { background: var(--color-brand); color: var(--color-on-brand); }
-  :focus-visible {
-    outline: 3px solid var(--color-brand);
-    outline-offset: 3px;
-  }
-  .on-brand :focus-visible { outline-color: var(--color-on-brand); }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .on-deep :focus-visible, .on-photo :focus-visible { outline-color: var(--on-deep); }
   img { max-width: 100%; height: auto; }
-  /* <picture> is only a wrapper: let the <img> inside take part in grid and flex layout directly. */
+  /* <picture> is only a wrapper: the <img> inside joins grid and flex layout directly. */
   picture { display: contents; }
   picture > source { display: none; }
 }
 
 @layer components {
-  /* One frame: equal outer gutters, one content width. */
-  .frame {
-    width: 100%;
-    max-width: 80rem;
-    margin-inline: auto;
-    padding-inline: var(--gutter);
-  }
+  .frame { width: 100%; max-width: 90rem; margin-inline: auto; padding-inline: var(--gutter); }
   .measure { max-width: 65ch; }
+  .section { padding-block: 4.5rem; }
+  @media (min-width: 1024px) { .section { padding-block: 8rem; } }
 
-  /* Swipe rows (SwipeRow and the phone layouts of the home service lists): first item lines up with the frame. */
-  .swipe-track {
-    padding-inline: max(var(--gutter), calc((100vw - 80rem) / 2 + var(--gutter)));
-    scroll-padding-inline: max(var(--gutter), calc((100vw - 80rem) / 2 + var(--gutter)));
-  }
-  .swipe-track > * { scroll-snap-align: start; flex: none; }
+  /* Display type: Cinzel, opened up so the inscriptional capitals breathe. */
+  .display { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; }
 
-  .section { padding-block: 4rem; }
-  @media (min-width: 1024px) { .section { padding-block: 6rem; } }
-
-  /* Running text links: brand blue, underlined. */
+  /* Links in running text: ink, coral underline. */
   .prose-links a:not(.btn) {
-    overflow-wrap: anywhere;
-    color: var(--color-brand-text);
+    color: inherit;
     text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
-    transition: color 150ms var(--ease-out-soft), text-decoration-thickness 150ms var(--ease-out-soft);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+    transition: text-decoration-thickness 150ms var(--ease-out-soft), text-underline-offset 150ms var(--ease-out-soft);
   }
-  .prose-links a:not(.btn):hover { color: var(--color-brand-press); text-decoration-thickness: 2px; }
-  .on-brand .prose-links a:not(.btn), .on-brand.prose-links a:not(.btn) { color: var(--color-on-brand); }
-  .on-brand .prose-links a:not(.btn):hover, .on-brand.prose-links a:not(.btn):hover { color: var(--color-on-brand); text-decoration-thickness: 2px; }
+  .prose-links a:not(.btn):hover { text-decoration-thickness: 3px; text-underline-offset: 0.26em; }
 
-  /* Buttons: flat, square, one fill. Coral = action, ink text for contrast (6.4:1). */
+  /* Buttons: flat, square. A fill wipes in from the left on hover; 1px press. */
   .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    min-height: 3rem;
-    padding: 0.75rem 1.4rem;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.0625rem;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.5rem;
+    font-weight: 650;
+    font-size: 1rem;
     line-height: 1.1;
+    letter-spacing: 0.005em;
     white-space: nowrap;
     border-radius: 0;
-    transition: background-color 150ms var(--ease-out-soft), transform 120ms var(--ease-out-soft), color 150ms var(--ease-out-soft);
+    transition: color 250ms var(--ease-out-soft), transform 120ms var(--ease-out-soft), background-color 250ms var(--ease-out-soft);
     -webkit-tap-highlight-color: transparent;
   }
-  .btn:active { transform: translateY(1px) scale(0.985); }
-  .btn-accent { background: var(--color-accent); color: var(--color-ink); }
-  .btn-accent:hover { background: var(--color-accent-press); }
-  .btn-quiet { background: var(--color-surface); color: var(--color-ink); }
-  .btn-quiet:hover { background: var(--color-surface-deep); }
-  /* Quiet buttons on the brand-blue block: solid deeper blue, 6.4:1 with the off-white text. */
-  .bg-brand .btn-quiet { background: var(--color-brand-press); color: var(--color-on-brand); }
-  .bg-brand .btn-quiet:hover { background: #084f80; }
-  /* On the ink-coloured cookie banner and lightbox. */
-  .bg-ink .btn-quiet, dialog .btn-quiet { background: #2e3338; color: var(--color-on-brand); }
-  .bg-ink .btn-quiet:hover, dialog .btn-quiet:hover { background: #3a4046; }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 450ms var(--ease-out-expo);
+  }
+  .btn:hover::before { transform: scaleX(1); }
+  .btn:active { transform: translateY(1px); }
+  .btn-accent { background: var(--accent); color: var(--on-accent); }
+  .btn-accent::before { background: var(--accent-press); }
+  .btn-quiet { background: var(--surface); color: var(--ink); }
+  .btn-quiet::before { background: var(--surface-2); }
+  .btn-line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px currentColor; }
+  .btn-line::before { background: var(--ink); }
+  .btn-line:hover { color: var(--ground); }
+  .on-photo .btn-line, .on-deep .btn-line { color: var(--on-deep); }
+  .on-photo .btn-line::before, .on-deep .btn-line::before { background: var(--on-deep); }
+  .on-photo .btn-line:hover, .on-deep .btn-line:hover { color: #14191e; }
+  .on-deep .btn-quiet { background: var(--deep-surface); color: var(--on-deep); }
+  .on-deep .btn-quiet::before { background: #323c46; }
 
   .icon { width: 1.25em; height: 1.25em; flex: none; fill: currentColor; }
+
+  /* Swipe rows: the first item lines up with the frame. */
+  .swipe-track {
+    padding-inline: max(var(--gutter), calc((100vw - 90rem) / 2 + var(--gutter)));
+    scroll-padding-inline: max(var(--gutter), calc((100vw - 90rem) / 2 + var(--gutter)));
+  }
+  .swipe-track > * { scroll-snap-align: start; flex: none; }
+
+  /* Scrim under text on photographs: a neutral slate wash, darkest where the text sits. */
+  .scrim-top {
+    background:
+      linear-gradient(180deg, rgb(var(--scrim) / 0.55) 0%, rgb(var(--scrim) / 0) 55%, rgb(var(--scrim) / 0.3) 100%),
+      linear-gradient(90deg, rgb(var(--scrim) / 0.9) 0%, rgb(var(--scrim) / 0.72) 38%, rgb(var(--scrim) / 0.15) 72%, rgb(var(--scrim) / 0) 100%);
+  }
+  @media (max-width: 767px) {
+    .scrim-top { background: linear-gradient(180deg, rgb(var(--scrim) / 0.88) 0%, rgb(var(--scrim) / 0.78) 62%, rgb(var(--scrim) / 0.35) 100%); }
+  }
 }
 
-/* Reduced motion: no travel or scaling anywhere; state changes are instant. */
+/* ---------------------------------------------------------------- Motion (MOTION_INTENSITY 8)
+ * Everything animates transform, opacity or clip-path only. Nothing here needs JavaScript:
+ * the hero entrance is time-based CSS; reveals, clip-ins and parallax are CSS scroll-driven
+ * animations, applied only where the browser supports them. Without support, or with reduced
+ * motion, everything is simply visible and still. GSAP drives the pinned scenes (src/scripts/motion.ts).
+ */
+@media (prefers-reduced-motion: no-preference) {
+  /* The pinned scenes take a full screen each only when they actually pin (src/scripts/motion.ts).
+   * Below lg the stack cards keep clear of the quick-contact bar (4.25rem). */
+  .ba-scene-frame { min-height: 100svh; }
+  .stack-card { min-height: 100svh; padding-block: 1.5rem calc(2rem + 4.25rem + env(safe-area-inset-bottom)); }
+  @media (min-width: 1024px) { .stack-card { padding-block: 2.5rem; } }
+
+  .hero-rise {
+    animation: hero-rise 1.15s var(--ease-out-expo) both;
+    animation-delay: calc(var(--d, 0) * 1ms);
+  }
+  .hero-settle { animation: hero-settle 2.2s var(--ease-out-soft) both; }
+
+  /* Longhands on purpose: the CSS minifier would fold a timeline into the animation shorthand,
+   * which browsers reject, and the animation would silently not run. */
+  @supports (animation-timeline: view()) {
+    .sd-rise > * {
+      animation-name: sd-rise;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry calc(4% + var(--i, 0) * 7%) entry calc(52% + var(--i, 0) * 7%);
+    }
+    .sd-clip {
+      animation-name: sd-clip;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 32%;
+    }
+    .sd-parallax { overflow: clip; } /* clip, not hidden: hidden would make it the timeline's scroller */
+    .sd-parallax > img, .sd-parallax > picture > img {
+      animation-name: sd-drift;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    .sd-drift-row {
+      animation-name: sd-pan;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+
+  .marquee-track { animation: marquee var(--marquee-speed, 70s) linear infinite; }
+  .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: 260ms var(--ease-out-soft) both vt-out; }
+  ::view-transition-new(root) { animation: 420ms var(--ease-out-soft) both vt-in; }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(0.45em); clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; transform: none; clip-path: inset(0 0 -0.2em 0); }
+}
+@keyframes hero-settle { from { transform: scale(1.09); } to { transform: scale(1); } }
+@keyframes sd-rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes sd-clip { from { clip-path: inset(14% 10% 14% 10%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes sd-drift { from { transform: translateY(-7%) scale(1.14); } to { transform: translateY(7%) scale(1.14); } }
+@keyframes sd-pan { from { transform: translateX(6%); } to { transform: translateX(-10%); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-12px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(18px); } }
+
+/* Reduced motion: no travel, scaling or loops anywhere. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
@@ -158,15 +294,5 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Scroll reveal: only armed once JS has run (html.js), so nothing is hidden without script. */
-@media (prefers-reduced-motion: no-preference) {
-  html.js [data-reveal] > * {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 600ms var(--ease-out-soft), transform 600ms var(--ease-out-soft);
-    transition-delay: calc(var(--i, 0) * 75ms);
-  }
-  html.js [data-reveal].is-in > * { opacity: 1; transform: none; }
+  .marquee { overflow-x: auto; }
 }

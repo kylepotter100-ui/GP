@@ -23,6 +23,8 @@ Business website: a redesign for visual quality and local SEO, linked to a Googl
 - Name, address and phone must stay character-for-character identical to the Google Business Profile.
 - When a URL changes, add a 301 to `public/_redirects`.
 - Keep pages static. Add the `@astrojs/cloudflare` adapter only if a feature needs server code (e.g. a contact form handler).
+- CSS scroll-driven animations (`animation-timeline: view()`): write them as longhands (`animation-name`, `-timing-function`, `-fill-mode`, `-timeline`), never the `animation` shorthand. The minifier folds the timeline into the shorthand, which browsers reject. Clip their ancestors with `overflow: clip`, not `hidden`: `hidden` creates a scroll container that freezes the timeline.
+- `npm run audit` (em-dash and preservation audits) runs in CI and must report 0 unapproved changes.
 
 ## Design work
 
