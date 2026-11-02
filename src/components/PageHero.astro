@@ -1,0 +1,46 @@
+---
+/**
+ * Inner-page hero: breadcrumb (decision D7), the page's H1 verbatim, a subtext of 20 words or
+ * fewer (D9), Contact Us and Call Us, and one large photo of real work with the coral offset
+ * frame from the brand's existing design.
+ */
+import Breadcrumb from './Breadcrumb.astro';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+
+interface Props {
+  crumb?: string;
+  h1: string;
+  subtext?: string | null;
+  photo?: string;
+  contactHref?: string;
+}
+const { crumb, h1, subtext, photo, contactHref = '#contact' } = Astro.props;
+---
+
+<section class="pt-6 pb-14 lg:pt-10 lg:pb-20">
+  <div class="frame">
+    {crumb && <Breadcrumb crumb={crumb} />}
+    <h1 class="mt-5 text-display" set:html={h1} />
+  </div>
+  <div class:list={['frame mt-8 grid gap-10 lg:mt-10 lg:grid-cols-12 lg:gap-8', !photo && 'lg:mt-6']}>
+    <div class="lg:col-span-5 lg:pt-2">
+      {subtext && <p class="measure text-sub leading-normal" set:html={subtext} />}
+      <div class="mt-8 flex flex-wrap gap-2" data-hero-actions>
+        <a href={contactHref} class="btn btn-accent">Contact Us<Icon name="arrowRight" /></a>
+        <a href={`tel:${site.phone.tel}`} class="btn btn-quiet" data-track="call">
+          <Icon name="phone" />Call Us<span class="font-sans text-small font-semibold">{site.phone.display}</span>
+        </a>
+      </div>
+    </div>
+    {
+      photo && (
+        <div class="relative lg:col-span-7">
+          <span class="absolute -bottom-3 -left-3 h-3/5 w-3/5 bg-accent lg:-bottom-4 lg:-left-4" aria-hidden="true" />
+          <Photo id={photo} priority sizes="(min-width: 1280px) 760px, (min-width: 1024px) 58vw, 100vw" class="relative aspect-[4/3] w-full object-cover" />
+        </div>
+      )
+    }
+  </div>
+</section>

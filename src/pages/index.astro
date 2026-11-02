@@ -1,27 +1,208 @@
 ---
 /**
- * Placeholder home page. The visual redesign will replace this
- * (see the design-taste-frontend skill in .claude/skills).
+ * Home. Copy is the live page's, verbatim (plus approved edits). Section order:
+ * hero with a real before/after, reviews, about, services, extensions, before/after projects,
+ * local carpenter and trust, contact.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import Reviews from '../components/Reviews.astro';
+import Prose from '../components/Prose.astro';
+import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
+import ContactClose from '../components/ContactClose.astro';
+import { getPage, text, headingLink, type Chapter } from '../lib/content';
+import { beforeAfter } from '../data/services';
 import { site } from '../config/site';
 
-const { address } = site;
+const page = getPage('home');
+const ch = (title: string): Chapter => {
+  // Section headings only: the old numbered service cards reuse some names as linked headings.
+  const c = page.chapters.find((x) => !x.heading.startsWith('<a') && text(x.heading).trim() === title);
+  if (!c) throw new Error(`Home chapter missing: ${title}`);
+  return c;
+};
+const about = ch('About Our Company');
+const reviewsHeading = ch('What our customers say').heading;
+const localCarpenter = ch('Local Carpenter in Ely, Newmarket, Bury St Edmunds & Cambridge');
+const builder = ch('Gary J Potter Carpentry & Construction: Your Local Extension Builder');
+
+// Our Services: the 12 service names (H3, decision D8), linked as on the live cards.
+const card = (title: string) => {
+  const c = page.chapters.find((x) => text(x.heading).trim().toLowerCase() === title.toLowerCase());
+  if (!c) throw new Error(`Service card missing: ${title}`);
+  return headingLink(c.heading)[1]!;
+};
+const featured = [
+  { title: 'House Extensions', copy: ch('House Extensions'), photo: 'two-storey-extension-rendered-rear', wide: true },
+  { title: 'Garage Conversions', copy: ch('Garage Conversions'), photo: 'garage-conversion-room', wide: false },
+  { title: 'Media Walls', copy: ch('Media Walls'), photo: 'media-wall-sage-green', wide: false },
+  { title: 'Kitchen Fitting', copy: ch('Kitchen Fitting'), photo: 'kitchen-navy-island', wide: true },
+].map((f) => ({ ...f, href: card(f.title) }));
+const moreServices = [
+  { label: 'Extensions', items: [
+    ['Single Storey Extensions', 'single-storey-extension-pergola'],
+    ['Double Storey Extensions', 'two-storey-extension-rendered-front'],
+    ['Wrap Around Extensions', 'extension-lantern-and-glazing'],
+    ['Timber Framed Extensions', 'timber-frame-long-room'],
+    ['Extension Builder', 'rear-extension-steel-frame'],
+  ] },
+  { label: 'Kitchens, carpentry and joinery', items: [
+    ['Kitchen Spraying', 'kitchen-shaker-sage-belfast'],
+    ['Carpentry Services', 'oak-staircase'],
+    ['Local Carpenter', 'library-after'],
+  ] },
+].map((g) => ({ ...g, items: g.items.map(([title, photo]) => ({ title, photo, href: card(title) })) }));
+
+const extensionTypes = [
+  { c: ch('Single Storey Extensions That Give You Room to Live'), photo: 'single-storey-extension-patio' },
+  { c: ch('Double Storey Extensions: Twice the Space Without Moving'), photo: 'two-storey-extension-scaffold' },
+  { c: ch('Wrap Around Extensions That Transform Your Home'), photo: 'kitchen-extension-lanterns' },
+  { c: ch('Timber Framed Extensions: Smart, Efficient and Built to Last'), photo: 'vaulted-timber-roof' },
+];
+const stages = [
+  ['rear-extension-steel-frame', 'Steel frame'],
+  ['extension-floor-beams', 'Floor'],
+  ['roof-lantern-flat-roof', 'Roof and lantern'],
+  ['extension-living-room-finished', 'Finished'],
+];
+const [hero, ...projects] = beforeAfter;
 ---
 
-<BaseLayout>
-  <main>
-    <h1>{site.name}</h1>
-    <p>{site.description}</p>
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto="rear-extension-after" ogType="website" contactHref="#contact">
+  <!-- Hero: the work sells itself. The rear extension before and after, from the same spot in the garden. -->
+  <section class="pt-6 lg:pt-10">
+    <div class="frame">
+      <p class="font-semibold text-ink-muted">{page.crumb}</p>
+      <h1 class="mt-3 text-display" set:html={page.h1} />
+    </div>
+    <div class="frame mt-6 grid gap-6 lg:mt-8 lg:grid-cols-12 lg:items-center lg:gap-8">
+      <p class="measure text-sub leading-normal lg:col-span-6">{page.bannerSubtext}</p>
+      <div class="lg:col-span-6 lg:justify-self-end">
+        <div class="flex flex-wrap gap-2" data-hero-actions>
+          <a href="#contact" class="btn btn-accent">Contact Us<Icon name="arrowRight" /></a>
+          <a href={`tel:${site.phone.tel}`} class="btn btn-quiet" data-track="call"><Icon name="phone" />Call Us<span class="font-sans text-small font-semibold">{site.phone.display}</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto mt-8 max-w-[1600px] lg:mt-12">
+      <BeforeAfter before={hero.before} after={hero.after} label={hero.label} priority sizes="(min-width: 1600px) 1600px, 100vw" ratio="aspect-[4/3] md:aspect-[16/8]" class="[&>figcaption]:px-[var(--gutter)]" />
+    </div>
+  </section>
 
-    <!-- Name, address and phone: keep identical to the Google Business Profile. -->
-    <address>
-      <strong>{site.name}</strong><br />
-      {address.streetAddress}<br />
-      {address.addressLocality}, {address.addressRegion}<br />
-      {address.postalCode}<br />
-      <a href={`tel:${site.phone.replace(/\s+/g, '')}`}>{site.phone}</a><br />
-      <a href={`mailto:${site.email}`}>{site.email}</a>
-    </address>
-  </main>
+  <Reviews heading={reviewsHeading} variant="feature" />
+
+  <!-- About: planning, drawings and every trade handled. -->
+  <section class="section bg-surface" aria-labelledby="about-heading">
+    <div class="frame grid gap-10 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-5" data-reveal>
+        <h2 id="about-heading" class="text-title" set:html={about.heading} />
+        <Prose blocks={about.blocks} lead class="mt-6" />
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+        <Prose blocks={page.intro} class="measure" />
+      </div>
+    </div>
+    <div class="frame mt-12 lg:mt-16" data-reveal>
+      <Photo id="kitchen-island-sink-lantern" sizes="(min-width: 1280px) 1216px, 100vw" class="aspect-[16/10] w-full object-cover md:aspect-[21/9]" />
+    </div>
+  </section>
+
+  <!-- Our Services: four featured, then the rest, grouped. One list, swipeable on phones. -->
+  <section class="section" aria-labelledby="services-heading">
+    <div class="frame" data-reveal>
+      <h2 id="services-heading" class="text-title">Our Services</h2>
+    </div>
+    <ul class="swipe-track mt-8 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto pb-2 [scrollbar-width:none] lg:mx-auto lg:grid lg:max-w-[80rem] lg:grid-cols-12 lg:gap-8 lg:overflow-visible lg:px-[var(--gutter)]! [&::-webkit-scrollbar]:hidden" aria-label="Featured services">
+      {featured.map((f) => (
+        <li class:list={['group relative w-[84%] sm:w-[60%] lg:w-auto', f.wide ? 'lg:col-span-7' : 'lg:col-span-5']}>
+          <Photo id={f.photo} sizes="(min-width: 1024px) 720px, 84vw" class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.015]" />
+          <h3 class="mt-5 text-sub"><a href={f.href} class="after:absolute after:inset-0 hover:text-brand-text">{f.title}</a></h3>
+          <Prose blocks={f.copy.blocks} class="relative z-10 mt-3 measure" />
+        </li>
+      ))}
+    </ul>
+    <div class="frame mt-14 grid gap-12 lg:mt-20">
+      {moreServices.map((g) => (
+        <div data-reveal>
+          <p class="font-semibold text-ink-muted">{g.label}</p>
+          <ul class:list={['mt-4 grid grid-cols-2 gap-x-4 gap-y-8', g.items.length === 5 ? 'lg:grid-cols-5' : 'lg:grid-cols-4']}>
+            {g.items.map((s, i) => (
+              <li class:list={['group relative', g.items.length % 2 === 1 && i === 0 && 'col-span-2', g.items.length === 5 && i === 0 && 'lg:col-span-1']}>
+                <Photo id={s.photo} sizes="(min-width: 1024px) 380px, 50vw" class="aspect-[4/3] w-full object-cover" />
+                <h3 class="mt-3 flex items-start justify-between gap-2 font-sans text-body font-semibold tracking-normal">
+                  <a href={s.href} class="after:absolute after:inset-0 group-hover:text-brand-text">{s.title}</a>
+                  <Icon name="arrowRight" class="icon mt-1 size-5 shrink-0 text-brand-text transition-transform group-hover:translate-x-1" />
+                </h3>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Extensions: who builds it, how it goes up, and the four ways to extend. -->
+  <section class="section bg-surface" aria-labelledby="builder-heading">
+    <div class="frame" data-reveal>
+      <h2 id="builder-heading" class="max-w-[24ch] text-title" set:html={builder.heading} />
+      <Prose blocks={builder.blocks} class="measure mt-6" />
+    </div>
+    <ol class="frame mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4" aria-label="One extension, from frame to finish" data-reveal>
+      {stages.map(([id, label]) => (
+        <li>
+          <Photo id={id} sizes="(min-width: 1024px) 300px, 50vw" class="aspect-square w-full object-cover lg:aspect-[4/5]" />
+          <p class="mt-2 text-small font-semibold">{label}</p>
+        </li>
+      ))}
+    </ol>
+    <ul class="swipe-track mt-16 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto pb-2 [scrollbar-width:none] lg:mx-auto lg:mt-24 lg:grid lg:max-w-[80rem] lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16 lg:overflow-visible lg:px-[var(--gutter)]! [&::-webkit-scrollbar]:hidden" aria-label="Types of extension">
+      {extensionTypes.map(({ c, photo }) => (
+        <li class="w-[86%] sm:w-[60%] lg:w-auto">
+          <Photo id={photo} sizes="(min-width: 1024px) 600px, 86vw" class="aspect-[3/2] w-full object-cover" />
+          <h2 class="mt-5 text-sub" set:html={c.heading} />
+          <Prose blocks={c.blocks} class="mt-3 measure" />
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Before and after: pick a job, drag to compare. -->
+  <section class="section" aria-labelledby="ba-heading">
+    <div class="frame" data-ba-switch>
+      <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+        <h2 id="ba-heading" class="text-title">Before and after</h2>
+        <a href="/gallery/" class="inline-flex items-center gap-2 font-semibold text-brand-text underline-offset-4 hover:underline">See the full gallery<Icon name="arrowRight" /></a>
+      </div>
+      <div role="tablist" aria-label="Choose a project" class="-mx-[var(--gutter)] mt-8 flex gap-2 overflow-x-auto px-[var(--gutter)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {projects.map((p, i) => (
+          <button type="button" role="tab" id={`ba-tab-${p.id}`} aria-controls={`ba-panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} class="btn min-h-11 shrink-0 bg-surface px-4 text-[0.95rem] hover:bg-surface-deep aria-selected:bg-ink aria-selected:text-on-brand">
+            {p.label}
+          </button>
+        ))}
+      </div>
+      {projects.map((p, i) => (
+        <div role="tabpanel" id={`ba-panel-${p.id}`} aria-labelledby={`ba-tab-${p.id}`} hidden={i !== 0} class="mt-6">
+          <BeforeAfter before={p.before} after={p.after} label={p.label} sizes="(min-width: 1280px) 1216px, 100vw" ratio="aspect-[4/3] lg:aspect-[16/9]" />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Local carpenter and why homeowners trust us. -->
+  <section class="section bg-surface" aria-labelledby="local-heading">
+    <div class="frame grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
+      <div class="relative grid grid-cols-5 gap-3 lg:col-span-6" data-reveal>
+        <span class="absolute -bottom-3 -left-3 h-1/2 w-1/2 bg-accent" aria-hidden="true"></span>
+        <Photo id="bathroom-dark-roll-top-bath" sizes="(min-width: 1024px) 400px, 60vw" class="relative col-span-3 aspect-[3/4] w-full object-cover" />
+        <Photo id="extension-room-roof-lantern" sizes="(min-width: 1024px) 260px, 40vw" class="relative col-span-2 aspect-[2/3] w-full self-end object-cover" />
+      </div>
+      <div class="lg:col-span-5 lg:col-start-8" data-reveal>
+        <h2 id="local-heading" class="text-title" set:html={localCarpenter.heading} />
+        <Prose blocks={localCarpenter.blocks} class="mt-6 measure" />
+      </div>
+    </div>
+  </section>
+
+  <ContactClose closing={page.closing} />
 </BaseLayout>

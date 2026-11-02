@@ -1,0 +1,262 @@
+{
+ "note": "Approved copy edits (Step 2 decisions). Applied once to src/content/pages by scripts/apply-copy-edits.mjs. Punctuation-only unless the rule says otherwise.",
+ "replace": [
+  [
+   "D1",
+   "*",
+   "Bury St Edmunds – Give Your Home",
+   "Bury St Edmunds: Give Your Home"
+  ],
+  [
+   "D1",
+   "*",
+   "Bury St Edmunds – Reimagine Your",
+   "Bury St Edmunds: Reimagine Your"
+  ],
+  [
+   "D1",
+   "*",
+   "Bury St Edmunds – A Flexible Way",
+   "Bury St Edmunds: A Flexible Way"
+  ],
+  [
+   "D1",
+   "*",
+   "Cambridge – Make Your Home Work Harder",
+   "Cambridge: Make Your Home Work Harder"
+  ],
+  [
+   "D1",
+   "*",
+   "Cambridge – Give Your Ground Floor",
+   "Cambridge: Give Your Ground Floor"
+  ],
+  [
+   "D1",
+   "*",
+   "Cambridge – Create More Without",
+   "Cambridge: Create More Without"
+  ],
+  [
+   "D1",
+   "*",
+   "Ely – Create More Space Without Moving",
+   "Ely: Create More Space Without Moving"
+  ],
+  [
+   "D1",
+   "*",
+   "Ely – Make Every Corner Work Harder",
+   "Ely: Make Every Corner Work Harder"
+  ],
+  [
+   "D1",
+   "*",
+   "Ely – Build Beautiful Space Efficiently",
+   "Ely: Build Beautiful Space Efficiently"
+  ],
+  [
+   "D1",
+   "*",
+   "Newmarket – Create Space That Fits",
+   "Newmarket: Create Space That Fits"
+  ],
+  [
+   "D1",
+   "*",
+   "Newmarket – Unlock More From Your Home",
+   "Newmarket: Unlock More From Your Home"
+  ],
+  [
+   "D1",
+   "*",
+   "Newmarket – Enjoy Flexible, Efficient Space",
+   "Newmarket: Enjoy Flexible, Efficient Space"
+  ],
+  [
+   "D1",
+   "home",
+   "Gary J Potter Carpentry & Construction — Your Local Extension Builder",
+   "Gary J Potter Carpentry & Construction: Your Local Extension Builder"
+  ],
+  [
+   "D3",
+   "privacy-policy",
+   "transferred to — and maintained on — computers",
+   "transferred to, and maintained on, computers"
+  ],
+  [
+   "D4",
+   "area--bury-st-edmunds",
+   "bookcases — all custom-built",
+   "bookcases, all custom-built"
+  ],
+  [
+   "D4",
+   "area--cambridge",
+   "furniture pieces — all hand-crafted",
+   "furniture pieces, all hand-crafted"
+  ],
+  [
+   "D4",
+   "area--ely",
+   "heart of the home — and our",
+   "heart of the home, and our"
+  ],
+  [
+   "D4",
+   "area--newmarket",
+   "the entire process — from insulation",
+   "the entire process, from insulation"
+  ],
+  [
+   "D4",
+   "area--newmarket",
+   "bespoke joinery — so your new room",
+   "bespoke joinery, so your new room"
+  ],
+  [
+   "D4",
+   "area--newmarket",
+   "busiest room in the house — and it deserves",
+   "busiest room in the house, and it deserves"
+  ],
+  [
+   "D4",
+   "carpentry-services",
+   "designed around you — incorporating",
+   "designed around you, incorporating"
+  ],
+  [
+   "D4",
+   "*",
+   " — then let’s talk",
+   ", then let’s talk"
+  ],
+  [
+   "D4",
+   "home",
+   "& Construction – where precision",
+   "& Construction, where precision"
+  ],
+  [
+   "D4",
+   "carpentry-services",
+   "beyond</a> — from intricate",
+   "beyond</a>, from intricate"
+  ],
+  [
+   "D4",
+   "carpentry-services",
+   "and joinery services — from fitted",
+   "and joinery services, from fitted"
+  ],
+  [
+   "D4",
+   "home",
+   "the right team – from ground workers",
+   "the right team, from ground workers"
+  ],
+  [
+   "D4",
+   "home",
+   "specialist trades – to ensure",
+   "specialist trades, to ensure"
+  ],
+  [
+   "D4",
+   "home",
+   "</a> — brick or timber-framed — are designed",
+   "</a>, brick or timber-framed, are designed"
+  ],
+  [
+   "D4",
+   "home",
+   "storage — all designed around",
+   "storage, all designed around"
+  ],
+  [
+   "D4",
+   "home",
+   "heart of your home — so let’s",
+   "heart of your home, so let’s"
+  ],
+  [
+   "D4",
+   "home",
+   "under one roof – no delays, no fuss",
+   "under one roof: no delays, no fuss"
+  ],
+  [
+   "D4",
+   "house-extensions",
+   "every detail — from foundations to roofing — ensuring",
+   "every detail, from foundations to roofing, ensuring"
+  ],
+  [
+   "D4",
+   "kitchen-fitting",
+   "heart of every home — a space",
+   "heart of every home: a space"
+  ],
+  [
+   "D4",
+   "local-carpenter",
+   "your lifestyle — no two are the same",
+   "your lifestyle: no two are the same"
+  ],
+  [
+   "D4",
+   "media-walls",
+   "your television — it’s a way",
+   "your television: it’s a way"
+  ],
+  [
+   "D4",
+   "media-walls",
+   "technology — TVs, soundbars, speakers, games consoles, streaming devices — but",
+   "technology (TVs, soundbars, speakers, games consoles, streaming devices), but"
+  ],
+  [
+   "D4",
+   "media-walls",
+   "aesthetics — it’s about",
+   "aesthetics: it’s about"
+  ],
+  [
+   "D4",
+   "media-walls",
+   "just design — we manage",
+   "just design: we manage"
+  ],
+  [
+   "D5",
+   "*",
+   "Looking for as local carpenter",
+   "Looking for a local carpenter"
+  ]
+ ],
+ "bannerSubtext": {
+  "home": "Crafted with care, built to last. Extensions, garage conversions, kitchens and bespoke carpentry since 2013.",
+  "area--bury-st-edmunds": "Expert carpentry & construction services in Bury St Edmunds: bespoke joinery, kitchens, conversions & extensions crafted with care.",
+  "area--cambridge": "Trusted carpentry & construction in Cambridge, from bespoke joinery to house extensions, kitchens & garage conversions.",
+  "area--ely": "Your trusted carpentry & construction company in Ely, from bespoke joinery to full house extensions.",
+  "area--newmarket": "Carpentry & construction experts in Newmarket: bespoke joinery, extensions, kitchens & garage conversions crafted to perfection.",
+  "areas-we-cover": "Proudly providing expert carpentry & construction across Ely, Newmarket, Bury St Edmunds, Cambridge and all surrounding areas.",
+  "carpentry-services": "From bespoke joinery to full-scale builds: trusted carpentry services tailored to your home.",
+  "contact-us": "Get in touch with your local carpentry & construction experts today.",
+  "double-storey-extensions": "Seamless double storey extensions in Ely, Newmarket, Bury St Edmunds & Cambridge, expertly crafted from design to completion.",
+  "extension-builder": "Extension builder in Ely, Newmarket, Bury St Edmunds & Cambridge. Extensions expertly crafted from design to completion.",
+  "gallery": "See our craftsmanship in action: explore our completed carpentry & construction projects.",
+  "garage-conversions": "Transform your unused garage into a stylish, functional space: offices, gyms, bedrooms and more.",
+  "house-extensions": "Seamless house extensions in Ely, Newmarket, Bury St Edmunds & Cambridge, expertly crafted from design to completion.",
+  "kitchen-fitting": "Beautifully fitted kitchens: bespoke design, expert carpentry, and practical spaces built around your lifestyle.",
+  "kitchen-spraying": "Local carpenter offering durable kitchen spraying for homeowners looking for a stylish finish for their kitchen.",
+  "local-carpenter": "Your trusted local carpenter, crafting bespoke joinery and building solutions across Ely, Newmarket, Bury St Edmunds & Cambridge.",
+  "media-walls": "Bespoke media walls: stylish storage, seamless design, and a perfect home for your TV and sound system.",
+  "single-storey-extensions": "Seamless single storey extensions in Ely, Newmarket, Bury St Edmunds & Cambridge, expertly crafted from design to completion.",
+  "testimonials": "Hear from our customers: trusted carpentry & construction services across Cambridgeshire & Suffolk.",
+  "timber-framed-extensions": "Seamless timber framed extensions in Ely, Newmarket, Bury St Edmunds & Cambridge, expertly crafted from design to completion.",
+  "wrap-around-extensions": "Seamless wrap around extensions in Ely, Newmarket, Bury St Edmunds & Cambridge, expertly crafted from design to completion."
+ }
+}

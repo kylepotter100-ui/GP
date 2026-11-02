@@ -1,16 +1,28 @@
 {
-  // Cloudflare Workers config: serves the static Astro build from ./dist.
+  // Cloudflare Workers config: serves the static Astro build from ./dist,
+  // and runs worker/index.ts first for /api/* (the enquiry form).
   // Docs: https://developers.cloudflare.com/workers/static-assets/
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "gp-website",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     // Serve dist/404.html with a real 404 status for unknown URLs.
     "not_found_handling": "404-page",
     // /about -> /about/ (matches Astro's directory build format and canonical URLs).
     "html_handling": "auto-trailing-slash"
   },
+  // Form delivery through Cloudflare Email Routing. The domain's email must be on Cloudflare
+  // and the destination address verified in Email Routing. TODO before launch: confirm MAIL_TO.
+  "send_email": [{ "name": "SEND_EMAIL", "destination_address": "info@garyjpottercarpentry.co.uk" }],
+  "vars": {
+    "MAIL_FROM": "website@garyjpottercarpentry.co.uk",
+    "MAIL_TO": "info@garyjpottercarpentry.co.uk"
+  },
+  // Secret, set with: npx wrangler secret put TURNSTILE_SECRET
   "observability": {
     "enabled": true
   }

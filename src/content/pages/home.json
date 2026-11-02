@@ -1,0 +1,420 @@
+{
+ "path": "/",
+ "title": "Gary J Potter Carpentry & Construction | Crafted with care, built to last",
+ "description": "Gary J Potter Carpentry & Construction experts in house extensions, kitchens, garage conversions & media walls across Ely, Newmarket, Bury St Edmunds & Cambridge.",
+ "canonical": "https://www.garyjpottercarpentry.co.uk/",
+ "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/08/IMG-20250806-WA0218.jpg",
+ "crumb": "Gary J Potter Carpentry & Construction",
+ "bannerSubtext": "Crafted with care, built to last. Extensions, garage conversions, kitchens and bespoke carpentry since 2013.",
+ "h1": "Crafted Carpentry & Construction Across Cambridgeshire & Suffolk",
+ "intro": [
+  {
+   "t": "p",
+   "html": "Welcome to Gary J Potter Carpentry & Construction, where precision carpentry meets thoughtful design and a down-to-earth approach. Since 2013, we’ve been helping homeowners in <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>, <a href=\"/area/cambridge/\">Cambridge </a>and <a href=\"/areas-we-cover/\">beyond</a> to unlock the potential of their homes."
+  },
+  {
+   "t": "p",
+   "html": "Our mission is simple: to combine craftsmanship you can see with reliability you can feel. With over 40 years of combined experience, our small, skilled team brings the kind of personal service that larger firms can’t always offer. Whether it’s a bespoke bookshelf or a full <a href=\"/house-extensions/\">house extension</a>, our bespoke carpenter and expert builder team treats every project with the same level of care."
+  },
+  {
+   "t": "p",
+   "html": "We can bring together the right team, from ground workers to bricklayers and plasterers to other specialist trades, to ensure your project runs smoothly and delivers on time and budget, whatever the brief."
+  }
+ ],
+ "chapters": [
+  {
+   "heading": "Our Services",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/carpentry-services/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "01",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/carpentry-services/\">Carpentry services</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/local-carpenter/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "02",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/local-carpenter/\">Local Carpenter</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/house-extensions/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "03",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/house-extensions/\">House Extensions</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/garage-conversions/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "04",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/garage-conversions/\">Garage Conversions</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/media-walls/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "05",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/media-walls/\">Media walls</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/kitchen-fitting/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "06",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/kitchen-fitting/\">Kitchen fitting</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/kitchen-spraying/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "07",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/kitchen-spraying/\">Kitchen Spraying </a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/single-storey-extensions/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "08",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/single-storey-extensions/\">Single Storey Extensions</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/double-storey-extensions/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "09",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/double-storey-extensions/\">Double Storey Extensions</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/wrap-around-extensions/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "10",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/wrap-around-extensions/\">Wrap Around Extensions</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/extension-builder/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "11",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/extension-builder/\">Extension Builder</a>",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "icon",
+     "text": "<a href=\"/timber-framed-extensions/\"> <em></em> </a>"
+    }
+   ]
+  },
+  {
+   "heading": "12",
+   "blocks": []
+  },
+  {
+   "heading": "<a href=\"/timber-framed-extensions/\">Timber Framed Extensions</a>",
+   "blocks": []
+  },
+  {
+   "heading": "About Our Company",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "We are problem-solving builders, space creators and detail obsessives. From <a href=\"/carpentry-services/\">bespoke carpentry</a> and cabinetry to large-scale builds, we manage everything in-house so you don’t have to juggle different trades. We’ll even help with planning and drawings, guiding you from first sketch to final polish."
+    },
+    {
+     "t": "button",
+     "text": "<a href=\"/contact-us/\"> Contact Us </a>",
+     "href": "/contact-us/"
+    },
+    {
+     "t": "img",
+     "src": "IMG-20250806-WA0218.jpg",
+     "alt": "Gary J Potter Carpentry & Construction | Kitchen installs | Kitchen Fitting"
+    }
+   ]
+  },
+  {
+   "heading": "House Extensions",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Need more room but don’t want to move? Our <a href=\"/house-extensions/\">house extensions</a>, brick or timber-framed, are designed to blend seamlessly with your existing home. From roof trusses to Hardiplank cladding, every detail is hand-cut and fitted by experts."
+    }
+   ]
+  },
+  {
+   "heading": "Garage Conversions",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "We see garages differently. To us, they’re blank canvases ready to become home offices, gyms or living spaces. Our <a href=\"/garage-conversions/\">garage conversions</a> maximise what’s already there and transform it into something you’ll love using every day."
+    }
+   ]
+  },
+  {
+   "heading": "Media Walls",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "No more wires, no more clutter. Our bespoke <a href=\"/media-walls/\">media walls</a> turn the everyday TV into a feature, with space for shelves, speakers and storage, all designed around how you actually live."
+    }
+   ]
+  },
+  {
+   "heading": "Kitchen Fitting",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Your kitchen is the heart of your home, so let’s make it work beautifully. We handle <a href=\"/kitchen-fitting/\">kitchen fitting</a> from top to bottom: units, islands, doors, worktops, the lot. Whether it’s sleek and modern or warm and traditional, we’ll craft a space that feels like yours."
+    },
+    {
+     "t": "img",
+     "src": "1000066614.jpg",
+     "alt": "Gary J Potter Carpentry & Construction | Media walls"
+    }
+   ]
+  },
+  {
+   "heading": "Local Carpenter in Ely, Newmarket, Bury St Edmunds & Cambridge",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "From fitted wardrobes to bespoke bookcases, our <a href=\"/local-carpenter/\">local carpenter</a> services cover all the finishing touches that make a house a home. Every project is tailored to your taste and built to last."
+    },
+    {
+     "t": "p",
+     "html": "<strong>Why Homeowners Trust Us</strong>"
+    },
+    {
+     "t": "ul",
+     "items": [
+      "Friendly, family-run company with a hands-on approach",
+      "Over four decades of carpentry and construction expertise",
+      "All trades managed under one roof: no delays, no fuss",
+      "One-year workmanship guarantee plus full public liability insurance",
+      "We care about the little details as much as the big picture"
+     ]
+    },
+    {
+     "t": "img",
+     "src": "WhatsApp-Image-2025-09-05-at-21.14.30_9d14608c.jpg",
+     "alt": "Gary J Potter Carpentry & Construction"
+    },
+    {
+     "t": "img",
+     "src": "WhatsApp-Image-2025-09-05-at-21.14.29_30783acc.jpg",
+     "alt": "Gary J Potter Carpentry & Construction"
+    },
+    {
+     "t": "img",
+     "src": "Rear-view-after.jpg",
+     "alt": "Gary J Potter | House Extensions"
+    }
+   ]
+  },
+  {
+   "heading": "Gary J Potter Carpentry & Construction: Your Local Extension Builder",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "When you need more space, you deserve a team that understands your home and your ambitions. And with our <a href=\"/extension-builder/\">extension builder</a>, you get practical guidance from the first conversation onwards."
+    },
+    {
+     "t": "p",
+     "html": "First, we explore your requirements, property, and plans together. Then, we help you choose an approach that makes sense for your budget and lifestyle. Throughout the build, you stay informed while we keep everything moving smoothly."
+    },
+    {
+     "t": "p",
+     "html": "Most importantly, you get a result designed around you."
+    }
+   ]
+  },
+  {
+   "heading": "Single Storey Extensions That Give You Room to Live",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Imagine finally having the kitchen, dining area, or family room you’ve always wanted. Well, our <a href=\"/single-storey-extensions/\">single storey extensions</a> can unlock valuable space while keeping your home feeling unmistakably yours."
+    },
+    {
+     "t": "p",
+     "html": "You could open your kitchen onto the garden, create a brighter family hub, or build a peaceful home office. Better still, you can design the space around your daily routines rather than adapting your life around your house. Giving you room to cook, work, relax, and enjoy more together."
+    }
+   ]
+  },
+  {
+   "heading": "Double Storey Extensions: Twice the Space Without Moving",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Why stop at one floor when your property could offer so much more? Our <a href=\"/double-storey-extensions/\">double storey extensions</a> let you add substantial space while making better use of your existing footprint."
+    },
+    {
+     "t": "p",
+     "html": "Downstairs, you could create the spacious kitchen or family room you’ve been missing. Upstairs, you could add bedrooms, bathrooms, or a dedicated workspace. As a result, you gain valuable flexibility without sacrificing your garden unnecessarily. Better still, our <a href=\"/double-storey-extensions/\">double storey extensions</a> can help your home evolve around your family, your routines, and your future plans."
+    },
+    {
+     "t": "p",
+     "html": "So, you can stay where you love while creating the space you need."
+    },
+    {
+     "t": "img",
+     "src": "IMG_0434.jpg",
+     "alt": "Professional Double Storey Extensions"
+    }
+   ]
+  },
+  {
+   "heading": "Wrap Around Extensions That Transform Your Home",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "What if you could completely rethink the way your home connects and flows? Well, our <a href=\"/wrap-around-extensions/\">wrap around extensions</a> can transform awkward layouts into spacious, beautifully connected living areas."
+    },
+    {
+     "t": "p",
+     "html": "By extending across the rear and side of your property, you can create a much more generous footprint. You might combine a larger kitchen with a relaxed dining area, add a family room, or create a seamless garden connection. Furthermore, our <a href=\"/wrap-around-extensions/\">wrap around extensions</a> give you greater freedom to shape your layout around everyday life."
+    },
+    {
+     "t": "p",
+     "html": "Ultimately, you can turn underused areas into somewhere your whole household enjoys spending time."
+    }
+   ]
+  },
+  {
+   "heading": "Timber Framed Extensions: Smart, Efficient and Built to Last",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Looking for a modern way to add space while keeping your project practical? Thankfully, our <a href=\"/timber-framed-extensions/\">timber framed extensions</a> offer a lightweight, versatile approach to creating a comfortable new area."
+    },
+    {
+     "t": "p",
+     "html": "You can enjoy excellent design flexibility while choosing layouts that suit your property and lifestyle. Furthermore, timber construction can help your extension take shape efficiently. Giving you a streamlined route towards your finished space. Plus, you can also create a warm, inviting environment that feels naturally connected to your existing home."
+    },
+    {
+     "t": "p",
+     "html": "Ultimately, our <a href=\"/timber-framed-extensions/\">timber framed extensions</a> give you another smart option when you want more space without compromising your vision."
+    },
+    {
+     "t": "img",
+     "src": "Copilot_20260906_1318241.jpg",
+     "alt": "Bespoke Wrap Around Extensions"
+    },
+    {
+     "t": "img",
+     "src": "IMG_9070.jpeg",
+     "alt": "Beautiful Timber Framed Extensions"
+    }
+   ]
+  },
+  {
+   "heading": "What our customers say",
+   "blocks": [
+    {
+     "t": "widget",
+     "kind": "shortcode",
+     "text": ""
+    }
+   ]
+  }
+ ],
+ "closing": {
+  "heading": "Contact Us",
+  "blocks": [
+   {
+    "t": "p",
+    "html": "Looking for a local carpenter and building firm in Suffolk or Cambridgeshire? <a href=\"/contact-us/\">Contact us</a> Gary J Potter on <a href=\"tel:+447415216223\">07415 216223</a> or email <a href=\"mailto:info@garyjpottercarpentry.co.uk\">info@garyjpottercarpentry.co.uk</a>."
+   },
+   {
+    "t": "p",
+    "html": "We carry out all aspects of carpentry and construction, from bespoke projects to full extensions and conversions."
+   },
+   {
+    "t": "p",
+    "html": "Take a look at our <a href=\"/areas-we-cover/\">areas we cover</a>, explore our <a href=\"/gallery/\">gallery</a> and see what others are saying in our <a href=\"/testimonials/\">testimonials</a>, then let’s talk about bringing your ideas to life."
+   }
+  ]
+ },
+ "hasForm": true
+}

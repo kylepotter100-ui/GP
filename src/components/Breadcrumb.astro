@@ -1,0 +1,12 @@
+---
+interface Props { crumb: string }
+const { crumb } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class="text-small text-ink-muted">
+  <ol class="flex flex-wrap items-center gap-x-2">
+    <li><a href="/" class="underline-offset-4 hover:text-brand-text hover:underline">Home</a></li>
+    <li aria-hidden="true">/</li>
+    <li aria-current="page" class="font-semibold text-ink">{crumb}</li>
+  </ol>
+</nav>

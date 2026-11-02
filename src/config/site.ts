@@ -1,63 +1,62 @@
 /**
  * Single source of truth for business details.
  *
- * Everything here feeds the page <head> (title, description, Open Graph),
- * the LocalBusiness structured data (JSON-LD), sitemap.xml and robots.txt.
- *
- * For local SEO, the name, address and phone (NAP) MUST match the
- * Google Business Profile exactly, character for character.
- *
- * TODO: replace every placeholder below with the real business details.
+ * The name, phone and email must stay character-for-character identical to the
+ * live site and the Google Business Profile. Opening hours, street address and
+ * the Business Profile link are filled in during the SEO phase.
  */
 
-export interface OpeningHours {
-  /** Schema.org day names, e.g. ['Monday', 'Tuesday'] */
-  days: string[];
-  /** 24h "HH:MM" */
-  opens: string;
-  closes: string;
-}
-
 export const site = {
-  /** Production URL, no trailing slash. */
-  url: 'https://www.example.com',
-  name: 'Business Name',
-  /** Default <title> suffix and og:site_name. */
-  titleTemplate: '%s | Business Name',
-  description: 'One or two sentences describing what the business does and where it does it.',
+  url: 'https://www.garyjpottercarpentry.co.uk',
+  name: 'Gary J Potter Carpentry & Construction',
+  tagline: 'Crafted with care, built to last',
   locale: 'en_GB',
   lang: 'en-GB',
 
-  /** schema.org type. Pick the most specific match, e.g. 'Plumber', 'Dentist', 'Restaurant'. */
-  businessType: 'LocalBusiness',
+  /** schema.org type: the most specific match for extensions, conversions and joinery. */
+  businessType: 'GeneralContractor',
+  description:
+    'Gary J Potter Carpentry & Construction experts in house extensions, kitchens, garage conversions & media walls across Ely, Newmarket, Bury St Edmunds & Cambridge.',
+  foundingYear: 2013,
 
-  phone: '+44 0000 000000',
-  email: 'hello@example.com',
-  address: {
-    streetAddress: '1 Example Street',
-    addressLocality: 'Town',
-    addressRegion: 'County',
-    postalCode: 'AB1 2CD',
-    addressCountry: 'GB',
+  phone: {
+    display: '07415 216223',
+    tel: '+447415216223',
   },
-  /** Optional. Copy from the Google Business Profile map pin. */
-  geo: undefined as { latitude: number; longitude: number } | undefined,
-  /** Areas served, for service-area businesses. */
-  areaServed: [] as string[],
-  openingHours: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' },
-  ] as OpeningHours[],
+  email: 'info@garyjpottercarpentry.co.uk',
+  whatsapp: {
+    number: '447415216223',
+    href: 'https://wa.me/447415216223',
+  },
 
-  /**
-   * Profiles that represent the same business. Include the Google Business
-   * Profile / Maps share link once it exists, plus social profiles.
-   */
-  sameAs: [] as string[],
-  /** Google Maps link for "Get directions" (from the Business Profile). */
-  googleMapsUrl: '',
+  areaServed: ['Ely', 'Newmarket', 'Bury St Edmunds', 'Cambridge', 'Cambridgeshire', 'Suffolk'],
 
-  /** Default social share image, path under /public, e.g. '/og-default.jpg'. 1200x630 recommended. */
-  ogImage: undefined as string | undefined,
+  /** Map embed kept from the live footer "Find us" block. */
+  mapQuery: '32 Acorn Way, Red Lodge, Bury Saint Edmunds IP28 8FY, UK',
+
+  sameAs: ['https://www.facebook.com/garyjpottercarpentry', 'https://www.instagram.com/garyjpottercarpentry/'],
+  social: {
+    facebook: 'https://www.facebook.com/garyjpottercarpentry',
+    instagram: 'https://www.instagram.com/garyjpottercarpentry/',
+  },
+
+  /** TODO (SEO phase): the Google Business Profile share link. Empty hides the link. */
+  googleProfileUrl: '',
+
+  reviews: {
+    rating: '5.0',
+    count: 26,
+    /** Figure as shown by the Google widget on the live site, 2 November 2026. */
+    asOf: 'November 2026',
+  },
+
+  analytics: {
+    ga4: 'G-48FGMN8RL6',
+    clarity: 't94csadv31',
+  },
+
+  /** Cloudflare Turnstile site key (public). TODO before launch: replace the test key. */
+  turnstileSiteKey: '1x00000000000000000000AA',
 };
 
 export type Site = typeof site;

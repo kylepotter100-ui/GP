@@ -1,0 +1,52 @@
+{
+ "path": "/testimonials/",
+ "title": "Testimonials | Gary J Potter Carpentry & Construction",
+ "description": "Testimonials Hear from our customers — trusted carpentry & construction services across Cambridgeshire & Suffolk.Read what our clients say, then call 07415 216223 to start your own project. Testimonials | Gary J Potter Carpentry & Construction At Gary J Potter Carpentry & Construction, we believe the best measure of our work is the feedback from",
+ "canonical": "https://www.garyjpottercarpentry.co.uk/testimonials/",
+ "ogImage": null,
+ "crumb": "Testimonials",
+ "bannerSubtext": "Hear from our customers: trusted carpentry & construction services across Cambridgeshire & Suffolk.",
+ "h1": "Testimonials | Gary J Potter Carpentry & Construction",
+ "intro": [
+  {
+   "t": "p",
+   "html": "At <a href=\"/\">Gary J Potter Carpentry & Construction</a>, we believe the best measure of our work is the feedback from the people we’ve helped. Our testimonials reflect the trust homeowners across <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>, <a href=\"/area/cambridge/\">Cambridge </a>and <a href=\"/areas-we-cover/\">beyond</a> place in us for <a href=\"/carpentry-services/\">bespoke carpenter and construction</a> projects of all sizes."
+  },
+  {
+   "t": "p",
+   "html": "From bespoke <a href=\"/media-walls/\">media walls</a> and <a href=\"/kitchen-fitting/\">kitchen fitting</a> to full <a href=\"/garage-conversions/\">garage conversions</a> and <a href=\"/house-extensions/\">house extensions</a>, <a href=\"/single-storey-extensions/\">single storey extensions</a>, <a href=\"/double-storey-extensions/\">double storey extensions</a>, <a href=\"/wrap-around-extensions/\">wrap around extensions</a>, <a href=\"/extension-builder/\">extension builder</a>, <a href=\"/timber-framed-extensions/\">timber framed extensions,</a> we’ve had the privilege of working on a wide range of projects. Customers consistently praise our attention to detail, reliability and friendly approach."
+  },
+  {
+   "t": "p",
+   "html": "As a small, family-run company, reputation means everything to us. That’s why every project, no matter how big or small, is delivered with the same level of care. We’re proud to share the words of satisfied customers who recommend us for our <a href=\"/local-carpenter/\">local carpenter</a> craftsmanship and trustworthy service."
+  },
+  {
+   "t": "p",
+   "html": "Take a look at our <a href=\"/gallery/\">gallery</a> to see some of our completed projects, then <a href=\"/contact-us/\">get in touch</a> to discuss how we can help with your home."
+  },
+  {
+   "t": "widget",
+   "kind": "shortcode",
+   "text": ""
+  }
+ ],
+ "chapters": [],
+ "closing": {
+  "heading": "Contact Us",
+  "blocks": [
+   {
+    "t": "p",
+    "html": "Looking for a local carpenter and building firm in Suffolk or Cambridgeshire? <a href=\"/contact-us/\">Contact us</a> Gary J Potter on <a href=\"tel:+447415216223\">07415 216223</a> or email <a href=\"mailto:info@garyjpottercarpentry.co.uk\">info@garyjpottercarpentry.co.uk</a>."
+   },
+   {
+    "t": "p",
+    "html": "We carry out all aspects of carpentry and construction, from bespoke projects to full extensions and conversions."
+   },
+   {
+    "t": "p",
+    "html": "Take a look at our <a href=\"/areas-we-cover/\">areas we cover</a>, explore our <a href=\"/gallery/\">gallery </a>and see what others are saying in our testimonials, then let’s talk about bringing your ideas to life."
+   }
+  ]
+ },
+ "hasForm": true
+}

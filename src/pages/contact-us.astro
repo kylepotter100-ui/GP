@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactClose from '../components/ContactClose.astro';
+import { getPage } from '../lib/content';
+import { pagePhotos } from '../data/page-photos';
+
+const page = getPage('contact-us');
+// D7: the banner heading becomes the breadcrumb (casing aligned with the "Contact Us" nav label).
+const crumb = 'Contact Us';
+---
+
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos['contact-us'].hero} crumb={crumb} contactHref="#contact">
+  <PageHero crumb={crumb} h1={page.h1} subtext={page.bannerSubtext} photo={pagePhotos['contact-us'].hero} />
+  <ContactClose closing={null} intro={page.intro} />
+</BaseLayout>

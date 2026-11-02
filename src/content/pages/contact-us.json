@@ -1,0 +1,39 @@
+{
+ "path": "/contact-us/",
+ "title": "Contact us | Gary J Potter Carpentry & Construction",
+ "description": "Contact Gary J Potter Carpentry & Construction. Call 07415 216223 or email info@garyjpottercarpentry.co.uk for bespoke carpenter & building services.",
+ "canonical": "https://www.garyjpottercarpentry.co.uk/contact-us/",
+ "ogImage": null,
+ "crumb": "contact Us",
+ "bannerSubtext": "Get in touch with your local carpentry & construction experts today.",
+ "h1": "Contact Gary J Potter Carpentry & Construction",
+ "intro": [
+  {
+   "t": "p",
+   "html": "If you’re looking for reliable <a href=\"/carpentry-services/\">bespoke carpenter and construction services</a> in <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>, <a href=\"/area/cambridge/\">Cambridge </a>or the surrounding <a href=\"/areas-we-cover/\">areas</a>, we’d love to hear from you. At <a href=\"/\">Gary J Potter Carpentry & Construction</a>, we pride ourselves on offering friendly advice, honest guidance, and a personal service from start to finish."
+  },
+  {
+   "t": "p",
+   "html": "Our team can help with everything from <a href=\"/house-extensions/\">house extensions</a>, <a href=\"/single-storey-extensions/\">single storey extensions</a>, <a href=\"/double-storey-extensions/\">double storey extensions</a>, <a href=\"/wrap-around-extensions/\">wrap around extensions</a>, <a href=\"/extension-builder/\">extension builder</a>, <a href=\"/timber-framed-extensions/\">timber framed extensions</a> and <a href=\"/garage-conversions/\">garage conversions</a> to bespoke <a href=\"/media-walls/\">media walls</a>, <a href=\"/kitchen-fitting/\">kitchen fitting</a> and <a href=\"/local-carpenter/\">local carpenter services</a>. With over 40 years of combined experience, NVQ qualifications, and a one-year workmanship guarantee, you can be confident your project is in safe hands."
+  },
+  {
+   "t": "p",
+   "html": "We cover homes across Cambridgeshire and Suffolk, including <a href=\"/area/ely/\">Ely</a><strong>, </strong><a href=\"/area/newmarket/\">Newmarket</a><strong>, </strong><a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a><strong>, </strong><a href=\"/area/cambridge/\">Cambridge</a>, and all nearby towns and villages."
+  },
+  {
+   "t": "p",
+   "html": "Phone: <a href=\"tel:+447415216223\">07415 216223</a>"
+  },
+  {
+   "t": "p",
+   "html": "Email: <a href=\"mailto:info@garyjpottercarpentry.co.uk\">info@garyjpottercarpentry.co.uk</a>"
+  },
+  {
+   "t": "p",
+   "html": "Take a moment to explore our <a href=\"/gallery/\">gallery</a> for inspiration and read our <a href=\"/testimonials/\">testimonials</a> to hear what local homeowners say about our work."
+  }
+ ],
+ "chapters": [],
+ "closing": null,
+ "hasForm": true
+}

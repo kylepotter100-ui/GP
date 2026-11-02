@@ -1,0 +1,33 @@
+---
+import { Picture } from 'astro:assets';
+import { photo } from '../lib/photos';
+
+interface Props {
+  id: string;
+  /** CSS sizes attribute; drives which width the browser downloads. */
+  sizes: string;
+  widths?: number[];
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
+  /** Override alt (rarely needed: every photo carries a descriptive alt). */
+  alt?: string;
+}
+const { id, sizes, widths = [400, 640, 960, 1280, 1600], class: className, loading = 'lazy', priority = false, alt } = Astro.props;
+const p = photo(id);
+const usable = widths.filter((w) => w <= p.w);
+---
+
+<Picture
+  src={p.image}
+  alt={alt ?? p.alt}
+  widths={usable.length ? usable : [p.w]}
+  sizes={sizes}
+  formats={['webp']}
+  fallbackFormat="jpg"
+  quality={72}
+  loading={priority ? 'eager' : loading}
+  fetchpriority={priority ? 'high' : undefined}
+  decoding={priority ? 'sync' : 'async'}
+  class={className}
+/>

@@ -1,0 +1,70 @@
+---
+/** Renders migrated copy blocks. Images and widgets are placed by the page, not here. */
+import type { Block } from '../lib/content';
+
+interface Props { blocks: Block[]; class?: string; lead?: boolean }
+const { blocks, class: className, lead = false } = Astro.props;
+const flow = blocks.filter((b) => b.t !== 'img' && b.t !== 'widget');
+---
+
+<div class:list={['prose-links space-y-5', className]}>
+  {
+    flow.map((b, i) => {
+      switch (b.t) {
+        case 'p':
+          return <p class:list={[lead && i === 0 && 'text-sub leading-normal']} set:html={b.html} />;
+        case 'ul':
+          return (
+            <ul class="list-square space-y-2.5 pl-5 marker:text-accent">
+              {b.items.map((it) => <li class="pl-1" set:html={it} />)}
+            </ul>
+          );
+        case 'ol':
+          return (
+            <ol class="list-decimal space-y-2.5 pl-5 marker:font-semibold">
+              {b.items.map((it) => <li class="pl-1" set:html={it} />)}
+            </ol>
+          );
+        case 'h3':
+          return <h3 class="pt-4 text-sub" set:html={b.html} />;
+        case 'h4':
+        case 'h5':
+        case 'h6':
+          return <h4 class="pt-2 font-sans text-body font-bold tracking-normal" set:html={b.html} />;
+        case 'iconlist':
+          return (
+            <ul class="list-square space-y-2.5 pl-5 marker:text-accent">
+              {b.items.map((it) => <li class="pl-1" set:html={it.html} />)}
+            </ul>
+          );
+        case 'table': {
+          const [first, ...rest] = b.rows;
+          return (
+            <div class="-mx-[var(--gutter)] overflow-x-auto px-[var(--gutter)] sm:mx-0 sm:px-0">
+              <table class="w-full min-w-[30rem] border-collapse text-left text-small">
+                {b.head && (
+                  <thead>
+                    <tr>{first.map((cell) => <th scope="col" class="border-b-2 border-ink/20 py-2 pr-4 font-semibold" set:html={cell} />)}</tr>
+                  </thead>
+                )}
+                <tbody>
+                  {(b.head ? rest : b.rows).map((row) => (
+                    <tr>{row.map((cell) => <td class="border-b border-ink/10 py-2 pr-4 align-top" set:html={cell} />)}</tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
+        }
+        case 'button':
+          return (
+            <p>
+              <a href={b.href} class="btn btn-accent">{b.text.replace(/<[^>]+>/g, '').trim()}</a>
+            </p>
+          );
+        default:
+          return null;
+      }
+    })
+  }
+</div>

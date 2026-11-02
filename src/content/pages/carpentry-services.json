@@ -1,0 +1,141 @@
+{
+ "path": "/carpentry-services/",
+ "title": "Carpentry services | Gary J Potter Carpentry & Construction",
+ "description": "Bespoke carpentry services & renovation experts in Ely, Newmarket, Bury St Edmunds & Cambridge. Joinery, extensions, kitchens & media walls crafted with care.",
+ "canonical": "https://www.garyjpottercarpentry.co.uk/carpentry-services/",
+ "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/09/Internal-remodeeling-of-buffer-unit.jpg",
+ "crumb": "Carpentry Services",
+ "bannerSubtext": "From bespoke joinery to full-scale builds: trusted carpentry services tailored to your home.",
+ "h1": "Carpentry Services in Cambridgeshire & Suffolk",
+ "intro": [
+  {
+   "t": "p",
+   "html": "At <a href=\"/\">Gary J Potter Carpentry & Construction</a>, carpentry is at the heart of everything we do. Since 2013, we’ve been delivering quality carpentry services across <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>, <a href=\"/area/cambridge/\">Cambridge</a> and <a href=\"/areas-we-cover/\">beyond</a>, from intricate bespoke joinery to full-scale <a href=\"/house-extensions/\">extensions</a><strong>, </strong><a href=\"/garage-conversions/\">conversions</a> and renovations."
+  },
+  {
+   "t": "p",
+   "html": "With over 40 years of combined experience, our NVQ-qualified carpenters bring both traditional skills and modern techniques to every project. We’re a small, friendly company that takes pride in managing not just the carpentry, but all the details that make a home feel complete."
+  },
+  {
+   "t": "img",
+   "src": "Internal-remodeeling-of-buffer-unit.jpg",
+   "alt": "Internal remodeeling of buffer unit | Carpentry Services | Local Carpenter"
+  }
+ ],
+ "chapters": [
+  {
+   "heading": "Local Carpenter for Carpentry Services in Cambridgeshire",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "As your trusted <a href=\"/local-carpenter/\">local carpenter</a>, we design and craft fitted wardrobes, bespoke bookcases, shelving, cabinetry and one-off pieces. Every project is created with care, tailored to your needs, and built to stand the test of time."
+    }
+   ]
+  },
+  {
+   "heading": "Carpentry Services for House Extensions & Renovations",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "From brick-built to timber-framed, our <a href=\"/carpentry-services/\">carpentry services</a> for <a href=\"/house-extensions/\">house extensions</a> cover every stage: trusses, roofing, Hardiplank cladding, and internal carpentry. We also offer full renovation works, transforming tired properties into fresh, modern living spaces. Every <a href=\"/house-extensions/\">extension</a>, renovation or <a href=\"/garage-conversions/\">conversion</a> is delivered to blend seamlessly with your home."
+    },
+    {
+     "t": "img",
+     "src": "IMG-20250805-WA0027.jpg",
+     "alt": "Gary J Potter | Solid parquet flooring | Carpentry Services"
+    },
+    {
+     "t": "img",
+     "src": "Wall-panelling.jpg",
+     "alt": "Gary J Potter | Wall panelling | Carpentry Services | Local Carpenter"
+    },
+    {
+     "t": "img",
+     "src": "1000066566.jpg",
+     "alt": "Gary J Potter | Garage Conversions | Carpentry Services"
+    }
+   ]
+  },
+  {
+   "heading": "Bespoke Carpenter for Garage Conversions",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "An unused garage is an opportunity waiting to be unlocked. With our <strong>carpentry services </strong>for <a href=\"/garage-conversions/\">garage conversions</a>, we can create stylish home offices, gyms, living spaces or guest rooms. We take care of stud walls, flooring, insulation and finishing carpentry so the space feels as natural as any other room in your home."
+    }
+   ]
+  },
+  {
+   "heading": "Carpenter Services for Media Walls",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Our bespoke <a href=\"/media-walls/\">media walls</a> are designed around you, incorporating shelves, cabinets, sound bars and speaker storage to keep everything neat and functional. It’s the perfect way to transform your living room into a space that feels both modern and organised."
+    }
+   ]
+  },
+  {
+   "heading": "Bespoke Carpenter & Joinery for Kitchen Fitting",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Kitchens are the hub of any home. Our <strong>carpentry services </strong>for <a href=\"/kitchen-fitting/\">kitchen fitting</a> include bespoke kitchens, fitted units, doors, worktops and kitchen islands. Whether you prefer sleek modern lines or a more traditional finish, we’ll deliver a kitchen that’s practical, stylish, and built to last."
+    }
+   ]
+  },
+  {
+   "heading": "Bespoke Carpentry & Joinery Solutions",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Not all projects fit neatly into a category. That’s why we also offer <strong>bespoke carpentry</strong> and joinery services, from fitted wardrobes to feature staircases. With a multi-skilled tradesman leading the team, and access to trusted groundworkers, bricklayers and plasterers, we’re able to take on complex projects with confidence."
+    },
+    {
+     "t": "img",
+     "src": "IMG-20250805-WA0019.jpg",
+     "alt": "Gary J Potter | Bespoke Carpentry | Carpentry Services"
+    },
+    {
+     "t": "img",
+     "src": "IMG-20250805-WA0026.jpg",
+     "alt": "Gary J Potter | Roof truss constructrion | Carpentry Services"
+    }
+   ]
+  },
+  {
+   "heading": "Why Choose Our Bespoke Carpenter Services",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      "Over four decades of carpentry and construction expertise",
+      "Multi-skilled team with access to all trades under one roof",
+      "Support from design and drawings through to completion",
+      "One-year workmanship guarantee plus public liability insurance",
+      "Specialists in both traditional methods and modern finishes",
+      "A friendly, approachable company that values the details as much as the big picture"
+     ]
+    },
+    {
+     "t": "img",
+     "src": "IMG-20250805-WA0023.jpg",
+     "alt": "Gary J Potter | Roof truss constructrion | Carpentry Services"
+    }
+   ]
+  }
+ ],
+ "closing": {
+  "heading": "Contact Us",
+  "blocks": [
+   {
+    "t": "p",
+    "html": "If you’re planning a bespoke carpenter project in <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>, <a href=\"/area/cambridge/\">Cambridge</a> or the surrounding <a href=\"/areas-we-cover/\">areas</a>, call us today on <a href=\"tel:+447415216223\">07415 216223</a> or email <a href=\"mailto:info@garyjpottercarpentry.co.uk\">info@garyjpottercarpentry.co.uk</a>."
+   },
+   {
+    "t": "p",
+    "html": "We also invite you to view our <a href=\"/gallery/\">gallery</a> for inspiration and read through our <a href=\"/testimonials/\">testimonials</a> to see why so many homeowners trust Gary J Potter Carpentry & Construction."
+   }
+  ]
+ },
+ "hasForm": true
+}

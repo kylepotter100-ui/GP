@@ -11,11 +11,17 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "audit": "node scripts/dash-audit.mjs && node scripts/preservation-audit.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.4"
+    "@fontsource-variable/cinzel": "^5.3.0",
+    "@fontsource-variable/open-sans": "^5.3.0",
+    "@phosphor-icons/core": "^2.1.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.4",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
