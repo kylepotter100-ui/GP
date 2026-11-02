@@ -30,4 +30,5 @@ The only source of design rules for this project is `design-taste-frontend-v2-ex
 The `design-taste-frontend` (v2) skill is also installed but is not used for this project.
 
 The redesign runs in gated steps, each waiting for the owner's OK: audit (`docs/redesign/01-audit.md`), mode and levers, implementation, then the em-dash, Pre-Flight, preservation and brand-fidelity audits.
+A second round, a **complete overhaul** (new colours and motion, premium landing page), runs the same gated steps in `docs/redesign/overhaul/`. It supersedes the Preserve-mode design in `docs/redesign/01`, `02` and `04`.
 `docs/redesign/baseline.json` is the live-site baseline (titles, descriptions, canonicals, headings, body links, nav, form fields). Diff against it for the preservation audit; don't edit it.
