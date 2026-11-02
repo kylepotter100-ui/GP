@@ -1,0 +1,30 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# Cloudflare / Wrangler local state and secrets
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+
+# taste-skill screenshots (keep .taste-skill/direction.json, the chosen design direction)
+.taste-skill/inspect/
+.taste-skill/before/
+.taste-skill/after/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

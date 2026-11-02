@@ -1,0 +1,27 @@
+---
+/**
+ * Placeholder home page. The visual redesign will replace this
+ * (see the design-taste-frontend skill in .claude/skills).
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+
+const { address } = site;
+---
+
+<BaseLayout>
+  <main>
+    <h1>{site.name}</h1>
+    <p>{site.description}</p>
+
+    <!-- Name, address and phone: keep identical to the Google Business Profile. -->
+    <address>
+      <strong>{site.name}</strong><br />
+      {address.streetAddress}<br />
+      {address.addressLocality}, {address.addressRegion}<br />
+      {address.postalCode}<br />
+      <a href={`tel:${site.phone.replace(/\s+/g, '')}`}>{site.phone}</a><br />
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </address>
+  </main>
+</BaseLayout>

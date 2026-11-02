@@ -1,0 +1,22 @@
+---
+import SEO from '../components/SEO.astro';
+import { site } from '../config/site';
+
+type Props = import('astro/types').ComponentProps<typeof SEO>;
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO {...props} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

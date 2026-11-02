@@ -1,0 +1,7 @@
+{
+  "env": {
+    "CHROME_PATH": "/opt/pw-browsers/chromium",
+    "ASTRO_TELEMETRY_DISABLED": "1",
+    "WRANGLER_SEND_METRICS": "false"
+  }
+}
