@@ -1,0 +1,79 @@
+---
+import Icon from './Icon.astro';
+import { reviews } from '../data/reviews';
+import { site } from '../config/site';
+
+interface Props {
+  heading: string;
+  /** "feature": one large quote plus two (home). "all": every review (testimonials page). */
+  variant?: 'feature' | 'all';
+  headingLevel?: 'h2' | 'h3';
+}
+const { heading, variant = 'feature', headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+const [lead, ...rest] = reviews;
+const reviewsLink = site.googleProfileUrl || '/testimonials/';
+---
+
+<section class="section" aria-labelledby="reviews-heading">
+  <div class="frame grid gap-10 lg:grid-cols-12 lg:gap-8">
+    <div class="lg:col-span-4" data-reveal>
+      <Heading id="reviews-heading" class="text-title">{heading}</Heading>
+      <p class="mt-6 flex items-baseline gap-3">
+        <span class="font-display text-[3.5rem] leading-none font-semibold">{site.reviews.rating}</span>
+        <span class="flex gap-0.5 text-accent" aria-hidden="true">
+          {Array.from({ length: 5 }).map(() => <Icon name="star" class="icon size-6" />)}
+        </span>
+      </p>
+      <p class="mt-2 text-ink-muted">
+        <span class="sr-only">Rated {site.reviews.rating} out of 5 </span>from {site.reviews.count} Google reviews
+      </p>
+      {
+        variant === 'feature' && (
+          <a href={reviewsLink} class="mt-6 inline-flex items-center gap-2 font-semibold text-brand-text underline-offset-4 hover:underline">
+            Read the reviews
+            <Icon name="arrowRight" />
+          </a>
+        )
+      }
+    </div>
+
+    {
+      variant === 'feature' ? (
+        <div class="min-w-0 lg:col-span-8">
+          <blockquote class="hidden lg:block" data-reveal>
+            <p class="font-display text-title leading-snug">“{lead.quote}”</p>
+            <footer class="mt-4 text-small"><span class="font-semibold">{lead.name}</span>, {lead.project.toLowerCase()}, Google review</footer>
+          </blockquote>
+          <div class="mt-10 hidden gap-8 lg:grid lg:grid-cols-2" data-reveal>
+            {rest.slice(0, 2).map((r) => (
+              <blockquote>
+                <p>“{r.quote}”</p>
+                <footer class="mt-3 text-small"><span class="font-semibold">{r.name}</span>, {r.project.toLowerCase()}, Google review</footer>
+              </blockquote>
+            ))}
+          </div>
+          <div class="grid gap-8 lg:hidden" data-reveal>
+            {reviews.slice(0, 3).map((r) => (
+              <blockquote>
+                <p>“{r.quote}”</p>
+                <footer class="mt-3 text-small"><span class="font-semibold">{r.name}</span>, {r.project.toLowerCase()}, Google review</footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <ul class="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-8">
+          {reviews.map((r, i) => (
+            <li class:list={[i === 0 && 'sm:col-span-2']} data-reveal>
+              <blockquote>
+                <p class:list={[i === 0 && 'sm:font-display sm:text-title sm:leading-snug']}>“{r.quote}”</p>
+                <footer class="mt-3 text-small"><span class="font-semibold">{r.name}</span>, {r.project.toLowerCase()}, Google review</footer>
+              </blockquote>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</section>

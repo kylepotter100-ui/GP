@@ -1,0 +1,151 @@
+---
+/**
+ * Template for the 12 service pages, 4 town pages, Areas We Cover and the privacy policy.
+ * Layout families on each page: hero, editorial article (copy with photos in a side rail),
+ * swipeable project photos, and the blue contact close.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from './PageHero.astro';
+import Prose from './Prose.astro';
+import Photo from './Photo.astro';
+import SwipeRow from './SwipeRow.astro';
+import ContactClose from './ContactClose.astro';
+import Icon from './Icon.astro';
+import { getPage, type Block, type Chapter } from '../lib/content';
+import { fromLegacy, photosTagged } from '../lib/photos';
+import { pagePhotos } from '../data/page-photos';
+
+interface Props {
+  slug: string;
+  /** Hide the enquiry form in the close (privacy policy, decision D14). */
+  form?: boolean;
+  noHeroPhoto?: boolean;
+}
+const { slug, form = true, noHeroPhoto = false } = Astro.props;
+const page = getPage(slug);
+const plan = pagePhotos[slug] ?? {};
+// D7: the old banner heading becomes the breadcrumb; casing follows the nav label where one exists (D6).
+const navLabels = ['Areas We Cover', 'Contact Us', 'Gallery', 'Testimonials'];
+const crumb = navLabels.find((l) => l.toLowerCase() === page.crumb.toLowerCase()) ?? page.crumb;
+
+// Decision D8: on pages whose intro opens with an H3 straight after the H1, that heading becomes an H2.
+let intro: Block[] = page.intro;
+const chapters: Chapter[] = [...page.chapters];
+if (intro[0]?.t === 'h3') {
+  chapters.unshift({ heading: intro[0].html, blocks: intro.slice(1) });
+  intro = [];
+}
+
+const imgs = (blocks: Block[]) => blocks.filter((b) => b.t === 'img').map((b) => fromLegacy((b as { src: string }).src));
+const used = new Set<string>([plan.hero ?? '', ...imgs(intro), ...chapters.flatMap((c) => imgs(c.blocks))]);
+const introImages = imgs(intro);
+
+// Chapters without a picture of their own get a matching photo of real work (never a location claim).
+const topics: [RegExp, string[]][] = [
+  [/garage/i, ['garage-conversion-after', 'garage-conversion-room', 'garage-conversion-bifolds', 'garage-conversion-before']],
+  [/kitchen|spray/i, ['kitchen-island-sink-lantern', 'kitchen-shaker-sage-belfast', 'kitchen-navy-island', 'kitchen-cream-slatted-oak', 'kitchen-curved-island-table', 'kitchen-shaker-range-cooker']],
+  [/media wall|joinery|bespoke|cabinet|wardrobe|storage|furniture/i, ['media-wall-sage-green', 'media-wall-built-in-cupboards', 'library-after', 'bookcases-around-doorway', 'media-wall-after', 'wall-panelling-green']],
+  [/single storey/i, ['single-storey-extension-patio', 'bungalow-extension-finished', 'single-storey-extension-pergola', 'bungalow-extension-sliding-doors']],
+  [/double storey|two-storey/i, ['two-storey-extension-rendered-rear', 'two-storey-extension-rendered-front', 'two-storey-extension-scaffold', 'house-double-garage-dormers']],
+  [/wrap around/i, ['extension-lantern-and-glazing', 'kitchen-extension-lanterns', 'extension-dining-room', 'rear-extension-steel-frame-house']],
+  [/timber/i, ['vaulted-timber-roof', 'timber-frame-long-room', 'oak-truss-assembly', 'roof-trusses-in-scaffold']],
+  [/extension builder|builder/i, ['rear-extension-steel-frame', 'rear-extension-under-construction', 'extension-floor-beams', 'rear-extension-brickwork-and-steel']],
+  [/house extension|extension/i, ['rear-extension-after', 'bungalow-extension-finished', 'extension-living-room-finished', 'single-storey-extension-french-doors']],
+  [/roof|truss/i, ['carpenter-checking-trusses', 'oak-truss-assembly', 'extension-roof-trusses-scaffold']],
+  [/.*/, ['carpenter-checking-trusses', 'oak-staircase', 'outdoor-kitchen-after', 'parquet-flooring-herringbone', 'hallway-oak-doors-flooring', 'library-after', 'extension-room-roof-lantern']],
+];
+const pick = (heading: string) => {
+  for (const [re, ids] of topics) {
+    if (!re.test(heading)) continue;
+    const id = ids.find((x) => !used.has(x));
+    if (id) { used.add(id); return id; }
+  }
+  return undefined;
+};
+// At most two photos sit beside a chapter; any extra move to the project photos row.
+const overflow: string[] = [];
+const railFor = chapters.map((c) => {
+  const own = imgs(c.blocks);
+  overflow.push(...own.slice(2));
+  if (own.length || slug === 'privacy-policy') return own.slice(0, 2);
+  const id = pick(c.heading);
+  return id ? [id] : [];
+});
+
+// Swipe row: the page's own selection, minus anything already shown above it.
+const row = [...overflow, ...(plan.row ?? (plan.rowTags ?? []).flatMap((t) => photosTagged(t, [...used], 12))).filter((id) => !used.has(id))]
+  .filter((id, i, all) => all.indexOf(id) === i)
+  .slice(0, 10);
+
+const hasMap = (blocks: Block[]) => blocks.some((b) => b.t === 'widget' && b.kind === 'google_maps');
+const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=embed&iwloc=near';
+---
+
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={plan.hero} crumb={crumb || undefined} contactHref="#contact">
+  <PageHero crumb={crumb || undefined} h1={page.h1} subtext={page.bannerSubtext} photo={noHeroPhoto ? undefined : plan.hero} />
+
+  {
+    (intro.length > 0 || chapters.length > 0) && (
+      <article class="pb-8 lg:pb-12">
+        {intro.length > 0 && (
+          <div class="frame grid gap-10 lg:grid-cols-12 lg:gap-8" data-reveal>
+            <Prose blocks={intro} lead class="min-w-0 lg:col-span-7 measure" />
+            {introImages.length > 0 && (
+              <div class="grid gap-4 self-start lg:col-span-4 lg:col-start-9">
+                {introImages.map((id) => <Photo id={id} sizes="(min-width: 1024px) 400px, 100vw" class="aspect-[4/3] w-full object-cover" />)}
+              </div>
+            )}
+          </div>
+        )}
+        {chapters.map((c, i) => {
+          const pics = railFor[i];
+          return (
+            <section class:list={['frame grid gap-8 lg:grid-cols-12 lg:gap-8', i === 0 && intro.length === 0 ? 'pt-2' : 'pt-14 lg:pt-20']} data-reveal>
+              <div class="min-w-0 lg:col-span-7">
+                <h2 class="measure text-title" set:html={c.heading} />
+                <Prose blocks={c.blocks} class="measure mt-6" />
+                {hasMap(c.blocks) && (
+                  <div class="mt-8 aspect-[16/10] bg-surface">
+                    <iframe src={mapSrc} title="Map of Cambridgeshire, the area we cover" loading="lazy" class="size-full border-0" />
+                  </div>
+                )}
+              </div>
+              {pics.length > 0 && (
+                <div class="grid grid-cols-2 gap-3 self-start lg:col-span-4 lg:col-start-9 lg:grid-cols-1 lg:gap-4">
+                  {pics.map((id, j) => (
+                    <Photo id={id} sizes="(min-width: 1024px) 400px, 50vw" class:list={['w-full object-cover', pics.length === 1 || (pics.length % 2 === 1 && j === 0) ? 'col-span-2 aspect-[4/3] lg:col-span-1' : 'aspect-square lg:aspect-[4/3]']} />
+                  ))}
+                </div>
+              )}
+            </section>
+          );
+        })}
+      </article>
+    )
+  }
+
+  <slot />
+
+  {
+    row.length > 0 && (
+      <section class="section bg-surface" aria-labelledby="row-heading">
+        <div class="frame flex flex-wrap items-end justify-between gap-4" data-reveal>
+          <h2 id="row-heading" class="text-title">Project photos</h2>
+          <a href="/gallery/" class="inline-flex items-center gap-2 font-semibold text-brand-text underline-offset-4 hover:underline">
+            See the full gallery
+            <Icon name="arrowRight" />
+          </a>
+        </div>
+        <SwipeRow label="Project photos" class="mt-8" itemClass="">
+          {row.map((id) => (
+            <figure class="w-[78%] sm:w-[44%] lg:w-[30%]">
+              <Photo id={id} sizes="(min-width: 1024px) 420px, (min-width: 640px) 44vw, 78vw" class="aspect-[4/3] w-full object-cover" />
+            </figure>
+          ))}
+        </SwipeRow>
+      </section>
+    )
+  }
+
+  <ContactClose closing={page.closing} form={form} />
+</BaseLayout>

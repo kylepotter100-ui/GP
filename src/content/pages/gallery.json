@@ -1,0 +1,52 @@
+{
+ "path": "/gallery/",
+ "title": "Gallery | Gary J Potter Carpentry & Construction",
+ "description": "View the gallery of Gary J Potter Carpentry & Construction. House extensions, garage conversions, kitchens, media walls & bespoke carpentry across Cambridgeshire.",
+ "canonical": "https://www.garyjpottercarpentry.co.uk/gallery/",
+ "ogImage": null,
+ "crumb": "Gallery",
+ "bannerSubtext": "See our craftsmanship in action: explore our completed carpentry & construction projects.",
+ "h1": "Gallery | Gary J Potter Carpentry & Construction",
+ "intro": [
+  {
+   "t": "p",
+   "html": "Our gallery showcases the wide range of bespoke carpenter and construction projects we’ve delivered across <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a> and <a href=\"/area/cambridge/\">Cambridge</a> and <a href=\"/areas-we-cover/\">beyond</a>. From full <a href=\"/house-extensions/\">house extensions</a>, <a href=\"/single-storey-extensions/\">single storey extensions</a>, <a href=\"/double-storey-extensions/\">double storey extensions</a>, <a href=\"/wrap-around-extensions/\">wrap around extensions</a>, <a href=\"/extension-builder/\">extension builder</a>, <a href=\"/timber-framed-extensions/\">timber framed extensions</a> and stylish <a href=\"/garage-conversions/\">garage conversions</a> to slick <a href=\"/media-walls/\">media walls</a> and modern <a href=\"/kitchen-fitting/\">kitchen fitting</a>, every image represents our commitment to detail and quality."
+  },
+  {
+   "t": "p",
+   "html": "Each project is unique, tailored to our clients’ needs. You’ll find examples of <a href=\"/local-carpenter/\">local carpenter</a> projects, including fitted wardrobes, cabinetry and shelving, alongside larger construction projects that transformed entire homes."
+  },
+  {
+   "t": "p",
+   "html": "As a family-run business with over 40 years of combined experience, we take pride in every piece of work we deliver. Our gallery is here to give you inspiration and confidence in what we can achieve together."
+  },
+  {
+   "t": "p",
+   "html": "For more information about any of the projects you see here, please <a href=\"/contact-us/\">contact our team</a>. Browse our <a href=\"/testimonials/\">testimonials</a> to read client reviews."
+  },
+  {
+   "t": "widget",
+   "kind": "gallery",
+   "text": "<a href=\"\"> All </a> <a href=\"\"> Extensions </a> <a href=\"\"> Media walls </a> <a href=\"\"> Garage conversions </a> <a href=\"\"> Kitchen installs </a> <a href=\"\"> Bespoke carpentry </a> <a href=\"\"> Doubl"
+  }
+ ],
+ "chapters": [],
+ "closing": {
+  "heading": "Contact Us",
+  "blocks": [
+   {
+    "t": "p",
+    "html": "Looking for a local carpenter and building firm in Suffolk or Cambridgeshire? <a href=\"/contact-us/\">Contact us</a> Gary J Potter on <a href=\"tel:+447415216223\">07415 216223</a> or email <a href=\"mailto:info@garyjpottercarpentry.co.uk\">info@garyjpottercarpentry.co.uk</a>."
+   },
+   {
+    "t": "p",
+    "html": "We carry out all aspects of carpentry and construction, from bespoke projects to full extensions, <a href=\"/single-storey-extensions/\">single storey extensions</a>, <a href=\"/double-storey-extensions/\">double storey extensions</a>, <a href=\"/wrap-around-extensions/\">wrap around extensions</a>, <a href=\"/extension-builder/\">extension builder</a>, <a href=\"/timber-framed-extensions/\">timber framed extensions</a> and conversions."
+   },
+   {
+    "t": "p",
+    "html": "Take a look at our <a href=\"/areas-we-cover/\">areas we cover</a>, explore our gallery and see what others are saying in our <a href=\"/testimonials/\">testimonials</a>, then let’s talk about bringing your ideas to life."
+   }
+  ]
+ },
+ "hasForm": true
+}

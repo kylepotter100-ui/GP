@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/gary-j-potter-logo.png';
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+import { services } from '../data/services';
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const servicesCurrent = services.some((s) => path === `/${s.slug}/`);
+
+const primary = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', children: services.map((s) => ({ label: s.label, href: `/${s.slug}/` })) },
+  { label: 'Areas We Cover', href: '/areas-we-cover/' },
+  { label: 'Gallery', href: '/gallery/' },
+  { label: 'Testimonials', href: '/testimonials/' },
+  { label: 'Contact Us', href: '/contact-us/' },
+];
+---
+
+<header class="sticky top-0 z-40 bg-ground" data-header>
+  <div class="frame flex h-[var(--header-h)] items-center justify-between gap-6">
+    <a href="/" class="flex shrink-0 items-center">
+      <Image src={logo} alt={site.name} widths={[120, 180, 240]} sizes="(min-width: 1024px) 90px, 76px" class="h-[50px] w-auto lg:h-[60px]" loading="eager" format="webp" />
+    </a>
+
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-1 font-display text-[0.95rem] font-semibold xl:gap-2">
+        {primary.map((item) =>
+          item.children ? (
+            <li class="relative" data-dropdown>
+              <button type="button" class:list={['flex items-center gap-1.5 px-3 py-2 transition-colors hover:text-brand-text', servicesCurrent && 'text-brand-text']} aria-expanded="false" aria-controls="services-menu">
+                {item.label}
+                <Icon name="caretDown" class="icon size-4 transition-transform duration-200 [[aria-expanded=true]>&]:rotate-180" />
+              </button>
+              <div id="services-menu" hidden class="absolute left-0 top-full z-50 mt-2 w-[34rem] bg-ground p-3 shadow-[0_18px_40px_-12px_rgb(21_25_29/0.28)]">
+                <ul class="grid grid-cols-2 gap-x-2 font-sans text-[0.95rem] font-normal">
+                  {item.children.map((c) => (
+                    <li>
+                      <a href={c.href} aria-current={path === c.href ? 'page' : undefined} class="block px-3 py-2.5 transition-colors hover:bg-surface aria-[current=page]:text-brand-text aria-[current=page]:font-semibold">
+                        {c.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ) : (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href!) ? 'page' : undefined} class="block px-3 py-2 transition-colors hover:text-brand-text aria-[current=page]:text-brand-text">
+                {item.label}
+              </a>
+            </li>
+          ),
+        )}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1">
+      <a href={`tel:${site.phone.tel}`} class="hidden items-center gap-2 px-3 py-2 font-display text-[0.95rem] font-semibold transition-colors hover:text-brand-text lg:flex" data-track="call">
+        <Icon name="phone" />
+        <span class="hidden xl:inline">Call Us</span>
+        <span class="sr-only xl:hidden">Call Us</span>
+      </a>
+      <a href={`mailto:${site.email}`} class="hidden items-center gap-2 px-3 py-2 font-display text-[0.95rem] font-semibold transition-colors hover:text-brand-text lg:flex">
+        <Icon name="envelope" />
+        <span class="hidden xl:inline">Send an Email</span>
+        <span class="sr-only xl:hidden">Send an Email</span>
+      </a>
+      <a href={`tel:${site.phone.tel}`} class="flex size-12 items-center justify-center transition-colors hover:text-brand-text lg:hidden" data-track="call" aria-label="Call Us">
+        <Icon name="phone" class="icon size-6" />
+      </a>
+      <button type="button" class="flex size-12 items-center justify-center bg-surface transition-colors hover:bg-surface-deep lg:hidden" aria-label="Menu" aria-controls="mobile-menu" data-menu-open>
+        <Icon name="list" class="icon size-6" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog id="mobile-menu" class="m-0 h-dvh max-h-none w-full max-w-none bg-ground p-0 text-ink backdrop:bg-ink/40" aria-label="Menu">
+  <div class="frame flex h-[var(--header-h)] items-center justify-between">
+    <Image src={logo} alt="" widths={[120, 180]} sizes="76px" class="h-[50px] w-auto" format="webp" />
+    <button type="button" class="flex size-12 items-center justify-center bg-surface" aria-label="Close menu" data-menu-close>
+      <Icon name="x" class="icon size-6" />
+    </button>
+  </div>
+  <nav aria-label="Main" class="frame pb-28">
+    <ul class="font-display text-[1.35rem] font-semibold">
+      {primary.map((item) =>
+        item.children ? (
+          <li class="py-2">
+            <details open={servicesCurrent} class="group">
+              <summary class="flex cursor-pointer list-none items-center justify-between py-2">
+                {item.label}
+                <Icon name="caretDown" class="icon size-5 transition-transform group-open:rotate-180" />
+              </summary>
+              <ul class="grid gap-1 pb-2 pl-1 font-sans text-[1.05rem] font-normal">
+                {item.children.map((c) => (
+                  <li><a href={c.href} aria-current={path === c.href ? 'page' : undefined} class="block py-2 aria-[current=page]:font-semibold aria-[current=page]:text-brand-text">{c.label}</a></li>
+                ))}
+              </ul>
+            </details>
+          </li>
+        ) : (
+          <li class="py-2">
+            <a href={item.href} aria-current={isCurrent(item.href!) ? 'page' : undefined} class="block py-2 aria-[current=page]:text-brand-text">{item.label}</a>
+          </li>
+        ),
+      )}
+    </ul>
+    <div class="mt-6 grid gap-2 font-display font-semibold">
+      <a href={`tel:${site.phone.tel}`} class="btn btn-accent w-full" data-track="call"><Icon name="phone" />Call Us</a>
+      <a href={`mailto:${site.email}`} class="btn btn-quiet w-full"><Icon name="envelope" />Send an Email</a>
+    </div>
+  </nav>
+</dialog>

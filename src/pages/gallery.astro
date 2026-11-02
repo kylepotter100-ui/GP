@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Prose from '../components/Prose.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import ContactClose from '../components/ContactClose.astro';
+import Icon from '../components/Icon.astro';
+import { Picture, getImage } from 'astro:assets';
+import { getPage } from '../lib/content';
+import { allPhotos, photo } from '../lib/photos';
+import { beforeAfter, galleryFilters } from '../data/services';
+import { pagePhotos } from '../data/page-photos';
+
+const page = getPage('gallery');
+// Every photo, the 145 from the live gallery first in their original order. Full-size links open the lightbox.
+const items = await Promise.all(
+  [...allPhotos.filter((p) => p.gallery), ...allPhotos.filter((p) => !p.gallery)].map(async (p) => {
+    const full = await getImage({ src: photo(p.id).image, width: Math.min(1600, p.w), format: 'webp', quality: 78 });
+    return { ...p, full: full.src };
+  }),
+);
+---
+
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos.gallery.hero} crumb={page.crumb} contactHref="#contact">
+  <PageHero crumb={page.crumb} h1={page.h1} subtext={page.bannerSubtext} photo={pagePhotos.gallery.hero} />
+
+  <div class="frame" data-reveal>
+    <Prose blocks={page.intro} lead class="measure" />
+  </div>
+
+  <section class="section" aria-labelledby="ba-heading" data-ba-switch>
+    <div class="frame">
+      <h2 id="ba-heading" class="text-title" data-reveal>Before and after</h2>
+      <div role="tablist" aria-label="Choose a project" class="-mx-[var(--gutter)] mt-8 flex gap-2 overflow-x-auto px-[var(--gutter)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {beforeAfter.map((p, i) => (
+          <button type="button" role="tab" id={`ba-tab-${p.id}`} aria-controls={`ba-panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} class="btn min-h-11 shrink-0 bg-surface px-4 text-[0.95rem] hover:bg-surface-deep aria-selected:bg-ink aria-selected:text-on-brand">
+            {p.label}
+          </button>
+        ))}
+      </div>
+      {beforeAfter.map((p, i) => (
+        <div role="tabpanel" id={`ba-panel-${p.id}`} aria-labelledby={`ba-tab-${p.id}`} hidden={i !== 0} class="mt-6">
+          <BeforeAfter before={p.before} after={p.after} label={p.label} sizes="(min-width: 1280px) 1216px, 100vw" ratio="aspect-[4/3] lg:aspect-[16/9]" />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-surface" aria-labelledby="gallery-heading">
+    <div class="frame">
+      <h2 id="gallery-heading" class="text-title">All projects</h2>
+      <div class="-mx-[var(--gutter)] mt-6 flex gap-2 overflow-x-auto px-[var(--gutter)] pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label="Filter projects" data-gallery-filters hidden>
+        <button type="button" data-filter="all" aria-pressed="true" class="btn min-h-11 shrink-0 bg-ground px-4 text-[0.95rem] aria-pressed:bg-ink aria-pressed:text-on-brand">All</button>
+        {galleryFilters.map((f) => (
+          <button type="button" data-filter={f.id} aria-pressed="false" class="btn min-h-11 shrink-0 bg-ground px-4 text-[0.95rem] aria-pressed:bg-ink aria-pressed:text-on-brand">{f.label}</button>
+        ))}
+      </div>
+      <ul class="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 lg:gap-3" data-gallery>
+        {items.map((p) => (
+          <li data-tags={p.tags.join(' ')}>
+            <a href={p.full} class="group block overflow-hidden bg-surface-deep">
+              <Picture src={photo(p.id).image} alt={p.alt} widths={[300, 480, 640]} sizes="(min-width: 1024px) 300px, (min-width: 640px) 33vw, 50vw" formats={['webp']} fallbackFormat="jpg" quality={68} loading="lazy" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <dialog id="lightbox" class="m-auto h-dvh max-h-none w-full max-w-none bg-ink/95 p-0 text-on-brand backdrop:bg-ink/80" aria-label="Photo viewer">
+    <figure class="flex h-full flex-col items-center justify-center gap-4 p-4 pb-24">
+      <img src="" alt="" class="max-h-[78dvh] w-auto max-w-full object-contain" />
+      <figcaption class="max-w-[60ch] text-center text-small"></figcaption>
+    </figure>
+    <div class="on-brand fixed inset-x-0 bottom-0 flex justify-center gap-2 p-4">
+      <button type="button" class="btn btn-quiet size-12 min-h-0 p-0" aria-label="Previous photo" data-lb-prev><Icon name="caretLeft" class="icon size-5" /></button>
+      <button type="button" class="btn btn-accent px-5" data-lb-close>Close</button>
+      <button type="button" class="btn btn-quiet size-12 min-h-0 p-0" aria-label="Next photo" data-lb-next><Icon name="caretRight" class="icon size-5" /></button>
+    </div>
+  </dialog>
+
+  <ContactClose closing={page.closing} />
+</BaseLayout>

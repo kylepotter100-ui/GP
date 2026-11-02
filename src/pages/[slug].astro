@@ -1,0 +1,16 @@
+---
+import ContentPage from '../components/ContentPage.astro';
+import { services } from '../data/services';
+
+export function getStaticPaths() {
+  return [
+    ...services.map((s) => ({ params: { slug: s.slug } })),
+    { params: { slug: 'areas-we-cover' } },
+    { params: { slug: 'privacy-policy' } },
+  ];
+}
+const { slug } = Astro.params;
+const isPrivacy = slug === 'privacy-policy';
+---
+
+<ContentPage slug={slug!} form={!isPrivacy} noHeroPhoto={isPrivacy} />

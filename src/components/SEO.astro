@@ -1,86 +1,103 @@
 ---
 /**
- * Per-page SEO tags: title, description, canonical, robots, Open Graph,
- * Twitter card and JSON-LD structured data.
+ * <head> SEO tags. Title, description and canonical are passed through verbatim from the
+ * live site (src/content/pages). Structured data is additive (LocalBusiness subtype,
+ * WebSite, WebPage, BreadcrumbList); address and opening hours are added in the SEO phase.
  */
+import { getImage } from 'astro:assets';
 import { site } from '../config/site';
+import { photo } from '../lib/photos';
+import logo from '../assets/brand/gary-j-potter-logo.png';
 
 interface Props {
-  /** Page title. Rendered through site.titleTemplate unless it is the home page. */
-  title?: string;
-  description?: string;
-  /** Path under /public, or an absolute URL. */
-  image?: string;
-  /** Exclude this page from search results (e.g. 404, thank-you pages). */
+  title: string;
+  description: string;
+  canonical: string;
+  /** Photo id for the share image (1200x630). */
+  ogPhoto?: string;
+  ogType?: 'website' | 'article';
   noindex?: boolean;
-  /** Extra JSON-LD objects for this page (e.g. Service, FAQPage, BreadcrumbList). */
+  crumb?: string;
   jsonLd?: Record<string, unknown>[];
 }
 
-const { title, description = site.description, image = site.ogImage, noindex = false, jsonLd = [] } = Astro.props;
+const { title, description, canonical, ogPhoto, ogType = 'article', noindex = false, crumb, jsonLd = [] } = Astro.props;
 
-const fullTitle = title ? site.titleTemplate.replace('%s', title) : site.name;
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const imageUrl = image ? new URL(image, Astro.site).href : undefined;
+const og = ogPhoto
+  ? await getImage({ src: photo(ogPhoto).image, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 78 })
+  : null;
+const ogUrl = og ? new URL(og.src, site.url).href : undefined;
+const logoImg = await getImage({ src: logo, format: 'png', width: 500 });
+const logoUrl = new URL(logoImg.src, site.url).href;
 
 const businessId = `${site.url}/#business`;
-
-const localBusiness = {
-  '@context': 'https://schema.org',
-  '@type': site.businessType,
-  '@id': businessId,
-  name: site.name,
-  url: `${site.url}/`,
-  description: site.description,
-  telephone: site.phone,
-  email: site.email,
-  ...(imageUrl && { image: imageUrl }),
-  address: { '@type': 'PostalAddress', ...site.address },
-  ...(site.geo && { geo: { '@type': 'GeoCoordinates', ...site.geo } }),
-  ...(site.areaServed.length && { areaServed: site.areaServed }),
-  ...(site.googleMapsUrl && { hasMap: site.googleMapsUrl }),
-  openingHoursSpecification: site.openingHours.map((h) => ({
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: h.days,
-    opens: h.opens,
-    closes: h.closes,
-  })),
-  ...(site.sameAs.length && { sameAs: site.sameAs }),
-};
-
-const website = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': `${site.url}/#website`,
-  url: `${site.url}/`,
-  name: site.name,
-  inLanguage: site.lang,
-  publisher: { '@id': businessId },
-};
-
-const structuredData = [localBusiness, website, ...jsonLd];
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': site.businessType,
+    '@id': businessId,
+    name: site.name,
+    url: `${site.url}/`,
+    description: site.description,
+    slogan: site.tagline,
+    telephone: site.phone.tel,
+    email: site.email,
+    foundingDate: String(site.foundingYear),
+    logo: logoUrl,
+    image: logoUrl,
+    areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
+    sameAs: site.sameAs,
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${site.url}/#website`,
+    url: `${site.url}/`,
+    name: site.name,
+    inLanguage: site.lang,
+    publisher: { '@id': businessId },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: site.lang,
+    isPartOf: { '@id': `${site.url}/#website` },
+    about: { '@id': businessId },
+    ...(ogUrl && { primaryImageOfPage: ogUrl }),
+  },
+];
+if (crumb) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: crumb, item: canonical },
+    ],
+  });
+}
+graph.push(...jsonLd);
+const structured = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 ---
 
-<title>{fullTitle}</title>
+<title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-{noindex && <meta name="robots" content="noindex, follow" />}
+<meta name="robots" content={noindex ? 'noindex, follow' : 'max-image-preview:large'} />
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:site_name" content={site.name} />
 <meta property="og:locale" content={site.locale} />
-<meta property="og:title" content={fullTitle} />
+<meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
-{imageUrl && <meta property="og:image" content={imageUrl} />}
+{ogUrl && <meta property="og:image" content={ogUrl} />}
+{ogUrl && <meta property="og:image:width" content="1200" />}
+{ogUrl && <meta property="og:image:height" content="630" />}
 
-<meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
-<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:card" content={ogUrl ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{imageUrl && <meta name="twitter:image" content={imageUrl} />}
+{ogUrl && <meta name="twitter:image" content={ogUrl} />}
 
-{
-  structuredData.map((data) => (
-    <script type="application/ld+json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />
-  ))
-}
+<script type="application/ld+json" set:html={structured} />

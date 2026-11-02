@@ -26,6 +26,9 @@ Business website: a redesign for visual quality and local SEO, linked to a Googl
 
 ## Design work
 
-For any visual design, redesign or page-building work, use the `design-taste-frontend` skill (`.claude/skills/design-taste-frontend`).
-Run its scripts from the repo root, so its working files land in `.taste-skill/`. Commit `.taste-skill/direction.json`; screenshots are gitignored.
-In the cloud container its browser checks use `CHROME_PATH`, which is set in `.claude/settings.json`.
+The only source of design rules for this project is `design-taste-frontend-v2-experimental` (`.claude/skills/design-taste-frontend-v2-experimental`, from Leonxlnx/taste-skill-classics). It is opt-in and must be invoked by name. Section numbers in briefs (11.B audit, 11.D levers, 14 Pre-Flight) refer to it.
+The `design-taste-frontend` (v2) skill is also installed but is not used for this project.
+
+The redesign runs in gated steps, each waiting for the owner's OK: audit (`docs/redesign/01-audit.md`), mode and levers, implementation, then the em-dash, Pre-Flight, preservation and brand-fidelity audits.
+A second round, a **complete overhaul** (new colours and motion, premium landing page), runs the same gated steps in `docs/redesign/overhaul/`. It supersedes the Preserve-mode design in `docs/redesign/01`, `02` and `04`.
+`docs/redesign/baseline.json` is the live-site baseline (titles, descriptions, canonicals, headings, body links, nav, form fields). Diff against it for the preservation audit; don't edit it.

@@ -1,0 +1,11 @@
+---
+import ContentPage from '../../components/ContentPage.astro';
+import { towns } from '../../data/services';
+
+export function getStaticPaths() {
+  return towns.map((t) => ({ params: { town: t.slug } }));
+}
+const { town } = Astro.params;
+---
+
+<ContentPage slug={`area--${town}`} />

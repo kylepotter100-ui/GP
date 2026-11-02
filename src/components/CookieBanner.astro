@@ -1,0 +1,29 @@
+---
+/**
+ * Consent banner. The wording and the three choices are the live site's, unchanged (decision D18).
+ * Google Analytics and Microsoft Clarity load only after consent.
+ */
+---
+
+<div class="fixed inset-x-0 bottom-0 z-50 bg-ink text-on-brand on-brand" role="dialog" aria-modal="false" aria-label="Cookie consent" data-consent hidden>
+  <div class="frame flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between lg:py-3">
+    <p class="text-small">We use cookies to improve your experience on our site. By using our site, you consent to cookies.</p>
+    <div class="flex shrink-0 flex-wrap gap-2">
+      <button type="button" class="btn btn-quiet min-h-11 flex-1 px-4 text-[0.95rem] lg:flex-none" data-consent-prefs aria-expanded="false" aria-controls="consent-prefs">Preferences</button>
+      <button type="button" class="btn btn-quiet min-h-11 flex-1 px-4 text-[0.95rem] lg:flex-none" data-consent-reject>Reject</button>
+      <button type="button" class="btn btn-accent min-h-11 flex-1 px-4 text-[0.95rem] lg:flex-none" data-consent-accept>Accept All</button>
+    </div>
+  </div>
+  <div id="consent-prefs" class="frame pb-4" hidden>
+    <form class="flex flex-col gap-3 bg-on-brand/10 p-4 sm:flex-row sm:items-center sm:justify-between" data-consent-form>
+      <div class="space-y-2 text-small">
+        <p><span class="font-semibold">Essential</span>: always on. Needed for the site and the contact form to work.</p>
+        <label class="flex items-center gap-3">
+          <input type="checkbox" name="analytics" class="size-5 accent-accent" />
+          <span><span class="font-semibold">Analytics</span>: Google Analytics and Microsoft Clarity, to see how the site is used.</span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-accent min-h-11 px-4 text-[0.95rem]">Save preferences</button>
+    </form>
+  </div>
+</div>

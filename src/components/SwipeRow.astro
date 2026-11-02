@@ -1,0 +1,28 @@
+---
+/** Native swipe row: CSS scroll-snap, no autoplay. Prev/next buttons appear on pointer devices. */
+import Icon from './Icon.astro';
+
+interface Props {
+  label: string;
+  /** Item width classes, e.g. "w-[82%] sm:w-[46%] lg:w-[31%]". */
+  itemClass?: string;
+  class?: string;
+}
+const { label, itemClass = 'w-[82%] sm:w-[46%] lg:w-[31%]', class: className } = Astro.props;
+---
+
+<div class:list={['swipe relative', className]} data-swipe>
+  <div
+    class="swipe-track flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] md:gap-4 [&::-webkit-scrollbar]:hidden"
+    role="region"
+    aria-label={label}
+    tabindex="0"
+    data-swipe-track
+  >
+    <slot />
+  </div>
+  <div class="frame mt-4 hidden justify-end gap-2 [@media(hover:hover)]:flex" data-swipe-controls hidden>
+    <button type="button" class="btn btn-quiet size-12 min-h-0 p-0" aria-label="Previous" data-swipe-prev><Icon name="caretLeft" class="icon size-5" /></button>
+    <button type="button" class="btn btn-quiet size-12 min-h-0 p-0" aria-label="Next" data-swipe-next><Icon name="caretRight" class="icon size-5" /></button>
+  </div>
+</div>

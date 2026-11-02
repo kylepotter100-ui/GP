@@ -1,22 +1,44 @@
 ---
+import '../styles/global.css';
+import cinzel from '@fontsource-variable/cinzel/files/cinzel-latin-wght-normal.woff2?url';
 import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import StickyBar from '../components/StickyBar.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { site } from '../config/site';
 
-type Props = import('astro/types').ComponentProps<typeof SEO>;
-
-const props = Astro.props;
+type SEOProps = import('astro/types').ComponentProps<typeof SEO>;
+interface Props extends SEOProps {
+  /** Where the sticky bar's "Contact Us" goes: the on-page form when there is one. */
+  contactHref?: string;
+}
+const { contactHref = '/contact-us/', ...seo } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={site.lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <SEO {...props} />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f7f7" />
+    <link rel="preload" href={cinzel} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <SEO {...seo} />
+    <slot name="head" />
   </head>
-  <body>
-    <slot />
+  <body class="bg-ground text-ink antialiased">
+    <a href="#main" class="sr-only z-50 bg-ink px-4 py-3 text-on-brand focus:not-sr-only focus:fixed focus:top-2 focus:left-2">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <StickyBar contactHref={contactHref} />
+    <CookieBanner />
+    <script>
+      import '../scripts/site';
+    </script>
   </body>
 </html>

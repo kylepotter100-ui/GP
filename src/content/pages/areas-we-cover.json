@@ -1,0 +1,107 @@
+{
+ "path": "/areas-we-cover/",
+ "title": "Areas We Cover | Gary J Potter Carpentry & Construction",
+ "description": "Covering Ely, Newmarket, Bury St Edmunds, Cambridge & surrounding areas. Expert carpentry, kitchens, house extensions, garage conversions & media walls.",
+ "canonical": "https://www.garyjpottercarpentry.co.uk/areas-we-cover/",
+ "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/08/1000066548.jpg",
+ "crumb": "Areas we Cover",
+ "bannerSubtext": "Proudly providing expert carpentry & construction across Ely, Newmarket, Bury St Edmunds, Cambridge and all surrounding areas.",
+ "h1": "Areas We Cover | Gary J Potter Carpentry & Construction",
+ "intro": [
+  {
+   "t": "p",
+   "html": "At<a href=\"/\"> Gary J Potter Carpentry & Construction</a>, we’re proud to deliver high-quality <a href=\"/carpentry-services/\">carpentry services</a> and construction solutions to homeowners across Cambridgeshire and Suffolk. Based in Red Lodge, we work locally to provide expert support with everything from <a href=\"/house-extensions/\">house extensions</a>, <a href=\"/single-storey-extensions/\">single storey extensions</a>, <a href=\"/double-storey-extensions/\">double storey extensions</a>, <a href=\"/wrap-around-extensions/\">wrap around extensions</a>, <a href=\"/extension-builder/\">extension builder</a>, <a href=\"/timber-framed-extensions/\">timber framed extensions</a> and <a href=\"/garage-conversions/\">garage conversions</a> to<a href=\"/kitchen-fitting/\"> kitchen fitting</a>, <a href=\"/media-walls/\">media walls</a> and <a href=\"/carpentry-services/\">bespoke carpentry</a>."
+  },
+  {
+   "t": "p",
+   "html": "We know how important it is to find a trusted <a href=\"/local-carpenter/\">local carpenter</a> who understands your area. That’s why we focus on serving communities close to home, ensuring a reliable, personal service for every project."
+  }
+ ],
+ "chapters": [
+  {
+   "heading": "Expert Carpentry & Construction in Your Area",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "With over 40 years of combined experience, we bring expert craftsmanship and a personal touch to homes across the region. Whether you’re looking to expand with an extension, transform an unused garage, or upgrade your kitchen, our family-run team is here to help."
+    },
+    {
+     "t": "button",
+     "text": "<a href=\"/contact-us/\"> Contact Us </a>",
+     "href": "/contact-us/"
+    }
+   ]
+  },
+  {
+   "heading": "Towns & Areas We Cover",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Our core service areas include:"
+    },
+    {
+     "t": "ul",
+     "items": [
+      "<a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>",
+      "<a href=\"/area/cambridge/\">Cambridge</a>",
+      "<a href=\"/area/ely/\">Ely</a>",
+      "<a href=\"/area/newmarket/\">Newmarket</a>",
+      "Red Lodge",
+      "Mildenhall",
+      "Soham",
+      "Stowmarket",
+      "Thetford",
+      "All surrounding towns and villages in Cambridgeshire and Suffolk"
+     ]
+    },
+    {
+     "t": "widget",
+     "kind": "google_maps",
+     "text": ""
+    },
+    {
+     "t": "img",
+     "src": "1000066548.jpg",
+     "alt": "Gary J Potter | Garage Conversions | Areas we Cover"
+    }
+   ]
+  },
+  {
+   "heading": "Why Choose Us Locally",
+   "blocks": [
+    {
+     "t": "p",
+     "html": "Homeowners across these areas choose Gary J Potter Carpentry & Construction because we offer:"
+    },
+    {
+     "t": "ul",
+     "items": [
+      "Skilled <a href=\"/local-carpenter/\">local carpenter</a> services tailored to your home",
+      "Full support from design to completion",
+      "All trades handled in-house for smoother project delivery",
+      "A friendly, approachable, family-run service",
+      "One-year workmanship guarantee and full public liability insurance"
+     ]
+    }
+   ]
+  }
+ ],
+ "closing": {
+  "heading": "Contact Us",
+  "blocks": [
+   {
+    "t": "p",
+    "html": "Looking for a trusted carpenter in <a href=\"/area/ely/\">Ely</a>, <a href=\"/area/newmarket/\">Newmarket</a>, <a href=\"/area/bury-st-edmunds/\">Bury St Edmunds</a>, <a href=\"/area/cambridge/\">Cambridge</a> or the surrounding areas?"
+   },
+   {
+    "t": "p",
+    "html": "<a href=\"/contact-us/\">Contact us</a> on <a href=\"tel:+4407415 216223\">07415 216223</a> or email <a href=\"mailto:info@garyjpottercarpentry.co.uk\">info@garyjpottercarpentry.co.uk</a>."
+   },
+   {
+    "t": "p",
+    "html": "Take a look at our <a href=\"/gallery/\">gallery</a> to see our work and read our <a href=\"/testimonials/\">testimonials</a> to learn why so many local homeowners choose Gary J Potter Carpentry & Construction."
+   }
+  ]
+ },
+ "hasForm": true
+}

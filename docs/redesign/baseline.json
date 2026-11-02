@@ -1,0 +1,3018 @@
+{
+ "source": "https://www.garyjpottercarpentry.co.uk",
+ "captured": "2026-11-02",
+ "note": "Live-site baseline for the Step 4 preservation audit. Do not edit.",
+ "nav": [
+  {
+   "label": "Home",
+   "href": "/"
+  },
+  {
+   "label": "Services",
+   "href": "#"
+  },
+  {
+   "label": "Carpentry services",
+   "href": "/carpentry-services/"
+  },
+  {
+   "label": "Local Carpenter",
+   "href": "/local-carpenter/"
+  },
+  {
+   "label": "House Extensions",
+   "href": "/house-extensions/"
+  },
+  {
+   "label": "Garage Conversions",
+   "href": "/garage-conversions/"
+  },
+  {
+   "label": "Media walls",
+   "href": "/media-walls/"
+  },
+  {
+   "label": "Kitchen fitting",
+   "href": "/kitchen-fitting/"
+  },
+  {
+   "label": "Kitchen Spraying",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "label": "Single Storey Extensions",
+   "href": "/single-storey-extensions/"
+  },
+  {
+   "label": "Double Storey Extensions",
+   "href": "/double-storey-extensions/"
+  },
+  {
+   "label": "Wrap Around Extensions",
+   "href": "/wrap-around-extensions/"
+  },
+  {
+   "label": "Timber Framed Extensions",
+   "href": "/timber-framed-extensions/"
+  },
+  {
+   "label": "Extension Builder",
+   "href": "/extension-builder/"
+  },
+  {
+   "label": "Areas We Cover",
+   "href": "/areas-we-cover/"
+  },
+  {
+   "label": "Gallery",
+   "href": "/gallery/"
+  },
+  {
+   "label": "Testimonials",
+   "href": "/testimonials/"
+  },
+  {
+   "label": "Contact Us",
+   "href": "/contact-us/"
+  }
+ ],
+ "headerUtility": [
+  {
+   "label": "Call Us",
+   "href": "tel:+447415216223"
+  },
+  {
+   "label": "Send an Email",
+   "href": "mailto:info@garyjpottercarpentry.co.uk"
+  }
+ ],
+ "form": {
+  "plugin": "Forminator (module 2053)",
+  "fields": [
+   {
+    "name": "name-1-first-name",
+    "type": "text",
+    "placeholder": "First Name"
+   },
+   {
+    "name": "name-1-last-name",
+    "type": "text",
+    "placeholder": "Last Name"
+   },
+   {
+    "name": "email-1",
+    "type": "email",
+    "placeholder": "Email Address"
+   },
+   {
+    "name": "phone-1",
+    "type": "text",
+    "placeholder": "Phone"
+   },
+   {
+    "name": "upload-1[]",
+    "type": "file",
+    "placeholder": null,
+    "multiple": true
+   },
+   {
+    "name": "textarea-1",
+    "type": "textarea",
+    "placeholder": "Message"
+   }
+  ],
+  "submitLabel": "SUBMIT"
+ },
+ "pages": [
+  {
+   "path": "/",
+   "title": "Gary J Potter Carpentry & Construction | Crafted with care, built to last",
+   "description": "Gary J Potter Carpentry & Construction experts in house extensions, kitchens, garage conversions & media walls across Ely, Newmarket, Bury St Edmunds & Cambridge.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/08/IMG-20250806-WA0218.jpg",
+   "headings": [
+    "h2: Gary J Potter Carpentry & Construction",
+    "h1: Crafted Carpentry & Construction Across Cambridgeshire & Suffolk",
+    "h2: Our Services",
+    "h2: 01",
+    "h2: Carpentry services",
+    "h2: 02",
+    "h2: Local Carpenter",
+    "h2: 03",
+    "h2: House Extensions",
+    "h2: 04",
+    "h2: Garage Conversions",
+    "h2: 05",
+    "h2: Media walls",
+    "h2: 06",
+    "h2: Kitchen fitting",
+    "h2: 07",
+    "h2: Kitchen Spraying",
+    "h2: 08",
+    "h2: Single Storey Extensions",
+    "h2: 09",
+    "h2: Double Storey Extensions",
+    "h2: 10",
+    "h2: Wrap Around Extensions",
+    "h2: 11",
+    "h2: Extension Builder",
+    "h2: 12",
+    "h2: Timber Framed Extensions",
+    "h2: About Our Company",
+    "h2: House Extensions",
+    "h2: Garage Conversions",
+    "h2: Media Walls",
+    "h2: Kitchen Fitting",
+    "h2: Local Carpenter in Ely, Newmarket, Bury St Edmunds & Cambridge",
+    "h2: Gary J Potter Carpentry & Construction — Your Local Extension Builder",
+    "h2: Single Storey Extensions That Give You Room to Live",
+    "h2: Double Storey Extensions: Twice the Space Without Moving",
+    "h2: Wrap Around Extensions That Transform Your Home",
+    "h2: Timber Framed Extensions: Smart, Efficient and Built to Last",
+    "h2: What our customers say",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Contact Us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "beyond",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "house extension",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Local Carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "Media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Kitchen Spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "Single Storey Extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "Double Storey Extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "Wrap Around Extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "Extension Builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "Timber Framed Extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "bespoke carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "areas we cover",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/contact-us/",
+   "title": "Contact us | Gary J Potter Carpentry & Construction",
+   "description": "Contact Gary J Potter Carpentry & Construction. Call 07415 216223 or email info@garyjpottercarpentry.co.uk for bespoke carpenter & building services.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/contact-us/",
+   "ogImage": null,
+   "headings": [
+    "h2: contact Us",
+    "h1: Contact Gary J Potter Carpentry & Construction"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "bespoke carpenter and construction services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "local carpenter services",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/testimonials/",
+   "title": "Testimonials | Gary J Potter Carpentry & Construction",
+   "description": "Testimonials Hear from our customers — trusted carpentry & construction services across Cambridgeshire & Suffolk.Read what our clients say, then call 07415 216223 to start your own project. Testimonials | Gary J Potter Carpentry & Construction At Gary J Potter Carpentry & Construction, we believe the best measure of our work is the feedback from",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/testimonials/",
+   "ogImage": null,
+   "headings": [
+    "h2: Testimonials",
+    "h1: Testimonials | Gary J Potter Carpentry & Construction",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "beyond",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "bespoke carpenter and construction",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions,",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "get in touch",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "areas we cover",
+     "href": "/areas-we-cover/"
+    }
+   ]
+  },
+  {
+   "path": "/gallery/",
+   "title": "Gallery | Gary J Potter Carpentry & Construction",
+   "description": "View the gallery of Gary J Potter Carpentry & Construction. House extensions, garage conversions, kitchens, media walls & bespoke carpentry across Cambridgeshire.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/gallery/",
+   "ogImage": null,
+   "headings": [
+    "h2: Gallery",
+    "h1: Gallery | Gary J Potter Carpentry & Construction",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "beyond",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "contact our team",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "areas we cover",
+     "href": "/areas-we-cover/"
+    }
+   ]
+  },
+  {
+   "path": "/areas-we-cover/",
+   "title": "Areas We Cover | Gary J Potter Carpentry & Construction",
+   "description": "Covering Ely, Newmarket, Bury St Edmunds, Cambridge & surrounding areas. Expert carpentry, kitchens, house extensions, garage conversions & media walls.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/areas-we-cover/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/08/1000066548.jpg",
+   "headings": [
+    "h2: Areas we Cover",
+    "h1: Areas We Cover | Gary J Potter Carpentry & Construction",
+    "h2: Expert Carpentry & Construction in Your Area",
+    "h2: Towns & Areas We Cover",
+    "h2: Why Choose Us Locally",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "bespoke carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Contact Us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+4407415 216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/wrap-around-extensions/",
+   "title": "Seamless Wrap Around Extensions | Gary J Potter Carpentry & Construction",
+   "description": "Gary J Potter Carpentry & Construction offers professional wrap around extensions. Providing seamless extensions built around you. Contact us for a free quote.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/wrap-around-extensions/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2026/09/Copilot_20260906_1312371.jpg",
+   "headings": [
+    "h2: Wrap Around Extensions",
+    "h1: Wrap Around Extensions | Ely, Bury St Edmunds, & Newmarket",
+    "h3: Wrap Around Extensions That Make Your Home Work Better",
+    "h2: Why Choose Wrap Around Extensions?",
+    "h3: Combining Side And Rear Space",
+    "h3: Creating A More Open, Connected Home",
+    "h2: Wrap Around Extensions For Better Layouts",
+    "h3: Open-Plan Kitchens And Entertaining Areas",
+    "h3: Making Awkward Spaces Work Harder",
+    "h2: How Much Space Can You Gain?",
+    "h3: Making The Most Of Your Property’s Footprint",
+    "h3: Designing Around Light, Access And Flow",
+    "h2: A Wrap Around Extension Built Around You",
+    "h3: Bespoke Solutions For Your Home’s Layout",
+    "h3: Careful Construction From Foundations To Finishes",
+    "h2: All Our Carpentry & Construction Services",
+    "h2: Plan Your Wrap Around Extensions"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Get in touch",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "Carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Kitchen Fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Local Carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Media Walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Single Storey Extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "Double Storey Extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "Timber Framed Extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen unit spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen cabinet spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "Contact",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "07415216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    }
+   ]
+  },
+  {
+   "path": "/extension-builder/",
+   "title": "Experienced Extension Builder | Gary J Potter Carpentry & Construction",
+   "description": "Gary J Potter Carpentry & Construction is a professional extension builder. Creating bespoke extensions for homeowners. Contact us and extend your home.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/extension-builder/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2026/09/IMG_0434.jpg",
+   "headings": [
+    "h2: Extension Builder",
+    "h1: Extension Builder | Ely, Bury St Edmunds, & Newmarket",
+    "h3: Extension Builder That Gives Your Home More Room To Live",
+    "h2: What Should You Look For In An Extension Builder?",
+    "h3: Experience That Covers The Whole Build",
+    "h3: Clear Communication Throughout Your Project",
+    "h2: Your Extension Builder From Start To Finish",
+    "h3: Coordinating The Construction Process",
+    "h3: Managing Workmanship, Materials And Details",
+    "h2: Which Extension Is Right For Your Home?",
+    "h3: Single And Double Storey Options",
+    "h3: Bespoke Layouts For Changing Needs",
+    "h2: Why Choose A Dedicated Extension Builder?",
+    "h3: Practical Advice Before Work Begins",
+    "h3: A Professional Finish That Feels At Home",
+    "h2: All Our Carpentry & Construction Services",
+    "h3: We Also Offer:",
+    "h2: Choose Your Extension Builder"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "Carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Kitchen Fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Local Carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Media Walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Single Storey Extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "Double Storey Extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "Wrap Around Extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "Timber Framed Extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen unit spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen cabinet spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "Contact",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "07415216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    }
+   ]
+  },
+  {
+   "path": "/timber-framed-extensions/",
+   "title": "Stylish Timber Framed Extensions | Gary J Potter Carpentry & Construction",
+   "description": "Gary J Potter Carpentry & Construction offers professional timber framed extensions. Building extensions from long-lasting timber. Contact us for a free quote.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/timber-framed-extensions/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2026/09/IMG_4678.jpeg",
+   "headings": [
+    "h2: Timber Framed Extensions",
+    "h1: Timber Framed Extensions | Ely, Bury St Edmunds, & Newmarket",
+    "h3: Timber Framed Extensions That Give Your Home More Room To Live",
+    "h2: Why Choose Timber Framed Extensions?",
+    "h3: A Lightweight Approach To Extending",
+    "h3: Efficient Construction With Design Flexibility",
+    "h2: Timber Framed Extensions Built For Modern Homes",
+    "h3: Creating Comfortable, Energy-Conscious Spaces",
+    "h3: Designing Around Your Home’s Character",
+    "h2: How Does Timber Framing Work?",
+    "h3: From Structural Frame To Finished Room",
+    "h3: Integrating Insulation, Windows And Finishes",
+    "h2: Where Do Timber Framed Extensions Work Best?",
+    "h3: Rear Extensions And Open-Plan Living Spaces",
+    "h3: Bespoke Designs For Different Property Types",
+    "h2: All Our Carpentry & Construction Services",
+    "h2: Start Your Timber Framed Extensions Project"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Get in touch",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "Carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Kitchen Fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Local Carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Media Walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Single Storey Extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "Double Storey Extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "Wrap Around Extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen unit spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen cabinet spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "Contact",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "07415216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    }
+   ]
+  },
+  {
+   "path": "/single-storey-extensions/",
+   "title": "Professional Single Storey Extensions | Gary J Potter Carpentry & Construction",
+   "description": "Gary J Potter Carpentry & Construction offers expert single storey extensions. Extending the ground floor of your home for more space. Contact us for more.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/single-storey-extensions/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2026/09/IMG_1623.jpg",
+   "headings": [
+    "h2: Single Storey Extensions",
+    "h1: Single Storey Extensions | Ely, Bury St Edmunds, & Newmarket",
+    "h3: Single Storey Extensions That Give Your Home Room To Grow",
+    "h2: Single Storey Extensions Designed Around Your Home",
+    "h3: A Seamless Addition To Your Existing Layout",
+    "h2: What Do Single Storey Extensions Cost?",
+    "h3: Understanding The Main Project Costs",
+    "h3: Choosing The Right Size And Specification",
+    "h2: Single Storey Extensions Built For Everyday Living",
+    "h3: Kitchens, Dining Spaces And Family Rooms",
+    "h3: Making The Most Of Natural Light",
+    "h2: From Design Through To Completion",
+    "h3: A Straightforward Building Process",
+    "h3: Quality Workmanship From Start To Finish",
+    "h2: All Our Carpentry & Construction Services",
+    "h2: Get Your Single Storey Extensions Quote"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Contact",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "Carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Kitchen Fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Local Carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Media Walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Double Storey Extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "Wrap Around Extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "Timber Framed Extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen unit spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen cabinet spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "07415216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    }
+   ]
+  },
+  {
+   "path": "/double-storey-extensions/",
+   "title": "Expert Double Storey Extensions | Gary J Potter Carpentry & Construction",
+   "description": "Gary J Potter Carpentry & Construction offers professional double storey extensions. Extending both floors of your home for more living space. Contact us today.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/double-storey-extensions/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2026/09/IMG_0434.jpg",
+   "headings": [
+    "h2: Double Storey Extensions",
+    "h1: Double Storey Extensions | Ely, Bury St Edmunds, & Newmarket",
+    "h3: Need More Room? Double Storey Extensions Could Transform Your Home",
+    "h2: Are Double Storey Extensions Right For Your Home?",
+    "h3: When Two Floors Make Better Sense",
+    "h3: Balancing Space, Value And Practicality",
+    "h2: Double Storey Extensions That Maximise Space",
+    "h3: Add Bedrooms Without Sacrificing Downstairs Space",
+    "h3: Creating Useful Rooms On Both Levels",
+    "h2: Planning Your Double Storey Extensions",
+    "h3: Working Around Your Existing Property",
+    "h3: Considering Access, Structure And Finishes",
+    "h2: What Makes A Successful Two-Storey Project?",
+    "h3: Coordinating Every Stage Of Construction",
+    "h3: Keeping The Build Organised And Efficient",
+    "h2: All Our Carpentry & Construction Services",
+    "h2: Start Your Double Storey Extensions Project"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "Contact",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "Carpentry",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Kitchen Fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Local Carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Media Walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Single Storey Extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "Wrap Around Extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "Timber Framed Extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen unit spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "kitchen cabinet spraying",
+     "href": "/kitchen-spraying/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "07415216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    }
+   ]
+  },
+  {
+   "path": "/kitchen-fitting/",
+   "title": "Kitchen fitting | Gary J Potter Carpentry & Construction",
+   "description": "Professional kitchen fitting in Ely, Newmarket, Bury St Edmunds & Cambridge. Bespoke kitchens, units, doors, worktops & islands installed with expert care.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/kitchen-fitting/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-09-at-11.04.43_8891c644-e1757419338606.jpg",
+   "headings": [
+    "h2: Kitchen Fitting",
+    "h1: Kitchen Fitting in Ely, Newmarket, Bury St Edmunds & Cambridge",
+    "h2: Expert Kitchen Fitting Services Across Cambridgeshire & Suffolk",
+    "h2: Bespoke Kitchens Designed Around You",
+    "h2: Complete Kitchen Fitting from Start to Finish",
+    "h2: Carpentry & Joinery Expertise for Kitchen Projects",
+    "h2: Why Choose Us for Kitchen Fitting",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "beyond",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/local-carpenter/",
+   "title": "Local Carpenter | Gary J Potter Carpentry & Construction",
+   "description": "Looking for a reliable local carpenter in Ely, Newmarket, Bury St Edmunds or Cambridge? Bespoke joinery, wardrobes, shelving, kitchens & media walls – built with care.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/local-carpenter/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/09/IMG-20250805-WA0029.jpg",
+   "headings": [
+    "h2: Local Carpenter",
+    "h1: Local Carpenter: Ely, Newmarket, Bury St Edmunds & Cambridge",
+    "h2: Local Carpenter Craftsmanship with a Personal Touch",
+    "h2: Fitted Furniture & Clever Storage Solutions",
+    "h2: Bespoke Cabinetry, Bookcases & Wardrobes",
+    "h2: Media Walls & Feature Joinery from a Local Carpenter",
+    "h2: Kitchens, Small Renovations & Home Improvements",
+    "h2: Why Homeowners Choose Us as Their Local Carpenter",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "bespoke carpenter services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/kitchen-spraying/",
+   "title": "Kitchen Spraying – Expert Kitchen Unit & Cabinet Spraying | Gary J Potter Carpentry & Construction",
+   "description": "Gary J Potter Carpentry & Construction is a local carpenter offering durable kitchen spraying for homeowners looking for a stylish finish for their kitchen.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/kitchen-spraying/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/08/IMG-20250806-WA0226.jpg",
+   "headings": [
+    "h2: Kitchen Spraying",
+    "h1: Kitchen Spraying - High-Quality Spraying for Kitchens",
+    "h2: What Our Spraying Can Do to Your Kitchen",
+    "h3: Key Benefits of Our Spraying",
+    "h2: Bespoke Kitchen Spraying - Elegant Finishes for Kitchen Units, Cabinets & More",
+    "h3: How the Kitchen Spraying Process Works",
+    "h2: All Our Carpentry Services",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "region",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "Garage Conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "House Extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Kitchen Fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Media Walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    }
+   ]
+  },
+  {
+   "path": "/house-extensions/",
+   "title": "House Extensions | Gary J Potter Carpentry & Construction",
+   "description": "Trusted builders for house extensions in Ely, Newmarket, Bury St Edmunds & Cambridge. Brick and timber extensions, trusses, cladding & full design-to-completion service.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/house-extensions/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/08/IMG-20250811-WA0027.jpg",
+   "headings": [
+    "h2: House Extensions",
+    "h1: House Extensions in Cambridgeshire & Suffolk | Gary J Potter",
+    "h2: Expert House Extensions in Ely, Bury St Edmunds & Beyond",
+    "h2: Brick-Built House Extensions",
+    "h2: Timber-Framed House Extensions",
+    "h2: Complete Carpentry for Roofs, Trusses & Cladding",
+    "h2: Design-to-Completion House Extension Services in Newmarket, Cambridge & Beyond",
+    "h2: Why Choose Us for Your House Extension",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "surrounding region",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/garage-conversions/",
+   "title": "Garage Conversions | Gary J Potter Carpentry & Construction",
+   "description": "Garage conversions in Ely, Newmarket, Bury St Edmunds & Cambridge. Expert carpentry, design-to-completion service – offices, bedrooms, gyms & more.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/garage-conversions/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/09/1000066568.jpg",
+   "headings": [
+    "h2: Garage Conversions",
+    "h1: Garage Conversions | Ely Newmarket Bury St Edmunds Cambridge",
+    "h2: Why Choose Garage Conversions?",
+    "h2: Our Complete Garage Conversions Service",
+    "h2: Local Carpenter & Joinery Expertise in Garage Conversions",
+    "h2: Design-to-Completion Approach",
+    "h2: Why Homeowners Trust Us for Garage Conversions",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "local carpenters",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/carpentry-services/",
+   "title": "Carpentry services | Gary J Potter Carpentry & Construction",
+   "description": "Bespoke carpentry services & renovation experts in Ely, Newmarket, Bury St Edmunds & Cambridge. Joinery, extensions, kitchens & media walls crafted with care.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/carpentry-services/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/09/Internal-remodeeling-of-buffer-unit.jpg",
+   "headings": [
+    "h2: Carpentry Services",
+    "h1: Carpentry Services in Cambridgeshire & Suffolk",
+    "h2: Local Carpenter for Carpentry Services in Cambridgeshire",
+    "h2: Carpentry Services for House Extensions & Renovations",
+    "h2: Bespoke Carpenter for Garage Conversions",
+    "h2: Carpenter Services for Media Walls",
+    "h2: Bespoke Carpenter & Joinery for Kitchen Fitting",
+    "h2: Bespoke Carpentry & Joinery Solutions",
+    "h2: Why Choose Our Bespoke Carpenter Services",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "beyond",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "extension",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "conversion",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/privacy-policy/",
+   "title": "Privacy Policy | Gary J Potter Carpentry & Construction",
+   "description": "Privacy Policy for Gary J Potter Carpentry & Construction",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/privacy-policy/",
+   "ogImage": null,
+   "headings": [
+    "h1: Privacy Policy",
+    "h2: Interpretation and Definitions",
+    "h3: Interpretation",
+    "h3: Definitions",
+    "h2: Collecting and Using Your Personal Data",
+    "h3: Types of Data Collected",
+    "h4: Personal Data",
+    "h4: Usage Data",
+    "h4: Tracking Technologies and Cookies",
+    "h2: Essential",
+    "h3: Comments",
+    "h3: Login",
+    "h3: Use of Your Personal Data",
+    "h3: Retention of Your Personal Data",
+    "h3: Transfer of Your Personal Data",
+    "h3: Delete Your Personal Data",
+    "h3: Disclosure of Your Personal Data",
+    "h4: Business Transactions",
+    "h4: Law enforcement",
+    "h4: Other legal requirements",
+    "h3: Security of Your Personal Data",
+    "h2: Children’s Privacy",
+    "h2: Links to Other Websites",
+    "h2: Changes to this Privacy Policy",
+    "h2: Contact Us",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "Free Privacy Policy Generator",
+     "href": "https://www.freeprivacypolicy.com/free-privacy-policy-generator/"
+    },
+    {
+     "anchor": "https://www.garyjpottercarpentry.co.uk/",
+     "href": "/"
+    },
+    {
+     "anchor": "Free Privacy Policy website",
+     "href": "https://www.freeprivacypolicy.com/blog/sample-privacy-policy-template/#Use_Of_Cookies_And_Tracking"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "areas we cover",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/media-walls/",
+   "title": "Media walls | Gary J Potter Carpentry & Construction",
+   "description": "Bespoke media walls designed & built in Ely, Newmarket, Bury St Edmunds & Cambridge. Stylish TV walls with storage, shelving & hidden wiring – crafted with care.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/media-walls/",
+   "ogImage": "https://www.garyjpottercarpentry.co.uk/wp-content/uploads/2025/09/1000066614.jpg",
+   "headings": [
+    "h2: Media Walls",
+    "h1: Media Walls in Ely, Newmarket, Bury St Edmunds & Cambridge",
+    "h2: Transform Your Living Space with a Bespoke Media Wall",
+    "h2: Media Walls Designed Around Your Lifestyle",
+    "h2: Practical Storage Meets Modern Design",
+    "h2: Complete Media Wall Installation Service",
+    "h2: Why Choose Us for Media Walls",
+    "h2: Professional Cabinet Spraying for Flawless Media Wall Finish",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "Ely",
+     "href": "/area/ely/"
+    },
+    {
+     "anchor": "Newmarket",
+     "href": "/area/newmarket/"
+    },
+    {
+     "anchor": "Bury St Edmunds",
+     "href": "/area/bury-st-edmunds/"
+    },
+    {
+     "anchor": "Cambridge",
+     "href": "/area/cambridge/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/area/newmarket/",
+   "title": "Newmarket | Gary J Potter Carpentry & Construction",
+   "description": "Carpentry & construction company in Newmarket. Local experts in house extensions, garage conversions, kitchens, media walls & bespoke carpentry.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/area/newmarket/",
+   "ogImage": null,
+   "headings": [
+    "h2: Newmarket",
+    "h1: Local Carpenter & Building Services in Newmarket",
+    "h2: Expert Carpentry & Building in Newmarket",
+    "h2: House Extensions in Newmarket",
+    "h2: Garage Conversions in Newmarket",
+    "h2: Bespoke Media Walls & Joinery in Newmarket",
+    "h2: Kitchen Fitting in Newmarket",
+    "h2: Single Storey Extensions in Newmarket – Create Space That Fits Your Lifestyle",
+    "h3: What Could Your New Space Do For You?",
+    "h2: Could Double Storey Extensions in Newmarket Give You Room to Grow?",
+    "h3: Three Ways Two Floors Could Improve Your Home",
+    "h2: Wrap Around Extensions in Newmarket – Unlock More From Your Home",
+    "h3: Three Reasons to Think Beyond a Standard Extension",
+    "h2: Need an Extension Builder in Newmarket? Turn Your Ideas Into Reality",
+    "h3: What Can The Right Building Approach Give You?",
+    "h2: Timber Framed Extensions in Newmarket – Enjoy Flexible, Efficient Space",
+    "h3: Why Could Timber Framing Suit Your Plans?",
+    "h2: Why Choose Us as your Local Carpenter in Newmarket?",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "bespoke carpenter and construction services in Newmarket",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "areas",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "house extension",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "house extensions in Newmarket",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "garage conversions in Newmarket",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls in Newmarket",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "bespoke carpenter services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "kitchen fitting services in Newmarket",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "bespoke carpenter and construction in Newmarket",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/area/ely/",
+   "title": "Ely | Gary J Potter Carpentry & Construction",
+   "description": "Trusted carpentry & construction company in Ely. House extensions, garage conversions, kitchens, media walls & bespoke carpentry – built with care.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/area/ely/",
+   "ogImage": null,
+   "headings": [
+    "h2: Ely",
+    "h1: Local Carpenter & Construction Services in Ely",
+    "h2: Expert Construction & Carpentry Services in Ely",
+    "h2: House Extensions in Ely",
+    "h2: Garage Conversions in Ely",
+    "h2: Media Walls & Bespoke Joinery in Ely",
+    "h2: Kitchen Fitting in Ely",
+    "h2: Single Storey Extensions in Ely – Create More Space Without Moving",
+    "h3: Why Choose Our Single Storey Extensions in Ely?",
+    "h2: Could Double Storey Extensions in Ely Transform Your Home?",
+    "h3: Three Ways You Can Make More From Your Home",
+    "h2: Wrap Around Extensions in Ely – Make Every Corner Work Harder",
+    "h3: Discover What Your Home Could Do With More Space",
+    "h2: Need an Extension Builder in Ely You Can Rely On?",
+    "h3: What Can You Expect When You Choose Our Extension Builder?",
+    "h2: Timber Framed Extensions in Ely – Build Beautiful Space Efficiently",
+    "h3: Why Could Timber Framing Suit Your Extension Plans?",
+    "h2: Why Choose Us in Ely",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "area",
+     "href": "/areas-we-cover/"
+    },
+    {
+     "anchor": "local carpenter services",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "house extensions",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "kitchen fitting",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "house extensions in Ely",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "garage conversions",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls in Ely",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "bespoke carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "kitchen fitting services in Ely",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "bespoke carpenter and construction in Ely",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+4407415 216223"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/area/cambridge/",
+   "title": "Cambridge | Gary J Potter Carpentry & Construction",
+   "description": "Carpentry & construction company in Cambridge. Local experts in house extensions, garage conversions, kitchens, media walls & bespoke carpentry.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/area/cambridge/",
+   "ogImage": null,
+   "headings": [
+    "h2: Cambridge",
+    "h1: Local Carpenter & Construction Services in Cambridge",
+    "h2: Expert Carpentry & Construction in Cambridge",
+    "h2: House Extensions in Cambridge",
+    "h2: Garage Conversions in Cambridge",
+    "h2: Media Walls & Bespoke Carpenter in Cambridge",
+    "h2: Kitchen Fitting in Cambridge",
+    "h2: Single Storey Extensions in Cambridge – Make Your Home Work Harder",
+    "h3: Three Ways Extra Ground-Floor Space Can Improve Your Life",
+    "h2: Could Double Storey Extensions in Cambridge Solve Your Space Problems?",
+    "h3: Why Could Two Floors Make Such a Difference?",
+    "h2: Wrap Around Extensions in Cambridge – Give Your Ground Floor New Purpose",
+    "h3: What Could a Wrap Around Design Bring to Your Home?",
+    "h2: Choosing an Extension Builder in Cambridge? Build Around What Matters",
+    "h3: Three Reasons Your Choice of Extension Builder Matters",
+    "h2: Timber Framed Extensions in Cambridge – Create More Without Compromise",
+    "h3: How Can Timber Framing Benefit Your Extension?",
+    "h2: Why Choose Us as your Local Carpenter in Cambridge",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "bespoke carpenter and construction services in Cambridge",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "local carpenter",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "house extension",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "Cambridge carpentry services",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "house extensions in Cambridge",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "garage conversions in Cambridge",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls in Cambridge",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "bespoke carpenter",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "kitchen fitting services in Cambridge",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "carpentry and construction in Cambridge",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  },
+  {
+   "path": "/area/bury-st-edmunds/",
+   "title": "Bury St Edmunds | Gary J Potter Carpentry & Construction",
+   "description": "Carpentry & construction company in Bury St Edmunds. Bespoke carpentry, kitchens, media walls, garage conversions & house extensions delivered with care.",
+   "canonical": "https://www.garyjpottercarpentry.co.uk/area/bury-st-edmunds/",
+   "ogImage": null,
+   "headings": [
+    "h2: Bury St Edmunds",
+    "h1: Bespoke Carpenter & Construction Services | Bury St Edmunds",
+    "h2: Professional Carpentry & Building in Bury St Edmunds",
+    "h2: House Extensions in Bury St Edmunds",
+    "h2: Garage Conversions in Bury St Edmunds",
+    "h2: Media Walls & Bespoke Joinery in Bury St Edmunds",
+    "h2: Kitchen Fitting in Bury St Edmunds",
+    "h2: Single Storey Extensions in Bury St Edmunds – Give Your Home Room to Breathe",
+    "h3: What Could You Gain From Extending Your Ground Floor?",
+    "h2: Could Double Storey Extensions in Bury St Edmunds Add More Possibilities?",
+    "h3: Three Reasons to Consider Going Up a Level",
+    "h2: Wrap Around Extensions in Bury St Edmunds – Reimagine Your Ground Floor",
+    "h3: How Could a Wrap Around Extension Change Your Day?",
+    "h2: Looking for an Extension Builder in Bury St Edmunds? Start With Your Vision",
+    "h3: Why Put Your Plans in Experienced Hands?",
+    "h2: Timber Framed Extensions in Bury St Edmunds – A Flexible Way to Expand",
+    "h3: Why Could Timber Framing Work Well For Your Home?",
+    "h2: Why Choose Us in Bury St Edmunds",
+    "h2: Contact Us"
+   ],
+   "bodyLinks": [
+    {
+     "anchor": "07415 216223",
+     "href": "tel:+447415216223"
+    },
+    {
+     "anchor": "Gary J Potter Carpentry & Construction",
+     "href": "/"
+    },
+    {
+     "anchor": "bespoke carpenter and construction services in Bury St Edmunds",
+     "href": "/carpentry-services/"
+    },
+    {
+     "anchor": "local carpenter services company",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "house extensions in Bury St Edmunds",
+     "href": "/house-extensions/"
+    },
+    {
+     "anchor": "garage conversions in Bury St Edmunds",
+     "href": "/garage-conversions/"
+    },
+    {
+     "anchor": "media walls",
+     "href": "/media-walls/"
+    },
+    {
+     "anchor": "bespoke carpentry",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "kitchen fitting services in Bury St Edmunds",
+     "href": "/kitchen-fitting/"
+    },
+    {
+     "anchor": "single storey extensions",
+     "href": "/single-storey-extensions/"
+    },
+    {
+     "anchor": "double storey extensions",
+     "href": "/double-storey-extensions/"
+    },
+    {
+     "anchor": "wrap around extensions",
+     "href": "/wrap-around-extensions/"
+    },
+    {
+     "anchor": "extension builder",
+     "href": "/extension-builder/"
+    },
+    {
+     "anchor": "timber framed extensions",
+     "href": "/timber-framed-extensions/"
+    },
+    {
+     "anchor": "local carpenter and construction in Bury St Edmunds",
+     "href": "/local-carpenter/"
+    },
+    {
+     "anchor": "Contact us",
+     "href": "/contact-us/"
+    },
+    {
+     "anchor": "info@garyjpottercarpentry.co.uk",
+     "href": "mailto:info@garyjpottercarpentry.co.uk"
+    },
+    {
+     "anchor": "gallery",
+     "href": "/gallery/"
+    },
+    {
+     "anchor": "testimonials",
+     "href": "/testimonials/"
+    }
+   ]
+  }
+ ],
+ "footerLinks": [
+  {
+   "anchor": "",
+   "href": ""
+  },
+  {
+   "anchor": "07415 216223",
+   "href": "tel:+447415216223"
+  },
+  {
+   "anchor": "info@garyjpottercarpentry.co.uk",
+   "href": "mailto:info@garyjpottercarpentry.co.uk"
+  },
+  {
+   "anchor": "Facebook",
+   "href": "https://www.facebook.com/garyjpottercarpentry"
+  },
+  {
+   "anchor": "Instagram",
+   "href": "https://www.instagram.com/garyjpottercarpentry/"
+  },
+  {
+   "anchor": "Carpentry Services",
+   "href": "/carpentry-services/"
+  },
+  {
+   "anchor": "Local Carpenter",
+   "href": "/local-carpenter/"
+  },
+  {
+   "anchor": "House Extensions",
+   "href": "/house-extensions/"
+  },
+  {
+   "anchor": "Garage Conversions",
+   "href": "/garage-conversions/"
+  },
+  {
+   "anchor": "Media Walls",
+   "href": "/media-walls/"
+  },
+  {
+   "anchor": "Kitchen Fitting",
+   "href": "/kitchen-fitting/"
+  },
+  {
+   "anchor": "Kitchen Spraying",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Single Storey Extensions",
+   "href": "/single-storey-extensions/"
+  },
+  {
+   "anchor": "Double Storey Extensions",
+   "href": "/double-storey-extensions/"
+  },
+  {
+   "anchor": "Extension Builder",
+   "href": "/extension-builder/"
+  },
+  {
+   "anchor": "Timber Framed Extensions",
+   "href": "/timber-framed-extensions/"
+  },
+  {
+   "anchor": "Wrap Around Extensions",
+   "href": "/wrap-around-extensions/"
+  },
+  {
+   "anchor": "Home",
+   "href": "/"
+  },
+  {
+   "anchor": "Areas We Cover",
+   "href": "/areas-we-cover/"
+  },
+  {
+   "anchor": "Ely",
+   "href": "/area/ely/"
+  },
+  {
+   "anchor": "Bury St Edmunds",
+   "href": "/area/bury-st-edmunds/"
+  },
+  {
+   "anchor": "Newmarket",
+   "href": "/area/newmarket/"
+  },
+  {
+   "anchor": "Cambridge",
+   "href": "/area/cambridge/"
+  },
+  {
+   "anchor": "Contact Us",
+   "href": "/contact-us/"
+  },
+  {
+   "anchor": "Testimonials",
+   "href": "/testimonials/"
+  },
+  {
+   "anchor": "Gallery",
+   "href": "/gallery/"
+  },
+  {
+   "anchor": "Privacy Policy",
+   "href": "/privacy-policy"
+  },
+  {
+   "anchor": "Bespoke Carpenter Bury St Edmunds",
+   "href": "/carpentry-services/"
+  },
+  {
+   "anchor": "Bespoke Carpenter Cambridge",
+   "href": "/carpentry-services/"
+  },
+  {
+   "anchor": "Bespoke Carpenter Ely",
+   "href": "/carpentry-services/"
+  },
+  {
+   "anchor": "Bespoke Carpenter Newmarket",
+   "href": "/carpentry-services/"
+  },
+  {
+   "anchor": "Garage Conversions Bury St Edmunds",
+   "href": "/garage-conversions/"
+  },
+  {
+   "anchor": "Garage Conversions Cambridge",
+   "href": "/garage-conversions/"
+  },
+  {
+   "anchor": "Garage Conversions Ely",
+   "href": "/garage-conversions/"
+  },
+  {
+   "anchor": "Garage Conversions Newmarket",
+   "href": "/garage-conversions/"
+  },
+  {
+   "anchor": "House Extensions Bury St Edmunds",
+   "href": "/house-extensions/"
+  },
+  {
+   "anchor": "House Extensions Cambridge",
+   "href": "/house-extensions/"
+  },
+  {
+   "anchor": "House Extensions Ely",
+   "href": "/house-extensions/"
+  },
+  {
+   "anchor": "House Extensions Newmarket",
+   "href": "/house-extensions/"
+  },
+  {
+   "anchor": "Kitchen Fitting Bury St Edmunds",
+   "href": "/kitchen-fitting/"
+  },
+  {
+   "anchor": "Kitchen Fitting Cambridge",
+   "href": "/kitchen-fitting/"
+  },
+  {
+   "anchor": "Kitchen Fitting Ely",
+   "href": "/kitchen-fitting/"
+  },
+  {
+   "anchor": "Kitchen Fitting Newmarket",
+   "href": "/kitchen-fitting/"
+  },
+  {
+   "anchor": "Local Carpenter Bury St Edmunds",
+   "href": "/local-carpenter/"
+  },
+  {
+   "anchor": "Local Carpenter Cambridge",
+   "href": "/local-carpenter/"
+  },
+  {
+   "anchor": "Local Carpenter Ely",
+   "href": "/local-carpenter/"
+  },
+  {
+   "anchor": "Local Carpenter Newmarket",
+   "href": "/local-carpenter/"
+  },
+  {
+   "anchor": "Media Walls Bury St Edmunds",
+   "href": "/media-walls/"
+  },
+  {
+   "anchor": "Media Walls Cambridge",
+   "href": "/media-walls/"
+  },
+  {
+   "anchor": "Media Walls Ely",
+   "href": "/media-walls/"
+  },
+  {
+   "anchor": "Media Walls Newmarket",
+   "href": "/media-walls/"
+  },
+  {
+   "anchor": "Kitchen Spraying Bury St Edmunds",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Spraying Cambridge",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Spraying Ely",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Spraying Newmarket",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Unit Spraying Bury St Edmunds",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Unit Spraying Cambridge",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Unit Spraying Ely",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Unit Spraying Newmarket",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Cabinet Spraying Bury St Edmunds",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Cabinet Spraying Cambridge",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Cabinet Spraying Ely",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Kitchen Cabinet Spraying Newmarket",
+   "href": "/kitchen-spraying/"
+  },
+  {
+   "anchor": "Single Storey Extensions Bury St Edmunds",
+   "href": "/single-storey-extensions/"
+  },
+  {
+   "anchor": "Single Storey Extensions Cambridge",
+   "href": "/single-storey-extensions/"
+  },
+  {
+   "anchor": "Single Storey Extensions Ely",
+   "href": "/single-storey-extensions/"
+  },
+  {
+   "anchor": "Single Storey Extensions Newmarket",
+   "href": "/single-storey-extensions/"
+  },
+  {
+   "anchor": "Double Storey Extensions Bury St Edmunds",
+   "href": "/double-storey-extensions/"
+  },
+  {
+   "anchor": "Double Storey Extensions Cambridge",
+   "href": "/double-storey-extensions/"
+  },
+  {
+   "anchor": "Double Storey Extensions Ely",
+   "href": "/double-storey-extensions/"
+  },
+  {
+   "anchor": "Double Storey Extensions Newmarket",
+   "href": "/double-storey-extensions/"
+  },
+  {
+   "anchor": "Wrap Around Extensions Bury St Edmunds",
+   "href": "/wrap-around-extensions/"
+  },
+  {
+   "anchor": "Wrap Around Extensions Cambridge",
+   "href": "/wrap-around-extensions/"
+  },
+  {
+   "anchor": "Wrap Around Extensions Ely",
+   "href": "/wrap-around-extensions/"
+  },
+  {
+   "anchor": "Wrap Around Extensions Newmarket",
+   "href": "/wrap-around-extensions/"
+  },
+  {
+   "anchor": "Extension Builder Bury St Edmunds",
+   "href": "/extension-builder/"
+  },
+  {
+   "anchor": "Extension Builder Cambridge",
+   "href": "/extension-builder/"
+  },
+  {
+   "anchor": "Extension Builder Ely",
+   "href": "/extension-builder/"
+  },
+  {
+   "anchor": "Extension Builder Newmarket",
+   "href": "/extension-builder/"
+  },
+  {
+   "anchor": "Timber Framed Extensions Bury St Edmunds",
+   "href": "/timber-framed-extensions/"
+  },
+  {
+   "anchor": "Timber Framed Extensions Cambridge",
+   "href": "/timber-framed-extensions/"
+  },
+  {
+   "anchor": "Timber Framed Extensions Ely",
+   "href": "/timber-framed-extensions/"
+  },
+  {
+   "anchor": "Timber Framed Extensions Newmarket",
+   "href": "/timber-framed-extensions/"
+  }
+ ]
+}

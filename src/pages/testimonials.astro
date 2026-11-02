@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Prose from '../components/Prose.astro';
+import Reviews from '../components/Reviews.astro';
+import ContactClose from '../components/ContactClose.astro';
+import { getPage } from '../lib/content';
+import { pagePhotos } from '../data/page-photos';
+
+const page = getPage('testimonials');
+---
+
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos.testimonials.hero} crumb={page.crumb} contactHref="#contact">
+  <PageHero crumb={page.crumb} h1={page.h1} subtext={page.bannerSubtext} photo={pagePhotos.testimonials.hero} />
+  <div class="frame" data-reveal>
+    <Prose blocks={page.intro} lead class="measure" />
+  </div>
+  <Reviews heading="What our customers say" variant="all" />
+  <ContactClose closing={page.closing} />
+</BaseLayout>

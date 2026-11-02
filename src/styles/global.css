@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "@fontsource-variable/cinzel/wght.css";
+@import "@fontsource-variable/open-sans/wght.css";
+
+/*
+ * Brand tokens (Step 2, lever 3).
+ * Blue and coral are the logo's own colours, kept exactly.
+ * Coral is the single accent and belongs to actions; blue carries identity, links and one closing colour block.
+ * Light theme, locked (decision D11). One radius: 0 (square corners everywhere).
+ */
+@theme {
+  --font-display: "Cinzel Variable", "Cinzel", "Trajan Pro", Georgia, serif;
+  --font-sans: "Open Sans Variable", "Open Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ground: #f6f7f7;
+  --color-surface: #eceeef;
+  --color-surface-deep: #dfe3e5;
+  --color-ink: #15191d;
+  --color-ink-muted: #4b535c;
+  --color-brand: #0c74bb;
+  --color-brand-press: #095e98;
+  /* Same blue, one step deeper, for link text: 5.1:1 on the surface tone (the logo blue is 4.3:1 there). */
+  --color-brand-text: #0b67a6;
+  --color-accent: #f07957;
+  --color-accent-press: #e9663f;
+  --color-on-brand: #f6f7f7;
+
+  --text-display: clamp(1.4rem, 0.85rem + 2.75vw, 3.25rem);
+  --text-display--line-height: 1.08;
+  --text-title: clamp(1.25rem, 0.95rem + 1.2vw, 2.125rem);
+  --text-title--line-height: 1.15;
+  --text-sub: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-sub--line-height: 1.3;
+  --text-body: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem);
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.45;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --gutter: 1rem;
+    --header-h: 4rem;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+  @media (min-width: 768px) {
+    :root { --gutter: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    :root { --gutter: 2rem; --header-h: 4.5rem; }
+  }
+
+  html {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    text-wrap: balance;
+  }
+  p, li { text-wrap: pretty; }
+  ::selection { background: var(--color-brand); color: var(--color-on-brand); }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+  .on-brand :focus-visible { outline-color: var(--color-on-brand); }
+  img { max-width: 100%; height: auto; }
+  /* <picture> is only a wrapper: let the <img> inside take part in grid and flex layout directly. */
+  picture { display: contents; }
+  picture > source { display: none; }
+}
+
+@layer components {
+  /* One frame: equal outer gutters, one content width. */
+  .frame {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .measure { max-width: 65ch; }
+
+  /* Swipe rows (SwipeRow and the phone layouts of the home service lists): first item lines up with the frame. */
+  .swipe-track {
+    padding-inline: max(var(--gutter), calc((100vw - 80rem) / 2 + var(--gutter)));
+    scroll-padding-inline: max(var(--gutter), calc((100vw - 80rem) / 2 + var(--gutter)));
+  }
+  .swipe-track > * { scroll-snap-align: start; flex: none; }
+
+  .section { padding-block: 4rem; }
+  @media (min-width: 1024px) { .section { padding-block: 6rem; } }
+
+  /* Running text links: brand blue, underlined. */
+  .prose-links a:not(.btn) {
+    overflow-wrap: anywhere;
+    color: var(--color-brand-text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    transition: color 150ms var(--ease-out-soft), text-decoration-thickness 150ms var(--ease-out-soft);
+  }
+  .prose-links a:not(.btn):hover { color: var(--color-brand-press); text-decoration-thickness: 2px; }
+  .on-brand .prose-links a:not(.btn), .on-brand.prose-links a:not(.btn) { color: var(--color-on-brand); }
+  .on-brand .prose-links a:not(.btn):hover, .on-brand.prose-links a:not(.btn):hover { color: var(--color-on-brand); text-decoration-thickness: 2px; }
+
+  /* Buttons: flat, square, one fill. Coral = action, ink text for contrast (6.4:1). */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.4rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.1;
+    white-space: nowrap;
+    border-radius: 0;
+    transition: background-color 150ms var(--ease-out-soft), transform 120ms var(--ease-out-soft), color 150ms var(--ease-out-soft);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: translateY(1px) scale(0.985); }
+  .btn-accent { background: var(--color-accent); color: var(--color-ink); }
+  .btn-accent:hover { background: var(--color-accent-press); }
+  .btn-quiet { background: var(--color-surface); color: var(--color-ink); }
+  .btn-quiet:hover { background: var(--color-surface-deep); }
+  /* Quiet buttons on the brand-blue block: solid deeper blue, 6.4:1 with the off-white text. */
+  .bg-brand .btn-quiet { background: var(--color-brand-press); color: var(--color-on-brand); }
+  .bg-brand .btn-quiet:hover { background: #084f80; }
+  /* On the ink-coloured cookie banner and lightbox. */
+  .bg-ink .btn-quiet, dialog .btn-quiet { background: #2e3338; color: var(--color-on-brand); }
+  .bg-ink .btn-quiet:hover, dialog .btn-quiet:hover { background: #3a4046; }
+
+  .icon { width: 1.25em; height: 1.25em; flex: none; fill: currentColor; }
+}
+
+/* Reduced motion: no travel or scaling anywhere; state changes are instant. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scroll reveal: only armed once JS has run (html.js), so nothing is hidden without script. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 600ms var(--ease-out-soft), transform 600ms var(--ease-out-soft);
+    transition-delay: calc(var(--i, 0) * 75ms);
+  }
+  html.js [data-reveal].is-in > * { opacity: 1; transform: none; }
+}

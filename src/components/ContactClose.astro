@@ -1,0 +1,49 @@
+---
+/**
+ * The closing "Contact Us" section on every page: the page's own closing copy (verbatim),
+ * direct contact routes and the enquiry form, on the one brand-blue field (decision D10).
+ */
+import Prose from './Prose.astro';
+import Icon from './Icon.astro';
+import ContactForm from './ContactForm.astro';
+import type { Chapter } from '../lib/content';
+import { site } from '../config/site';
+
+interface Props {
+  closing: Chapter | null;
+  form?: boolean;
+  /** Use h1 when the section is the page's main content (none today). */
+  intro?: import('../lib/content').Block[];
+}
+const { closing, form = true, intro } = Astro.props;
+---
+
+<section id="contact" class="on-brand section bg-brand text-on-brand" aria-labelledby="contact-heading">
+  <div class:list={['frame grid gap-10', form && 'lg:grid-cols-12 lg:gap-12']}>
+    <div class:list={[form && 'lg:col-span-5']} data-reveal>
+      {closing && <h2 id="contact-heading" class="text-title" set:html={closing.heading} />}
+      {!closing && <h2 id="contact-heading" class="sr-only">Contact Us</h2>}
+      <Prose blocks={closing ? closing.blocks : (intro ?? [])} class="mt-6" />
+      <div class="mt-8 grid gap-2 sm:max-w-sm">
+        <a href={`tel:${site.phone.tel}`} class="btn btn-accent justify-start" data-track="call">
+          <Icon name="phone" />
+          <span>Call Us</span>
+          <span class="ml-auto font-sans text-small font-semibold">{site.phone.display}</span>
+        </a>
+        <a href={site.whatsapp.href} class="btn btn-quiet justify-start" data-track="whatsapp" target="_blank" rel="noopener">
+          <Icon name="whatsapp" />
+          <span>WhatsApp</span>
+        </a>
+        <a href={`mailto:${site.email}`} class="btn btn-quiet justify-start">
+          <Icon name="envelope" />
+          <span>Send an Email</span>
+        </a>
+      </div>
+    </div>
+    {form && (
+      <div class="lg:col-span-7" data-reveal>
+        <ContactForm />
+      </div>
+    )}
+  </div>
+</section>
