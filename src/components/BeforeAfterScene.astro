@@ -1,0 +1,18 @@
+---
+/**
+ * Signature scene: a pinned, scroll-scrubbed before/after. As the visitor scrolls, the "before"
+ * photo wipes away to reveal the "after" (src/scripts/motion.ts). The drag slider stays usable at
+ * all times; with reduced motion, or without script, the scene is simply the drag slider.
+ */
+import BeforeAfter from './BeforeAfter.astro';
+
+interface Props { before: string; after: string; label: string; heading?: string; id?: string }
+const { before, after, label, heading = 'Before and after', id = 'before-after' } = Astro.props;
+---
+
+<section class="ba-scene relative bg-ground" aria-labelledby={`${id}-heading`} data-ba-scrub>
+  <div class="ba-scene-frame frame flex flex-col justify-center py-8 lg:py-10">
+    <h2 id={`${id}-heading`} class="text-title">{heading}</h2>
+    <BeforeAfter before={before} after={after} label={label} sizes="(min-width: 1440px) 1360px, 100vw" ratio="h-[58svh] lg:h-[70svh]" class="mt-6" />
+  </div>
+</section>

@@ -4,28 +4,10 @@
  * Content is fully visible without this script; it only adds motion and interaction.
  */
 import { site } from '../config/site';
+import { setBA } from './ba';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => [...root.querySelectorAll<T>(sel)] as T[];
-
-/* ---------- Scroll reveal: heading, then copy, then picture (staggered once). ---------- */
-function initReveal() {
-  const groups = $$('[data-reveal]');
-  if (!groups.length || !('IntersectionObserver' in window)) return;
-  groups.forEach((g) => {
-    [...g.children].forEach((c, i) => (c as HTMLElement).style.setProperty('--i', String(Math.min(i, 6))));
-    // Anything already on screen is shown immediately, so nothing visible ever blinks.
-    if (g.getBoundingClientRect().top < window.innerHeight * 0.95) g.classList.add('is-in');
-  });
-  document.documentElement.classList.add('js');
-  const io = new IntersectionObserver(
-    (entries) => entries.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
-    }),
-    { rootMargin: '0px 0px -8% 0px' },
-  );
-  groups.filter((g) => !g.classList.contains('is-in')).forEach((g) => io.observe(g));
-}
 
 /* ---------- Desktop services dropdown. ---------- */
 function initDropdown() {
@@ -77,12 +59,8 @@ function initBeforeAfter() {
   $$('[data-ba]').forEach((fig) => {
     const stage = fig.querySelector<HTMLElement>('.ba-stage')!;
     const range = fig.querySelector<HTMLInputElement>('.ba-range')!;
-    const set = (pct: number) => {
-      const v = Math.max(0, Math.min(100, pct));
-      fig.style.setProperty('--pos', `${v}%`);
-      range.value = String(Math.round(v));
-      range.setAttribute('aria-valuetext', `${Math.round(100 - v)}% after`);
-    };
+    // A visitor's own drag or key press hands them control of a scroll-scrubbed scene (motion.ts).
+    const set = (pct: number) => { setBA(fig, pct); fig.dispatchEvent(new Event('ba:user')); };
     const fromPointer = (x: number) => { const r = stage.getBoundingClientRect(); set(((x - r.left) / r.width) * 100); };
     let dragging = false;
     let startX = 0, startY = 0, decided = false;
@@ -277,6 +255,20 @@ function initForms() {
   });
 }
 
+/* ---------- Chapter index: marks the chapter being read (IntersectionObserver). ---------- */
+function initChapterIndex() {
+  const index = document.querySelector<HTMLElement>('[data-chapter-index]');
+  if (!index || !('IntersectionObserver' in window)) return;
+  const links = new Map([...index.querySelectorAll<HTMLAnchorElement>('a')].map((a) => [a.hash.slice(1), a]));
+  const visible = new Set<string>();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => (e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id)));
+    const current = [...links.keys()].find((id) => visible.has(id));
+    if (current) links.forEach((a, id) => a.setAttribute('aria-current', String(id === current)));
+  }, { rootMargin: '-30% 0px -55% 0px' });
+  document.querySelectorAll<HTMLElement>('[data-chapter]').forEach((s) => io.observe(s));
+}
+
 /* ---------- Gallery: filters and lightbox. ---------- */
 function initGallery() {
   const grid = document.querySelector<HTMLElement>('[data-gallery]');
@@ -324,7 +316,6 @@ function initGallery() {
   dialog.addEventListener('pointerup', (e) => { const dx = e.clientX - sx; if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1)); });
 }
 
-initReveal();
 initDropdown();
 initMenu();
 initStickyBar();
@@ -333,3 +324,7 @@ initSwipe();
 initConsent();
 initForms();
 initGallery();
+initChapterIndex();
+
+// Choreographed motion (GSAP + ScrollTrigger) only for visitors who have not asked for reduced motion.
+if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) import('./motion');

@@ -1,6 +1,7 @@
 /**
  * Real Google reviews, quoted from the Google Reviews widget on the live site
- * (captured 2 November 2026). Excerpts are cut to three lines or fewer, never reworded; … marks a cut.
+ * (captured 2 November 2026). Excerpts are cut to three lines or fewer (Section 4.10), never reworded:
+ * … marks a cut inside a quote, and an excerpt may start at a later sentence of the review.
  * Decision D15: confirm with the owner that these may be quoted before launch.
  */
 export interface Review {
@@ -21,19 +22,19 @@ export const reviews: Review[] = [
     name: 'guy robinson',
     project: 'Kitchen refurbishment',
     quote:
-      'Came back from holiday to a new kitchen. First class workmanship no snags, just done right first time.',
+      'First class workmanship no snags, just done right first time.',
   },
   {
     name: 'Matthew Baldwin',
     project: 'Media wall',
     quote:
-      'We’re absolutely delighted with the media wall Gary installed in our front room, it’s completely transformed the space.',
+      'We’re absolutely delighted with the media wall Gary installed … it’s completely transformed the space.',
   },
   {
     name: 'Ian Tidball',
     project: 'Car port to garage conversion',
     quote:
-      'From the initial site survey right through to completion, everything was handled professionally and efficiently.',
+      'From the initial site survey … everything was handled professionally and efficiently.',
   },
   {
     name: 'Andrew Rice',
@@ -45,7 +46,7 @@ export const reviews: Review[] = [
     name: 'Christine Ellingham',
     project: 'Fitted wardrobe',
     quote:
-      'As a piece of furniture it is simple, elegant and functional, constructed with Gary’s good eye for detail and precision.',
+      'As a piece of furniture it is simple, elegant and functional …',
   },
   {
     name: 'Diana Robertshaw',

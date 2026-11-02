@@ -1,0 +1,61 @@
+---
+/**
+ * A build from start to finish: real stage photos in a row that pans sideways as the page scrolls
+ * (CSS scroll-driven, desktop) and swipes on phones. Not pinned, so a page keeps its two-pin limit.
+ * The pan distance is worked out from the number of stages, so the last stage always arrives in
+ * full while the whole row is still on screen.
+ */
+import Photo from './Photo.astro';
+
+interface Stage { id: string; label: string }
+interface Props { stages: Stage[]; label: string }
+const { stages, label } = Astro.props;
+---
+
+<div class="stages overflow-clip" style={`--n:${stages.length}`}>
+  <ol class="stages-track swipe-track flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 [scrollbar-width:none] lg:gap-5 [&::-webkit-scrollbar]:hidden" aria-label={label}>
+    {
+      stages.map((s) => (
+        <li class="stage w-[78%] shrink-0 sm:w-[44%]">
+          <div class="overflow-hidden">
+            <Photo id={s.id} sizes="(min-width: 1024px) 30vw, 78vw" class="aspect-[4/5] w-full object-cover" />
+          </div>
+          <p class="mt-3 font-semibold">{s.label}</p>
+        </li>
+      ))
+    }
+  </ol>
+</div>
+
+<style>
+  /* Desktop: stages are 30% of the frame wide; the track keeps the frame's side padding. */
+  @media (min-width: 1024px) {
+    .stages { container-type: inline-size; }
+    .stages-track {
+      --p: max(var(--gutter), calc((100cqi - 90rem) / 2 + var(--gutter)));
+      --w: calc((100cqi - 2 * var(--p)) * 0.3);
+      padding-inline: var(--p);
+      scroll-padding-inline: var(--p);
+    }
+    .stage { width: var(--w); }
+  }
+  /* The row starts on the first stage and ends with the last one in full at the frame edge,
+     travelling exactly the overflow while the row is fully in view. Static and swipeable where
+     scroll-driven animation is unsupported or reduced motion is on. */
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .stages-track {
+        overflow: visible;
+        animation-name: stages-pan; /* longhands: see the note in global.css */
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: contain 0% contain 100%;
+      }
+    }
+  }
+  @keyframes stages-pan {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-1 * (2 * var(--p) + var(--n) * var(--w) + (var(--n) - 1) * 1.25rem - 100cqi))); }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+/**
+ * A typographic service index. On desktop, hovering or focusing a name shows that service's photo
+ * in the panel beside the list (CSS only). On phones each row carries a small photo.
+ */
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+
+interface Item { title: string; href: string; photo: string }
+interface Props { items: Item[]; headingLevel?: 'h3' | 'p'; label?: string }
+const { items, headingLevel = 'h3', label } = Astro.props;
+const Tag = headingLevel;
+---
+
+<div class="svc-index grid gap-10 lg:grid-cols-12 lg:gap-12">
+  <ul class="lg:col-span-7" aria-label={label}>
+    {
+      items.map((s) => (
+        <li class="group relative">
+          <Tag class="flex items-center gap-4 py-3 text-[clamp(1.35rem,1rem+1.5vw,2.5rem)] font-semibold leading-tight tracking-[-0.02em] lg:py-4">
+            <Photo id={s.photo} sizes="72px" widths={[160]} alt="" class="aspect-square w-14 shrink-0 object-cover lg:hidden" />
+            <a href={s.href} class="after:absolute after:inset-0 transition-colors group-hover:text-accent group-focus-within:text-accent">{s.title}</a>
+            <Icon name="arrowRight" class="icon ml-auto size-6 shrink-0 transition-transform duration-300 group-hover:translate-x-1.5 lg:size-8" />
+          </Tag>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="relative hidden lg:col-span-5 lg:block" aria-hidden="true">
+    <div class="svc-preview sticky top-28 aspect-[4/5] overflow-hidden bg-surface">
+      {items.map((s) => <Photo id={s.photo} sizes="34vw" widths={[640, 960]} alt="" class="absolute inset-0 size-full object-cover opacity-0 transition-[opacity,transform] duration-500" />)}
+    </div>
+  </div>
+</div>
+
+<style>
+  .svc-preview :global(picture:first-of-type img) { opacity: 1; }
+  .svc-preview :global(img) { transform: scale(1.04); }
+  .svc-index:has(li:hover, li:focus-within) .svc-preview :global(picture:first-of-type img) { opacity: 0; }
+  .svc-index:has(li:nth-child(1):hover, li:nth-child(1):focus-within) .svc-preview :global(picture:nth-of-type(1) img),
+  .svc-index:has(li:nth-child(2):hover, li:nth-child(2):focus-within) .svc-preview :global(picture:nth-of-type(2) img),
+  .svc-index:has(li:nth-child(3):hover, li:nth-child(3):focus-within) .svc-preview :global(picture:nth-of-type(3) img),
+  .svc-index:has(li:nth-child(4):hover, li:nth-child(4):focus-within) .svc-preview :global(picture:nth-of-type(4) img),
+  .svc-index:has(li:nth-child(5):hover, li:nth-child(5):focus-within) .svc-preview :global(picture:nth-of-type(5) img),
+  .svc-index:has(li:nth-child(6):hover, li:nth-child(6):focus-within) .svc-preview :global(picture:nth-of-type(6) img),
+  .svc-index:has(li:nth-child(7):hover, li:nth-child(7):focus-within) .svc-preview :global(picture:nth-of-type(7) img),
+  .svc-index:has(li:nth-child(8):hover, li:nth-child(8):focus-within) .svc-preview :global(picture:nth-of-type(8) img),
+  .svc-index:has(li:nth-child(9):hover, li:nth-child(9):focus-within) .svc-preview :global(picture:nth-of-type(9) img),
+  .svc-index:has(li:nth-child(10):hover, li:nth-child(10):focus-within) .svc-preview :global(picture:nth-of-type(10) img),
+  .svc-index:has(li:nth-child(11):hover, li:nth-child(11):focus-within) .svc-preview :global(picture:nth-of-type(11) img),
+  .svc-index:has(li:nth-child(12):hover, li:nth-child(12):focus-within) .svc-preview :global(picture:nth-of-type(12) img) { opacity: 1; transform: none; }
+</style>

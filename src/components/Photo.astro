@@ -12,8 +12,9 @@ interface Props {
   priority?: boolean;
   /** Override alt (rarely needed: every photo carries a descriptive alt). */
   alt?: string;
+  style?: string;
 }
-const { id, sizes, widths = [400, 640, 960, 1280, 1600], class: className, loading = 'lazy', priority = false, alt } = Astro.props;
+const { id, sizes, widths = [400, 640, 960, 1280, 1600], class: className, loading = 'lazy', priority = false, alt, style } = Astro.props;
 const p = photo(id);
 const usable = widths.filter((w) => w <= p.w);
 ---
@@ -30,4 +31,5 @@ const usable = widths.filter((w) => w <= p.w);
   fetchpriority={priority ? 'high' : undefined}
   decoding={priority ? 'sync' : 'async'}
   class={className}
+  style={style}
 />

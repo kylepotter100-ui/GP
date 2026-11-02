@@ -1,46 +1,46 @@
 ---
 /**
  * Template for the 12 service pages, 4 town pages, Areas We Cover and the privacy policy.
- * Layout families on each page: hero, editorial article (copy with photos in a side rail),
- * swipeable project photos, and the blue contact close.
+ * Copy, links, title, meta description, canonical and H1 are unchanged (decision C4); the long copy
+ * is set as chapters with a sticky chapter index on desktop so it reads as a book, not a wall.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from './PageHero.astro';
+import Hero from './Hero.astro';
+import H1 from './H1.astro';
+import Breadcrumb from './Breadcrumb.astro';
 import Prose from './Prose.astro';
 import Photo from './Photo.astro';
-import SwipeRow from './SwipeRow.astro';
+import BeforeAfterScene from './BeforeAfterScene.astro';
+import ServiceIndex from './ServiceIndex.astro';
 import ContactClose from './ContactClose.astro';
 import Icon from './Icon.astro';
-import { getPage, type Block, type Chapter } from '../lib/content';
+import { getPage, text, type Block, type Chapter } from '../lib/content';
 import { fromLegacy, photosTagged } from '../lib/photos';
 import { pagePhotos } from '../data/page-photos';
+import { services, beforeAfter } from '../data/services';
 
-interface Props {
-  slug: string;
-  /** Hide the enquiry form in the close (privacy policy, decision D14). */
-  form?: boolean;
-  noHeroPhoto?: boolean;
-}
+interface Props { slug: string; form?: boolean; noHeroPhoto?: boolean }
 const { slug, form = true, noHeroPhoto = false } = Astro.props;
 const page = getPage(slug);
 const plan = pagePhotos[slug] ?? {};
-// D7: the old banner heading becomes the breadcrumb; casing follows the nav label where one exists (D6).
+// The old banner heading is the breadcrumb; casing follows the nav label where one exists.
 const navLabels = ['Areas We Cover', 'Contact Us', 'Gallery', 'Testimonials'];
 const crumb = navLabels.find((l) => l.toLowerCase() === page.crumb.toLowerCase()) ?? page.crumb;
 
-// Decision D8: on pages whose intro opens with an H3 straight after the H1, that heading becomes an H2.
+// On pages whose intro opens with an H3 straight after the H1, that heading becomes the first chapter (H2).
 let intro: Block[] = page.intro;
 const chapters: Chapter[] = [...page.chapters];
 if (intro[0]?.t === 'h3') {
   chapters.unshift({ heading: intro[0].html, blocks: intro.slice(1) });
   intro = [];
 }
+const slugify = (s: string) => text(s).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+const chapterIds = chapters.map((c, i) => `${slugify(c.heading) || 'chapter'}-${i + 1}`);
 
 const imgs = (blocks: Block[]) => blocks.filter((b) => b.t === 'img').map((b) => fromLegacy((b as { src: string }).src));
 const used = new Set<string>([plan.hero ?? '', ...imgs(intro), ...chapters.flatMap((c) => imgs(c.blocks))]);
-const introImages = imgs(intro);
 
-// Chapters without a picture of their own get a matching photo of real work (never a location claim).
+// Chapters without a photo of their own get a matching photo of real work (captions never claim a place).
 const topics: [RegExp, string[]][] = [
   [/garage/i, ['garage-conversion-after', 'garage-conversion-room', 'garage-conversion-bifolds', 'garage-conversion-before']],
   [/kitchen|spray/i, ['kitchen-island-sink-lantern', 'kitchen-shaker-sage-belfast', 'kitchen-navy-island', 'kitchen-cream-slatted-oak', 'kitchen-curved-island-table', 'kitchen-shaker-range-cooker']],
@@ -62,7 +62,6 @@ const pick = (heading: string) => {
   }
   return undefined;
 };
-// At most two photos sit beside a chapter; any extra move to the project photos row.
 const overflow: string[] = [];
 const railFor = chapters.map((c) => {
   const own = imgs(c.blocks);
@@ -71,39 +70,83 @@ const railFor = chapters.map((c) => {
   const id = pick(c.heading);
   return id ? [id] : [];
 });
-
-// Swipe row: the page's own selection, minus anything already shown above it.
-const row = [...overflow, ...(plan.row ?? (plan.rowTags ?? []).flatMap((t) => photosTagged(t, [...used], 12))).filter((id) => !used.has(id))]
+const mosaic = [...overflow, ...(plan.row ?? (plan.rowTags ?? []).flatMap((t) => photosTagged(t, [...used], 12))).filter((id) => !used.has(id))]
   .filter((id, i, all) => all.indexOf(id) === i)
-  .slice(0, 10);
+  .slice(0, 5);
 
+// A real before/after pair where one exists for this service.
+const pairFor: Record<string, string> = {
+  'house-extensions': 'rear-extension', 'extension-builder': 'rear-extension', 'garage-conversions': 'garage-conversion',
+  'media-walls': 'media-wall', 'carpentry-services': 'library', 'local-carpenter': 'library',
+};
+const pair = beforeAfter.find((p) => p.id === pairFor[slug]);
+
+// Service index, unless the page's own copy already lists every service.
+const listsServices = chapters.some((c) => /All Our .*Services/i.test(text(c.heading)));
+const otherServices = services.filter((s) => `/${s.slug}/` !== page.path).map((s) => ({ title: s.label, href: `/${s.slug}/`, photo: s.photo }));
 const hasMap = (blocks: Block[]) => blocks.some((b) => b.t === 'widget' && b.kind === 'google_maps');
 const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=embed&iwloc=near';
 ---
 
 <BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={plan.hero} crumb={crumb || undefined} contactHref="#contact">
-  <PageHero crumb={crumb || undefined} h1={page.h1} subtext={page.bannerSubtext} photo={noHeroPhoto ? undefined : plan.hero} />
-
   {
-    (intro.length > 0 || chapters.length > 0) && (
-      <article class="pb-8 lg:pb-12">
-        {intro.length > 0 && (
-          <div class="frame grid gap-10 lg:grid-cols-12 lg:gap-8" data-reveal>
-            <Prose blocks={intro} lead class="min-w-0 lg:col-span-7 measure" />
-            {introImages.length > 0 && (
-              <div class="grid gap-4 self-start lg:col-span-4 lg:col-start-9">
-                {introImages.map((id) => <Photo id={id} sizes="(min-width: 1024px) 400px, 100vw" class="aspect-[4/3] w-full object-cover" />)}
-              </div>
-            )}
-          </div>
-        )}
+    noHeroPhoto ? (
+      <section class="pt-10 pb-6 lg:pt-20">
+        <div class="frame">
+          {crumb && <Breadcrumb crumb={crumb} />}
+          <H1 html={page.h1} class="mt-6" />
+        </div>
+      </section>
+    ) : (
+      <Hero h1={page.h1} photo={plan.hero!} crumb={crumb || undefined} subtext={page.bannerSubtext} />
+    )
+  }
+
+  {intro.length > 0 && (
+    <section class="section pb-0 lg:pb-0">
+      <div class="frame grid lg:grid-cols-12">
+        <Prose blocks={intro} lead class="sd-rise min-w-0 measure lg:col-span-7 lg:col-start-4 [&>p:first-child]:text-lead [&>p:first-child]:font-semibold" />
+      </div>
+    </section>
+  )}
+
+  {chapters.length > 0 && (
+    <div class="frame section grid gap-x-10 lg:grid-cols-12">
+      {chapters.length >= 3 && (
+        <details class="group mb-12 bg-surface lg:hidden">
+          <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 font-semibold [&::-webkit-details-marker]:hidden">
+            On this page
+            <Icon name="caretDown" class="icon size-5 transition-transform group-open:rotate-180" />
+          </summary>
+          <nav aria-label="On this page">
+            <ol class="grid gap-0.5 px-5 pb-5">
+              {chapters.map((c, i) => (
+                <li><a href={`#${chapterIds[i]}`} class="block py-2 text-muted hover:text-ink" set:text={text(c.heading)} /></li>
+              ))}
+            </ol>
+          </nav>
+        </details>
+      )}
+      <nav aria-label="On this page" class="hidden lg:col-span-3 lg:block">
+        <div class="sticky top-28">
+          <p class="text-small text-muted">On this page</p>
+          <ol class="mt-4 space-y-2.5 text-[0.95rem]" data-chapter-index>
+            {chapters.map((c, i) => (
+              <li><a href={`#${chapterIds[i]}`} class="block border-l-2 border-transparent pl-3 text-muted transition-colors hover:text-ink aria-[current=true]:border-accent aria-[current=true]:font-semibold aria-[current=true]:text-ink" set:text={text(c.heading)} /></li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+      <article class="min-w-0 lg:col-span-9">
         {chapters.map((c, i) => {
           const pics = railFor[i];
           return (
-            <section class:list={['frame grid gap-8 lg:grid-cols-12 lg:gap-8', i === 0 && intro.length === 0 ? 'pt-2' : 'pt-14 lg:pt-20']} data-reveal>
-              <div class="min-w-0 lg:col-span-7">
-                <h2 class="measure text-title" set:html={c.heading} />
-                <Prose blocks={c.blocks} class="measure mt-6" />
+            <section id={chapterIds[i]} class:list={['grid gap-6 lg:grid-cols-9 lg:gap-x-10 lg:gap-y-8', i > 0 && 'mt-20 lg:mt-28']} data-chapter>
+              <div class="sd-rise min-w-0 lg:col-span-8">
+                <h2 class={text(c.heading).length > 60 ? 'text-title-s' : 'text-title'} set:html={c.heading} />
+              </div>
+              <div class="sd-rise min-w-0 lg:col-span-6">
+                <Prose blocks={c.blocks} class="measure" />
                 {hasMap(c.blocks) && (
                   <div class="mt-8 aspect-[16/10] bg-surface">
                     <iframe src={mapSrc} title="Map of Cambridgeshire, the area we cover" loading="lazy" class="size-full border-0" />
@@ -111,9 +154,11 @@ const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=emb
                 )}
               </div>
               {pics.length > 0 && (
-                <div class="grid grid-cols-2 gap-3 self-start lg:col-span-4 lg:col-start-9 lg:grid-cols-1 lg:gap-4">
-                  {pics.map((id, j) => (
-                    <Photo id={id} sizes="(min-width: 1024px) 400px, 50vw" class:list={['w-full object-cover', pics.length === 1 || (pics.length % 2 === 1 && j === 0) ? 'col-span-2 aspect-[4/3] lg:col-span-1' : 'aspect-square lg:aspect-[4/3]']} />
+                <div class="grid content-start gap-3 lg:col-span-3 lg:gap-4">
+                  {pics.map((id) => (
+                    <div class="sd-clip overflow-hidden">
+                      <Photo id={id} sizes="(min-width: 1024px) 26vw, 100vw" class="aspect-[4/3] w-full object-cover lg:aspect-[4/5]" />
+                    </div>
                   ))}
                 </div>
               )}
@@ -121,31 +166,37 @@ const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=emb
           );
         })}
       </article>
-    )
-  }
+    </div>
+  )}
 
-  <slot />
+  {pair && <BeforeAfterScene before={pair.before} after={pair.after} label={pair.label} />}
 
-  {
-    row.length > 0 && (
-      <section class="section bg-surface" aria-labelledby="row-heading">
-        <div class="frame flex flex-wrap items-end justify-between gap-4" data-reveal>
-          <h2 id="row-heading" class="text-title">Project photos</h2>
-          <a href="/gallery/" class="inline-flex items-center gap-2 font-semibold text-brand-text underline-offset-4 hover:underline">
-            See the full gallery
-            <Icon name="arrowRight" />
-          </a>
+  {mosaic.length >= 3 && (
+    <section class="section bg-surface" aria-labelledby="recent-heading">
+      <div class="frame">
+        <div class="sd-rise flex flex-wrap items-end justify-between gap-4">
+          <h2 id="recent-heading" class="text-title" style="--i:0">Recent work</h2>
+          <a href="/gallery/" class="btn btn-line" style="--i:1">See the full gallery<Icon name="arrowRight" /></a>
         </div>
-        <SwipeRow label="Project photos" class="mt-8" itemClass="">
-          {row.map((id) => (
-            <figure class="w-[78%] sm:w-[44%] lg:w-[30%]">
-              <Photo id={id} sizes="(min-width: 1024px) 420px, (min-width: 640px) 44vw, 78vw" class="aspect-[4/3] w-full object-cover" />
-            </figure>
+        <div class="mt-10 grid grid-cols-2 gap-3 lg:mt-14 lg:grid-cols-12 lg:gap-4">
+          {mosaic.map((id, i) => (
+            <div class:list={['sd-clip overflow-hidden', i === 0 ? 'col-span-2 lg:col-span-7 lg:row-span-2' : i < 3 ? 'lg:col-span-5' : 'lg:col-span-6']}>
+              <Photo id={id} sizes={i === 0 ? '(min-width: 1024px) 58vw, 100vw' : '(min-width: 1024px) 42vw, 50vw'} class:list={['w-full object-cover', i === 0 ? 'aspect-[4/3] lg:aspect-auto lg:h-full' : 'aspect-[4/3]']} />
+            </div>
           ))}
-        </SwipeRow>
-      </section>
-    )
-  }
+        </div>
+      </div>
+    </section>
+  )}
+
+  {!listsServices && slug !== 'privacy-policy' && (
+    <section class="section" aria-labelledby="services-heading">
+      <div class="frame">
+        <h2 id="services-heading" class="sd-rise text-title">Our Services</h2>
+        <div class="mt-10"><ServiceIndex items={otherServices} headingLevel="p" label="Our services" /></div>
+      </div>
+    </section>
+  )}
 
   <ContactClose closing={page.closing} form={form} />
 </BaseLayout>
