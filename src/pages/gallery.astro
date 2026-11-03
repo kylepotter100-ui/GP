@@ -4,7 +4,7 @@ import Hero from '../components/Hero.astro';
 import Prose from '../components/Prose.astro';
 import BeforeAfterScene from '../components/BeforeAfterScene.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
-import ContactClose from '../components/ContactClose.astro';
+import Invitation from '../components/Invitation.astro';
 import BuildStages from '../components/BuildStages.astro';
 import Icon from '../components/Icon.astro';
 import { Picture, getImage } from 'astro:assets';
@@ -48,7 +48,7 @@ const items = await Promise.all(
 );
 ---
 
-<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos.gallery.hero} crumb={page.crumb} contactHref="#contact">
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos.gallery.hero} crumb={page.crumb}>
   <Hero h1={page.h1} photo={pagePhotos.gallery.hero!} crumb={page.crumb} subtext={page.bannerSubtext} />
 
   <section class="section pb-0 lg:pb-0">
@@ -57,9 +57,10 @@ const items = await Promise.all(
     </div>
   </section>
 
-  <div class="mt-16 lg:mt-24"><BeforeAfterScene before={signature.before} after={signature.after} label={signature.label} /></div>
+  <!-- The lights go down at the before/after; the rest of the gallery sits in aubergine. -->
+  <div class="mt-16 lg:mt-24"><BeforeAfterScene before={signature.before} after={signature.after} label={signature.label} stage="aubergine" /></div>
 
-  <section class="section bg-surface" aria-labelledby="more-ba-heading">
+  <section class="section" aria-labelledby="more-ba-heading" data-stage="aubergine">
     <div class="frame" data-ba-switch>
       <h2 id="more-ba-heading" class="sd-rise text-title">More before and after</h2>
       <div role="tablist" aria-label="Choose a project" class="-mx-[var(--gutter)] mt-8 flex gap-2 overflow-x-auto px-[var(--gutter)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -77,7 +78,7 @@ const items = await Promise.all(
     </div>
   </section>
 
-  <section class="section" aria-labelledby="sequences-heading">
+  <section class="section" aria-labelledby="sequences-heading" data-stage="aubergine">
     <div class="frame">
       <h2 id="sequences-heading" class="sd-rise text-title">From start to finish</h2>
     </div>
@@ -89,7 +90,7 @@ const items = await Promise.all(
     ))}
   </section>
 
-  <section class="section bg-surface" aria-labelledby="gallery-heading">
+  <section class="section" aria-labelledby="gallery-heading" data-stage="aubergine">
     <div class="frame">
       <h2 id="gallery-heading" class="sd-rise text-title">All projects</h2>
       <div class="-mx-[var(--gutter)] mt-8 flex gap-2 overflow-x-auto px-[var(--gutter)] pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label="Filter projects" data-gallery-filters hidden>
@@ -122,5 +123,5 @@ const items = await Promise.all(
     </div>
   </dialog>
 
-  <ContactClose closing={page.closing} />
+  <Invitation closing={page.closing} stage="aubergine" />
 </BaseLayout>

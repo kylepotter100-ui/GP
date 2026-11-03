@@ -18,9 +18,11 @@ import arrowsLR from '@phosphor-icons/core/assets/regular/arrows-left-right.svg?
 import mapPin from '@phosphor-icons/core/assets/regular/map-pin.svg?raw';
 import googleLogo from '@phosphor-icons/core/assets/regular/google-logo.svg?raw';
 import arrowsOut from '@phosphor-icons/core/assets/regular/arrows-out.svg?raw';
+import handSwipe from '@phosphor-icons/core/assets/regular/hand-swipe-right.svg?raw';
+import arrowLeft from '@phosphor-icons/core/assets/regular/arrow-left.svg?raw';
 
 export const icons = {
   phone, whatsapp, envelope, arrowRight, caretDown, caretLeft, caretRight, list, x, star,
-  facebook, instagram, upload, checkCircle, warning, arrowsLR, mapPin, googleLogo, arrowsOut,
+  facebook, instagram, upload, checkCircle, warning, arrowsLR, mapPin, googleLogo, arrowsOut, handSwipe, arrowLeft,
 } as const;
 export type IconName = keyof typeof icons;

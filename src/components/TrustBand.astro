@@ -1,26 +1,32 @@
 ---
 /**
- * Proof as a moment: the real figures, set large in Cinzel, counting up once as they arrive
- * (src/scripts/motion.ts). Without script or with reduced motion they simply show their values.
+ * Chapter 2, Promise. The line lights up word by word as it is read (scrubbed to the scroll), and
+ * the real figures roll in once like an odometer (src/scripts/motion.ts). Words and digit reels
+ * are built here, so at rest (no script, reduced motion) the text and figures simply read in full.
  */
-interface Fig { value: string; count?: number; decimals?: number; label: string }
+interface Fig { value: string; label: string }
 interface Props { statement: string; figures: Fig[] }
 const { statement, figures } = Astro.props;
+const words = statement.split(/\s+/);
+const reel = (ch: string) =>
+  /\d/.test(ch)
+    ? { digit: Number(ch), html: `<span class="reel" aria-hidden="true"><span class="reel-size">${ch}</span><span class="reel-in" style="--n:${ch}">${'0123456789'.split('').map((d) => `<span>${d}</span>`).join('')}</span></span>` }
+    : { digit: -1, html: `<span aria-hidden="true">${ch.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</span>` };
 ---
 
 <section class="section" aria-labelledby="trust-heading">
   <div class="frame">
-    <div class="sd-rise">
-      <h2 id="trust-heading" class="max-w-[24ch] text-title font-semibold tracking-[-0.025em]">{statement}</h2>
-    </div>
-    <dl class="sd-rise mt-12 grid grid-cols-2 gap-x-6 gap-y-10 lg:mt-16 lg:grid-cols-4 lg:gap-x-10">
+    <h2 id="trust-heading" class="max-w-[24ch] text-title font-semibold tracking-[-0.025em]" data-words>
+      {words.map((w, i) => (<><span class="w">{w}</span>{i < words.length - 1 && ' '}</>))}
+    </h2>
+    <dl class="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 lg:mt-16 lg:grid-cols-4 lg:gap-x-10">
       {
-        figures.map((f, i) => (
-          <div style={`--i:${i}`}>
-            <dt class="sr-only">{f.label}</dt>
-            <dd>
-              <span class="display block text-figure" data-count={f.count} data-decimals={f.decimals ?? 0}>{f.value}</span>
-              <span class="mt-3 block max-w-[22ch] text-muted" aria-hidden="true">{f.label}</span>
+        figures.map((f) => (
+          <div class="flex flex-col-reverse justify-end">
+            <dt class="mt-3 max-w-[22ch] text-muted">{f.label}</dt>
+            <dd class="display text-figure whitespace-nowrap" data-odo>
+              <span class="sr-only">{f.value}</span>
+              <Fragment set:html={[...f.value].map((c) => reel(c).html).join('')} />
             </dd>
           </div>
         ))
@@ -28,3 +34,12 @@ const { statement, figures } = Astro.props;
     </dl>
   </div>
 </section>
+
+<style>
+  /* The reels are injected markup, so these rules are global (scoped styles would not reach them). */
+  /* Each reel is as wide as its final digit (a hidden copy sizes it), so the figure keeps its natural spacing. */
+  [data-odo] :global(.reel) { position: relative; display: inline-block; height: 1em; overflow: clip; vertical-align: top; line-height: 1; }
+  [data-odo] :global(.reel-size) { visibility: hidden; }
+  [data-odo] :global(.reel-in) { position: absolute; inset: 0 0 auto 0; text-align: center; transform: translateY(calc(var(--n) * -10%)); }
+  [data-odo] :global(.reel-in > span) { display: block; height: 1em; }
+</style>

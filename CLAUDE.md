@@ -33,5 +33,7 @@ The `design-taste-frontend` (v2) skill is also installed but is not used for thi
 
 The redesign runs in gated steps, each waiting for the owner's OK: audit (`docs/redesign/01-audit.md`), mode and levers, implementation, then the em-dash, Pre-Flight, preservation and brand-fidelity audits.
 A second round, a **complete overhaul** (new colours and motion, premium landing page), runs the same gated steps in `docs/redesign/overhaul/`. It supersedes the Preserve-mode design in `docs/redesign/01`, `02` and `04`.
-A third round, the **motion journey** (a seven-chapter home page journey ending in a "Start your project" brief), is planned in `docs/redesign/journey/`. It waits for the owner's OK before any build.
+A third round, the **motion journey** (a seven-chapter home page journey ending in a "Start your project" brief, with deep stage palettes per chapter and per page), is in `docs/redesign/journey/`: plan in `01-plan.md`, approved and built, audited in `04-step4-audits.md`.
+Stage palettes: a section with `data-stage="slate|ink|sage|aubergine"` switches every colour token inside it; `src/scripts/stage.ts` moves the page ground, header and footer between them. Each page goes "lights down" once, then stays in its dark tones to the end (Section 4.11).
+The enquiry form is `ProjectBrief.astro`: keep its six field names and their order; the choice steps write into `textarea-1`. Line drawings for "the plan" come from `npm run line-art`.
 `docs/redesign/baseline.json` is the live-site baseline (titles, descriptions, canonicals, headings, body links, nav, form fields). Diff against it for the preservation audit; don't edit it.

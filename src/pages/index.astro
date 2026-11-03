@@ -1,23 +1,22 @@
 ---
 /**
- * Home: a premium landing page (overhaul, decision C4). New short lines are written from existing
- * facts in the existing voice; every existing home copy block and its contextual links stays on the
- * page. Title, meta description, canonical and H1 are unchanged.
+ * Home: the motion journey (docs/redesign/journey/01-plan.md). Seven chapters, one feeling each,
+ * ending at one invitation. The page's stage hues morph as the visitor travels:
+ *   1 Arrival (day) · 2 Promise (day) · 3 Transformation (slate, the lights go down) ·
+ *   4 Craft (ink) · 5 Process (sage) · 6 Proof (aubergine) · 7 Invitation (slate, coral card).
+ * Every existing home copy block and its links stays on the page: the four service cards' copy,
+ * About, the builder story, the four extension types and Local Carpenter sit in "The detail".
+ * Title, meta description, canonical and H1 are unchanged (decision C4).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import TrustBand from '../components/TrustBand.astro';
 import BeforeAfterScene from '../components/BeforeAfterScene.astro';
-import BeforeAfter from '../components/BeforeAfter.astro';
-import ServicesStack from '../components/ServicesStack.astro';
-import ServiceIndex from '../components/ServiceIndex.astro';
-import BuildStages from '../components/BuildStages.astro';
+import CraftWindow from '../components/CraftWindow.astro';
+import ProcessStages from '../components/ProcessStages.astro';
 import Reviews from '../components/Reviews.astro';
-import PhotoMarquee from '../components/PhotoMarquee.astro';
+import Invitation from '../components/Invitation.astro';
 import Prose from '../components/Prose.astro';
-import Photo from '../components/Photo.astro';
-import Icon from '../components/Icon.astro';
-import ContactClose from '../components/ContactClose.astro';
 import { getPage, text, headingLink, type Chapter } from '../lib/content';
 import { beforeAfter } from '../data/services';
 
@@ -38,12 +37,19 @@ const about = ch('About Our Company');
 const localCarpenter = ch('Local Carpenter in Ely, Newmarket, Bury St Edmunds & Cambridge');
 const builder = ch('Gary J Potter Carpentry & Construction: Your Local Extension Builder');
 const reviewsHeading = ch('What our customers say').heading;
+const types = [
+  'Single Storey Extensions That Give You Room to Live',
+  'Double Storey Extensions: Twice the Space Without Moving',
+  'Wrap Around Extensions That Transform Your Home',
+  'Timber Framed Extensions: Smart, Efficient and Built to Last',
+].map(ch);
 
-const stack = [
-  { title: 'House Extensions', photo: 'rear-extension-after' },
-  { title: 'Garage Conversions', photo: 'garage-conversion-room' },
-  { title: 'Media Walls', photo: 'media-wall-built-in-cupboards' },
-  { title: 'Kitchen Fitting', photo: 'kitchen-island-sink-lantern' },
+// Chapter 4: the four main services. Each line is lifted from that service's existing card copy.
+const craft = [
+  { title: 'House Extensions', photo: 'bungalow-extension-finished', line: 'Brick or timber-framed, designed to blend seamlessly with your existing home.' },
+  { title: 'Garage Conversions', photo: 'garage-conversion-room', line: 'Blank canvases ready to become home offices, gyms or living spaces.' },
+  { title: 'Media Walls', photo: 'media-wall-sage-green', line: 'The everyday TV turned into a feature, with space for shelves, speakers and storage.' },
+  { title: 'Kitchen Fitting', photo: 'kitchen-island-sink-lantern', line: 'Units, islands, doors, worktops, the lot.' },
 ].map((s) => ({ ...s, href: cardHref(s.title), blocks: ch(s.title).blocks }));
 
 const more = [
@@ -57,132 +63,95 @@ const more = [
   ['Local Carpenter', 'library-after'],
 ].map(([title, photo]) => ({ title, photo, href: cardHref(title) }));
 
-const types = [
-  { c: ch('Single Storey Extensions That Give You Room to Live'), photo: 'single-storey-extension-french-doors' },
-  { c: ch('Double Storey Extensions: Twice the Space Without Moving'), photo: 'two-storey-extension-scaffold' },
-  { c: ch('Wrap Around Extensions That Transform Your Home'), photo: 'kitchen-extension-lanterns' },
-  { c: ch('Timber Framed Extensions: Smart, Efficient and Built to Last'), photo: 'timber-frame-long-room' },
+// Chapter 5: every line is a sentence from the existing home copy.
+const process = [
+  { title: 'We listen', text: 'First, we explore your requirements, property, and plans together.', photo: 'carpenter-checking-trusses' },
+  { title: 'We draw it up', text: 'We’ll even help with planning and drawings, guiding you from first sketch to final polish.', photo: 'extension-floor-beams' },
+  { title: 'We build it', text: 'We manage everything in-house so you don’t have to juggle different trades.', photo: 'rear-extension-steel-frame' },
+  { title: 'We hand it over', text: 'One-year workmanship guarantee plus full public liability insurance.', photo: 'extension-living-room-finished' },
 ];
-const stages = [
-  { id: 'rear-extension-before', label: 'Before' },
-  { id: 'extension-floor-beams', label: 'Groundwork and floor' },
-  { id: 'rear-extension-steel-frame', label: 'Steel frame' },
-  { id: 'roof-lantern-flat-roof', label: 'Roof and lantern' },
-  { id: 'extension-living-room-finished', label: 'Finished' },
-];
-const [signature, ...projects] = beforeAfter;
-const recent = ['outdoor-kitchen-after', 'kitchen-curved-island-table', 'library-after', 'garage-conversion-bifolds', 'media-wall-sage-green', 'bungalow-extension-finished', 'oak-staircase', 'kitchen-cream-slatted-oak', 'two-storey-extension-rendered-front', 'parquet-flooring-herringbone', 'single-storey-extension-pergola', 'extension-dining-room'];
+const [signature] = beforeAfter;
 ---
 
-<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto="kitchen-extension-lanterns" ogType="website" contactHref="#contact">
-  <Hero h1={page.h1} photo="kitchen-extension-lanterns" kicker={page.crumb} subtext={page.bannerSubtext} tall position="50% 60%" />
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto="kitchen-extension-lanterns" ogType="website">
+  <!-- 1 Arrival -->
+  <Hero h1={page.h1} photo="kitchen-extension-lanterns" kicker={page.crumb} subtext={page.bannerSubtext} tall position="50% 60%" intro />
 
+  <!-- 2 Promise -->
   <TrustBand
     statement="Craftsmanship you can see, with reliability you can feel."
     figures={[
-      { value: '5.0', count: 5, decimals: 1, label: 'Google rating, from 26 reviews' },
-      { value: '40+', count: 40, label: 'Years of combined experience' },
+      { value: '5.0', label: 'Google rating, from 26 reviews' },
+      { value: '40+', label: 'Years of combined experience' },
       { value: '2013', label: 'Helping homeowners since' },
       { value: '1 year', label: 'Workmanship guarantee, plus full public liability insurance' },
     ]}
   />
 
-  <BeforeAfterScene before={signature.before} after={signature.after} label={signature.label} />
+  <!-- 3 Transformation: the lights go down -->
+  <BeforeAfterScene before={signature.before} after={signature.after} label={signature.label} stage="slate" />
 
-  <!-- Services: the four main ones stack as you scroll; the rest follow as an index. -->
-  <section class="pt-24 lg:pt-36" aria-labelledby="services-heading">
-    <div class="frame sd-rise">
-      <h2 id="services-heading" class="text-title">Our Services</h2>
-    </div>
-    <div class="mt-6">
-      <ServicesStack cards={stack} />
-    </div>
-    <div class="frame section">
-      <p class="text-muted">More services</p>
-      <div class="mt-6"><ServiceIndex items={more} label="More services" /></div>
-    </div>
-  </section>
+  <!-- 4 Craft -->
+  <CraftWindow items={craft} more={more} stage="ink" />
 
-  <!-- About: planning, drawings and every trade handled, then one wide photograph that drifts. -->
-  <section class="section bg-surface" aria-labelledby="about-heading">
-    <div class="frame grid gap-12 lg:grid-cols-12">
-      <div class="sd-rise lg:col-span-6">
-        <h2 id="about-heading" class="text-title" style="--i:0" set:html={about.heading} />
-        <Prose blocks={about.blocks} class="mt-6 text-lead" />
-      </div>
-      <div class="sd-rise lg:col-span-5 lg:col-start-8 lg:pt-3">
-        <Prose blocks={page.intro} class="text-muted [&_p]:text-ink" />
-      </div>
-    </div>
-    <div class="sd-parallax frame mt-16 lg:mt-24">
-      <Photo id="extension-dining-room" sizes="(min-width: 1440px) 1360px, 100vw" class="aspect-[4/3] w-full object-cover md:aspect-[21/9]" />
-    </div>
-  </section>
+  <!-- 5 Process -->
+  <ProcessStages heading="From first sketch to final polish." stages={process} stage="sage" />
 
-  <!-- How we build it: one extension from start to finish, then the four ways to extend. -->
-  <section class="section" aria-labelledby="builder-heading">
+  <!-- 6 Proof -->
+  <Reviews heading={reviewsHeading} variant="deck" stage="aubergine" />
+
+  <!-- 7 Invitation -->
+  <Invitation closing={page.closing} stage="slate" />
+
+  <!-- The detail: today's long home copy, folded, still on the page -->
+  <section class="detail pb-24 lg:pb-36" aria-label="The detail" data-stage="slate">
     <div class="frame">
-      <div class="sd-rise"><h2 id="builder-heading" class="max-w-[26ch] text-title-s" set:html={builder.heading} /></div>
-      <Prose blocks={builder.blocks} class="mt-8 measure" />
-    </div>
-    <div class="mt-14 lg:mt-20">
-      <BuildStages stages={stages} label="One extension, from start to finish" />
-    </div>
-    <div class="frame mt-24 grid gap-x-10 gap-y-20 lg:mt-36 lg:grid-cols-2">
-      {types.map(({ c, photo }, i) => (
-        <article class:list={['sd-rise', i % 2 === 1 && 'lg:mt-24']}>
-          <div class="sd-clip overflow-hidden" style="--i:0">
-            <Photo id={photo} sizes="(min-width: 1024px) 45vw, 100vw" class="aspect-[4/3] w-full object-cover" />
+      <p class="font-semibold text-muted">The detail</p>
+      <div class="mt-6 grid gap-2">
+        <details>
+          <summary><h2 set:html={about.heading} /></summary>
+          <div class="detail-body">
+            <Prose blocks={about.blocks} class="measure" />
+            <Prose blocks={page.intro} class="mt-6 measure text-muted [&_p]:text-ink" />
           </div>
-          <h2 class="mt-7 text-sub" style="--i:1" set:html={c.heading} />
-          <Prose blocks={c.blocks} class="mt-4 measure text-muted [&_p]:text-ink" />
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <!-- More before and after: pick a job, drag to compare. -->
-  <section class="section bg-surface" aria-labelledby="more-ba-heading">
-    <div class="frame" data-ba-switch>
-      <h2 id="more-ba-heading" class="sd-rise text-title">More before and after</h2>
-      <div role="tablist" aria-label="Choose a project" class="-mx-[var(--gutter)] mt-8 flex gap-2 overflow-x-auto px-[var(--gutter)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {projects.map((p, i) => (
-          <button type="button" role="tab" id={`ba-tab-${p.id}`} aria-controls={`ba-panel-${p.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} class="btn btn-quiet min-h-11 shrink-0 bg-ground px-5 text-[0.95rem] aria-selected:bg-ink aria-selected:text-ground">
-            {p.label}
-          </button>
+        </details>
+        <details>
+          <summary><h2>How we work on our main services</h2></summary>
+          <div class="detail-body grid gap-8">
+            {craft.map((s) => (
+              <div>
+                <p class="font-semibold">{s.title}</p>
+                <Prose blocks={s.blocks} class="mt-2 measure" />
+              </div>
+            ))}
+          </div>
+        </details>
+        <details>
+          <summary><h2 set:html={builder.heading} /></summary>
+          <div class="detail-body"><Prose blocks={builder.blocks} class="measure" /></div>
+        </details>
+        {types.map((c) => (
+          <details>
+            <summary><h2 set:html={c.heading} /></summary>
+            <div class="detail-body"><Prose blocks={c.blocks} class="measure" /></div>
+          </details>
         ))}
-      </div>
-      {projects.map((p, i) => (
-        <div role="tabpanel" id={`ba-panel-${p.id}`} aria-labelledby={`ba-tab-${p.id}`} hidden={i !== 0} class="mt-6">
-          <BeforeAfter before={p.before} after={p.after} label={p.label} sizes="(min-width: 1440px) 1360px, 100vw" ratio="aspect-[4/3] lg:aspect-[16/9]" />
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Local carpenter and why homeowners trust us. -->
-  <section class="section" aria-labelledby="local-heading">
-    <div class="frame grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
-      <div class="grid grid-cols-5 gap-3 lg:col-span-6">
-        <div class="sd-clip col-span-3 overflow-hidden"><Photo id="bathroom-dark-roll-top-bath" sizes="(min-width: 1024px) 26vw, 60vw" class="aspect-[3/4] w-full object-cover" /></div>
-        <div class="sd-clip col-span-2 self-end overflow-hidden"><Photo id="hallway-oak-doors-flooring" sizes="(min-width: 1024px) 17vw, 40vw" class="aspect-[2/3] w-full object-cover" /></div>
-      </div>
-      <div class="sd-rise lg:col-span-5 lg:col-start-8">
-        <h2 id="local-heading" class="text-title-s" style="--i:0" set:html={localCarpenter.heading} />
-        <Prose blocks={localCarpenter.blocks} class="mt-6 measure" />
+        <details>
+          <summary><h2 set:html={localCarpenter.heading} /></summary>
+          <div class="detail-body"><Prose blocks={localCarpenter.blocks} class="measure" /></div>
+        </details>
       </div>
     </div>
   </section>
-
-  <Reviews heading={reviewsHeading} variant="feature" />
-
-  <section class="section overflow-clip" aria-labelledby="recent-heading">
-    <div class="frame sd-rise flex flex-wrap items-end justify-between gap-4">
-      <h2 id="recent-heading" class="text-title" style="--i:0">Recent work</h2>
-      <a href="/gallery/" class="btn btn-line" style="--i:1">See the full gallery<Icon name="arrowRight" /></a>
-    </div>
-    <div class="mt-10 lg:mt-14"><PhotoMarquee ids={recent} label="Recent work" /></div>
-  </section>
-
-  <ContactClose closing={page.closing} />
 </BaseLayout>
+
+<style>
+  .detail details { background: var(--surface); }
+  .detail summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.25rem; cursor: pointer; list-style: none; }
+  .detail summary::-webkit-details-marker { display: none; }
+  .detail summary h2 { font-size: var(--text-sub); line-height: 1.3; margin: 0; }
+  .detail summary::after { content: "+"; flex: none; color: var(--accent); font-size: 1.5rem; font-weight: 700; line-height: 1; transition: transform 250ms var(--ease-out-soft); }
+  .detail details[open] summary::after { transform: rotate(45deg); }
+  .detail summary:hover h2 { color: var(--accent); }
+  .detail-body { padding: 0 1.25rem 1.75rem; }
+</style>

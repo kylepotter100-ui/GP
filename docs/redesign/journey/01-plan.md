@@ -1,5 +1,7 @@
 # Motion journey, Step 1. Plan (before building)
 
+**Status:** approved by the owner on 3 November 2026 ("Please implement these suggestions in a new PR and merge. Consider exciting palettes to contrast the pages."). Built and audited: see `04-step4-audits.md`.
+
 Governing rules: `design-taste-frontend-v2-experimental` (Sections 1, 4.11, 5, 6, 7 and 14).
 Interactive mock-ups, with a design note for each moment: https://claude.ai/artifact/15DNnY16uZkQfaww8K4pSE (private to the owner until shared).
 

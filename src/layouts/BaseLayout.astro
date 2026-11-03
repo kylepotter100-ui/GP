@@ -4,16 +4,16 @@ import cinzel from '@fontsource-variable/cinzel/files/cinzel-latin-wght-normal.w
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import StickyBar from '../components/StickyBar.astro';
+import CtaPill from '../components/CtaPill.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { site } from '../config/site';
 
 type SEOProps = import('astro/types').ComponentProps<typeof SEO>;
 interface Props extends SEOProps {
-  /** Where the sticky bar's "Contact Us" goes: the on-page form when there is one. */
-  contactHref?: string;
+  /** Where "Start your project" goes: the page's own brief, or the contact page's on pages without one. */
+  briefHref?: string;
 }
-const { contactHref = '/contact-us/', ...seo } = Astro.props;
+const { briefHref = '#brief', ...seo } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,19 +24,28 @@ const { contactHref = '/contact-us/', ...seo } = Astro.props;
     <meta name="theme-color" content="#f2f3f1" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#14191e" media="(prefers-color-scheme: dark)" />
     <link rel="preload" href={cinzel} as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      // Before first paint: mark script as available (the brief becomes a sheet), and play the
+      // home intro only on the first page of a visit.
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try { if (sessionStorage.getItem('gjp-intro')) d.classList.add('intro-seen'); else sessionStorage.setItem('gjp-intro', '1'); } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <SEO {...seo} />
     <slot name="head" />
   </head>
-  <body class="bg-ground text-ink antialiased">
+  <body class="bg-ground text-ink antialiased" data-follow-stage>
     <a href="#main" class="sr-only z-50 bg-deep px-4 py-3 text-on-deep focus:not-sr-only focus:fixed focus:top-2 focus:left-2">Skip to content</a>
     <Header />
     <main id="main">
       <slot />
     </main>
     <Footer />
-    <StickyBar contactHref={contactHref} />
+    <CtaPill briefHref={briefHref} />
     <CookieBanner />
     <script>
       import '../scripts/site';

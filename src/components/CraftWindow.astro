@@ -1,0 +1,84 @@
+---
+/**
+ * Chapter 4, Craft: one window, four crafts. With motion the window pins and each service rises
+ * into it with a curtain wipe and a counter-zoom, its name rolls in letter by letter and the
+ * progress line fills (src/scripts/motion.ts). Tapping a service morphs its photo into the service
+ * page's hero (cross-document view transition, names set on click in src/scripts/site.ts).
+ * With reduced motion, or without script, the same markup is a plain list of the four services.
+ * Below the window, the other services as an index.
+ */
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import ServiceIndex from './ServiceIndex.astro';
+
+interface Item { title: string; href: string; photo: string; line: string }
+interface Props { items: Item[]; more: { title: string; href: string; photo: string }[]; stage?: string }
+const { items, more, stage = 'ink' } = Astro.props;
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const chars = (t: string) => t.split(' ').map((w) => `<span class="wd">${[...w].map((c) => `<span class="ch">${esc(c)}</span>`).join('')}</span>`).join(' ');
+---
+
+<section class="craft-section" aria-labelledby="services-heading" data-stage={stage}>
+  <div class="craft" data-craft>
+    <div class="craft-stage frame">
+      <h2 id="services-heading" class="craft-label font-semibold text-muted">Our Services</h2>
+      <ol class="craft-list">
+        {
+          items.map((it, i) => (
+            <li class="craft-item" data-craft-item>
+              <a href={it.href} class="craft-photo" tabindex="-1" aria-hidden="true" data-morph style={`z-index:${i + 1}`}>
+                <Photo id={it.photo} sizes="(min-width: 1440px) 1360px, 100vw" widths={[640, 960, 1280, 1600]} alt="" class="size-full object-cover" />
+              </a>
+              <div class="craft-text">
+                <h3 class="craft-title"><a href={it.href} aria-label={it.title} data-morph set:html={chars(it.title)} /></h3>
+                <p class="craft-line text-muted">{it.line}</p>
+                <a href={it.href} class="btn btn-line mt-5 self-start" data-morph>Explore<span class="sr-only"> {it.title}</span><Icon name="arrowRight" /></a>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="craft-segs" aria-hidden="true">{items.map(() => <span><i></i></span>)}</div>
+    </div>
+  </div>
+  <div class="frame pb-24 lg:pb-36">
+    <p class="text-muted">More services</p>
+    <div class="mt-6"><ServiceIndex items={more} label="More services" /></div>
+  </div>
+</section>
+
+<style>
+  /* At rest (no script, reduced motion): a plain list. */
+  .craft-stage { padding-block: 5rem 3rem; }
+  .craft-label { font-size: 1rem; letter-spacing: 0; }
+  .craft-list { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: 3.5rem; }
+  .craft-photo { display: block; aspect-ratio: 4 / 3; overflow: clip; background: var(--surface); }
+  .craft-text { display: flex; flex-direction: column; margin-top: 1.25rem; }
+  .craft-title { font-size: clamp(1.75rem, 1.1rem + 2.2vw, 3.25rem); line-height: 1.08; margin: 0; }
+  .craft-title a:hover { color: var(--accent); }
+  .craft-title :global(.wd) { display: inline-block; overflow: clip; vertical-align: top; padding-bottom: 0.06em; }
+  .craft-title :global(.ch) { display: inline-block; }
+  .craft-line { margin-top: 0.75rem; max-width: 46ch; }
+  .craft-segs { display: none; }
+
+  /* With motion (.craft-live from motion.ts): one pinned window, one service at a time. */
+  :global(.craft-live) .craft-stage {
+    height: 100svh; min-height: 36rem; padding-block: 1.25rem calc(5.5rem + env(safe-area-inset-bottom, 0px)); /* clear of the pill */
+    display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; row-gap: 1rem; align-content: center;
+  }
+  :global(.craft-live) .craft-list, :global(.craft-live) .craft-item { display: contents; }
+  :global(.craft-live) .craft-photo { grid-row: 2; grid-column: 1; aspect-ratio: auto; height: 100%; max-height: 34rem; }
+  :global(.craft-live) .craft-segs { grid-row: 3; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+  .craft-segs span { height: 2px; background: rgb(238 241 242 / 0.18); overflow: clip; }
+  .craft-segs i { display: block; height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+  :global(.craft-live) .craft-text { grid-row: 4; grid-column: 1; margin-top: 0.25rem; min-height: 11.5rem; visibility: hidden; }
+  :global(.craft-live) .craft-text.is-active { visibility: visible; }
+  @media (min-width: 1024px) {
+    :global(.craft-live) .craft-stage { padding-block: 1.5rem 5rem; }
+    :global(.craft-live) .craft-stage { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-rows: auto minmax(0, 1fr) auto; column-gap: 3.5rem; }
+    :global(.craft-live) .craft-label { grid-column: 1 / -1; }
+    :global(.craft-live) .craft-photo { grid-row: 2 / 4; max-height: none; }
+    :global(.craft-live) .craft-segs { grid-row: 3; grid-column: 2; }
+    :global(.craft-live) .craft-text { grid-row: 2; grid-column: 2; align-self: center; min-height: 0; }
+  }
+</style>
