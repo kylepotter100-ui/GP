@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import ContactClose from '../components/ContactClose.astro';
+import Invitation from '../components/Invitation.astro';
 import { getPage } from '../lib/content';
 import { pagePhotos } from '../data/page-photos';
 
@@ -10,7 +10,7 @@ const page = getPage('contact-us');
 const crumb = 'Contact Us';
 ---
 
-<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos['contact-us'].hero} crumb={crumb} contactHref="#contact">
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={pagePhotos['contact-us'].hero} crumb={crumb}>
   <Hero h1={page.h1} photo={pagePhotos['contact-us'].hero!} crumb={crumb} subtext={page.bannerSubtext} />
-  <ContactClose closing={null} intro={page.intro} />
+  <Invitation closing={null} intro={page.intro} stage="ink" inline />
 </BaseLayout>

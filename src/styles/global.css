@@ -3,9 +3,11 @@
 @import "@fontsource-variable/open-sans/wght.css";
 
 /*
- * Overhaul design system: "Slate and Coral" (docs/redesign/overhaul/02-mode-and-levers.md).
+ * Overhaul design system: "Slate and Coral" (docs/redesign/overhaul/02-mode-and-levers.md),
+ * extended by the motion journey (docs/redesign/journey/01-plan.md) with deep stage palettes.
  * - Coral #F07957 (from the logo) is the single accent, kept exactly. Blue lives only in the logo.
- * - Light and dark themes follow the visitor's system setting; each page is one theme.
+ * - Light and dark themes follow the visitor's system setting. Each page has one deliberate
+ *   "lights down" moment (Section 4.11): from it to the end, sections sit in deep stage hues.
  * - Cinzel is display-only (H1 display line, figures, footer name). Open Sans does everything else.
  * - One radius: 0. No pure black or white.
  */
@@ -42,6 +44,49 @@
     --focus: #eef1f2;
   }
 }
+
+/* ---------------------------------------------------------------- Stage palettes
+ * Deep hues drawn from the photographs: slate (render and sky), ink (the navy kitchen island),
+ * sage (the green media wall), aubergine (dusk through a roof lantern). A section with
+ * data-stage="<hue>" switches every token inside it, so existing components render in that hue.
+ * Coral stays the one accent on all of them; every pairing passes AA (muted text 5.6:1 or better).
+ * --stage-* is the colour of "where the visitor is": src/scripts/stage.ts moves it as they scroll,
+ * and the page ground, header and footer follow it (data-follow-stage).
+ */
+:root {
+  --stage-bg: var(--ground);
+  --stage-surface: var(--surface);
+  --stage-surface-2: var(--surface-2);
+  --stage-ink: var(--ink);
+  --stage-muted: var(--muted);
+  --stage-line: var(--line);
+  --stage-focus: var(--focus);
+}
+[data-stage] {
+  --ink: #eef1f2;
+  --line: rgb(238 241 242 / 0.16);
+  --focus: #eef1f2;
+  color-scheme: dark;
+  background: var(--ground);
+  color: var(--ink);
+}
+[data-stage="slate"] { --ground: #14191e; --surface: #1e252c; --surface-2: #28313a; --muted: #a7afb6; }
+[data-stage="ink"] { --ground: #0e1a2c; --surface: #172741; --surface-2: #213656; --muted: #aab7c9; }
+[data-stage="sage"] { --ground: #12221c; --surface: #1b3028; --surface-2: #263f34; --muted: #a7baaf; }
+[data-stage="aubergine"] { --ground: #1b1424; --surface: #271e33; --surface-2: #342843; --muted: #b6abc3; }
+[data-follow-stage] {
+  --ground: var(--stage-bg);
+  --surface: var(--stage-surface);
+  --surface-2: var(--stage-surface-2);
+  --ink: var(--stage-ink);
+  --muted: var(--stage-muted);
+  --line: var(--stage-line);
+  --focus: var(--stage-focus);
+  color: var(--ink);
+}
+/* While the colour morph runs, stage sections let the moving page ground show through; the first
+ * section of each dark run stays painted so light text never sits on a light ground. */
+.stage-live [data-stage]:not([data-stage-lead]) { background: transparent; }
 
 @theme inline {
   --font-display: "Cinzel Variable", "Cinzel", "Trajan Pro", Georgia, serif;
@@ -105,7 +150,7 @@
   @media (min-width: 1024px) { :root { --gutter: 2.5rem; --header-h: 4.5rem; } }
 
   html {
-    background: var(--ground);
+    background: var(--stage-bg);
     color: var(--ink);
     font-family: var(--font-sans);
     -webkit-text-size-adjust: 100%;
@@ -189,6 +234,8 @@
   .on-photo .btn-line, .on-deep .btn-line { color: var(--on-deep); }
   .on-photo .btn-line::before, .on-deep .btn-line::before { background: var(--on-deep); }
   .on-photo .btn-line:hover, .on-deep .btn-line:hover { color: #14191e; }
+  .btn-ink { background: #14191e; color: #eef1f2; }
+  .btn-ink::before { background: #28313a; }
   .on-deep .btn-quiet { background: var(--deep-surface); color: var(--on-deep); }
   .on-deep .btn-quiet::before { background: #323c46; }
 
@@ -219,11 +266,8 @@
  * motion, everything is simply visible and still. GSAP drives the pinned scenes (src/scripts/motion.ts).
  */
 @media (prefers-reduced-motion: no-preference) {
-  /* The pinned scenes take a full screen each only when they actually pin (src/scripts/motion.ts).
-   * Below lg the stack cards keep clear of the quick-contact bar (4.25rem). */
+  /* The pinned before/after takes a full screen only when it actually pins (src/scripts/motion.ts). */
   .ba-scene-frame { min-height: 100svh; }
-  .stack-card { min-height: 100svh; padding-block: 1.5rem calc(2rem + 4.25rem + env(safe-area-inset-bottom)); }
-  @media (min-width: 1024px) { .stack-card { padding-block: 2.5rem; } }
 
   .hero-rise {
     animation: hero-rise 1.15s var(--ease-out-expo) both;
@@ -285,6 +329,42 @@
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes vt-out { to { opacity: 0; transform: translateY(-12px); } }
 @keyframes vt-in { from { opacity: 0; transform: translateY(18px); } }
+
+/* ---------------------------------------------------------------- Hero intro (home, chapter 1)
+ * The shutters open once per visit (html.intro-seen is set by the inline script in BaseLayout on
+ * later pages of the same visit), a coral chalk line snaps under the name and the H1 rises letter
+ * by letter. Pure CSS from first paint: nothing waits for script, and the photo is never hidden
+ * from assistive tech. Under reduced motion none of it runs.
+ */
+.louvres { display: none; }
+.chalk { display: block; width: 4.75rem; height: 2px; margin: 0.9rem 0 1.2rem; background: var(--accent); transform-origin: 0 50%; }
+.h1-chars .wd { display: inline-block; overflow: clip; vertical-align: top; padding-bottom: 0.08em; }
+.h1-chars .ch { display: inline-block; }
+.hero-video { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.intro-seen) .louvres {
+    position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column;
+    perspective: 1000px; pointer-events: none;
+    animation: louvres-done 0s linear 1.85s both;
+  }
+  .louvres span {
+    flex: 1; background: var(--ground); transform-origin: 50% 0; backface-visibility: hidden;
+    box-shadow: inset 0 -1px 0 rgb(20 25 30 / 0.12);
+    animation: louvre-open 0.95s cubic-bezier(0.65, 0, 0.35, 1) both;
+    animation-delay: calc(150ms + var(--i) * 60ms);
+  }
+  .chalk { animation: chalk-snap 0.55s cubic-bezier(0.34, 1.8, 0.64, 1) 0.95s both; }
+  html.intro-seen .chalk { animation-delay: 0.2s; }
+  .h1-chars .ch { animation: char-rise 0.9s var(--ease-out-expo) both; animation-delay: calc(700ms + var(--c) * 22ms); }
+  html.intro-seen .h1-chars .ch { animation-delay: calc(120ms + var(--c) * 16ms); }
+  h1:has(.h1-chars) > .hero-rise { animation-delay: 1150ms; }
+  html.intro-seen h1:has(.h1-chars) > .hero-rise { animation-delay: 500ms; }
+  .hero-video.is-playing { display: block; }
+}
+@keyframes louvre-open { from { transform: rotateX(0deg); } to { transform: rotateX(-92deg); } }
+@keyframes louvres-done { to { visibility: hidden; } }
+@keyframes chalk-snap { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes char-rise { from { transform: translateY(115%); } to { transform: none; } }
 
 /* Reduced motion: no travel, scaling or loops anywhere. */
 @media (prefers-reduced-motion: reduce) {

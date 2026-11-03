@@ -3,26 +3,37 @@
  * The page H1, wording unchanged (decision C4), set as a large Cinzel display line plus a quieter
  * Open Sans line. Separators and spaces stay in the markup (a block's edge spaces do not render),
  * so the H1's text is identical.
+ *
+ * chars: the display line rises letter by letter (split at build time, animated in CSS, so it
+ * needs no script and never flashes). The heading keeps its full text as its accessible name.
+ * vt: the display line is a shared element for page morphs (view-transition-name).
  */
 import { splitH1 } from '../lib/h1';
 
-interface Props { html: string; class?: string; animate?: boolean }
-const { html, class: className, animate = true } = Astro.props;
+interface Props { html: string; class?: string; chars?: boolean; vt?: string }
+const { html, class: className, chars = false, vt } = Astro.props;
 const { segments, size } = splitH1(html);
 const sizeClass = { xl: 'text-hero-xl', l: 'text-hero-l', m: 'text-hero-m' }[size];
+const full = segments.map((s) => s.text).join('');
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+let c = 0;
+const charHtml = (t: string) =>
+  t.split(' ').map((w) => `<span class="wd">${[...w].map((ch) => `<span class="ch" style="--c:${c++}">${esc(ch)}</span>`).join('')}</span>`).join(' ');
 let i = 0;
 ---
 
-<h1 class:list={['flex flex-col', className]}>
+<h1 class:list={['flex flex-col', className]} aria-label={chars ? full : undefined}>
   {
     segments.map((s) => {
       if (s.role === 'hidden') return <span class="sr-only">{s.text}</span>;
       const d = 120 + 140 * i++;
-      return s.role === 'display' ? (
-        <span class:list={['display hero-rise block', sizeClass]} style={`--d:${d}`}>{s.text}</span>
-      ) : (
-        <span class="hero-rise block font-sans text-lead font-semibold tracking-normal opacity-90 [text-wrap:balance]" style={`--d:${d}`}>{s.text}</span>
-      );
+      if (s.role === 'display') {
+        const style = `--d:${d}${vt ? `;view-transition-name:${vt}` : ''}`;
+        return chars
+          ? <span class:list={['display block h1-chars', sizeClass]} style={style} aria-hidden="true" set:html={charHtml(s.text)} />
+          : <span class:list={['display hero-rise block', sizeClass]} style={style}>{s.text}</span>;
+      }
+      return <span class="hero-rise block font-sans text-lead font-semibold tracking-normal opacity-90 [text-wrap:balance]" style={`--d:${d}`} aria-hidden={chars ? 'true' : undefined}>{s.text}</span>;
     })
   }
 </h1>

@@ -12,7 +12,7 @@ import Prose from './Prose.astro';
 import Photo from './Photo.astro';
 import BeforeAfterScene from './BeforeAfterScene.astro';
 import ServiceIndex from './ServiceIndex.astro';
-import ContactClose from './ContactClose.astro';
+import Invitation from './Invitation.astro';
 import Icon from './Icon.astro';
 import { getPage, text, type Block, type Chapter } from '../lib/content';
 import { fromLegacy, photosTagged } from '../lib/photos';
@@ -21,6 +21,13 @@ import { services, beforeAfter } from '../data/services';
 
 interface Props { slug: string; form?: boolean; noHeroPhoto?: boolean }
 const { slug, form = true, noHeroPhoto = false } = Astro.props;
+// Each page has its own deep stage tone for its "lights down" sections, so pages contrast with
+// one another: extensions and towns in slate, kitchens and garages in ink, joinery in sage.
+const TONES: Record<string, string> = {
+  'garage-conversions': 'ink', 'kitchen-fitting': 'ink', 'kitchen-spraying': 'ink',
+  'media-walls': 'sage', 'carpentry-services': 'sage', 'local-carpenter': 'sage',
+};
+const tone = TONES[slug] ?? 'slate';
 const page = getPage(slug);
 const plan = pagePhotos[slug] ?? {};
 // The old banner heading is the breadcrumb; casing follows the nav label where one exists.
@@ -88,7 +95,7 @@ const hasMap = (blocks: Block[]) => blocks.some((b) => b.t === 'widget' && b.kin
 const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=embed&iwloc=near';
 ---
 
-<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={plan.hero} crumb={crumb || undefined} contactHref="#contact">
+<BaseLayout title={page.title} description={page.description} canonical={page.canonical} ogPhoto={plan.hero} crumb={crumb || undefined} briefHref={form ? '#brief' : '/contact-us/#brief'}>
   {
     noHeroPhoto ? (
       <section class="pt-10 pb-6 lg:pt-20">
@@ -98,7 +105,7 @@ const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=emb
         </div>
       </section>
     ) : (
-      <Hero h1={page.h1} photo={plan.hero!} crumb={crumb || undefined} subtext={page.bannerSubtext} />
+      <Hero h1={page.h1} photo={plan.hero!} crumb={crumb || undefined} subtext={page.bannerSubtext} vt />
     )
   }
 
@@ -169,10 +176,10 @@ const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=emb
     </div>
   )}
 
-  {pair && <BeforeAfterScene before={pair.before} after={pair.after} label={pair.label} />}
+  {pair && <BeforeAfterScene before={pair.before} after={pair.after} label={pair.label} stage={tone} />}
 
   {mosaic.length >= 3 && (
-    <section class="section bg-surface" aria-labelledby="recent-heading">
+    <section class="section" aria-labelledby="recent-heading" data-stage={tone}>
       <div class="frame">
         <div class="sd-rise flex flex-wrap items-end justify-between gap-4">
           <h2 id="recent-heading" class="text-title" style="--i:0">Recent work</h2>
@@ -190,7 +197,7 @@ const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=emb
   )}
 
   {!listsServices && slug !== 'privacy-policy' && (
-    <section class="section" aria-labelledby="services-heading">
+    <section class="section" aria-labelledby="services-heading" data-stage={tone}>
       <div class="frame">
         <h2 id="services-heading" class="sd-rise text-title">Our Services</h2>
         <div class="mt-10"><ServiceIndex items={otherServices} headingLevel="p" label="Our services" /></div>
@@ -198,5 +205,5 @@ const mapSrc = 'https://maps.google.com/maps?q=Cambridgeshire&t=m&z=8&output=emb
     </section>
   )}
 
-  <ContactClose closing={page.closing} form={form} />
+  <Invitation closing={page.closing} form={form} stage={tone} />
 </BaseLayout>

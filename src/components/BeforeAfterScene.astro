@@ -1,18 +1,35 @@
 ---
 /**
- * Signature scene: a pinned, scroll-scrubbed before/after. As the visitor scrolls, the "before"
- * photo wipes away to reveal the "after" (src/scripts/motion.ts). The drag slider stays usable at
- * all times; with reduced motion, or without script, the scene is simply the drag slider.
+ * Chapter 3, Transformation: a pinned, scroll-scrubbed before/after in three acts (motion.ts).
+ *   Before: the house as it was.
+ *   The plan: a coral scan line draws the finished job over it, as a line drawing made from the
+ *     real "after" photo (scripts/line-art.mjs).
+ *   After: the finished photo sweeps in behind the handle.
+ * This is where the lights go down: the section is a deep stage (data-stage). Once the scene has
+ * played, or if the visitor drags, the slider is theirs. With reduced motion, or without script,
+ * the scene is simply the drag slider.
  */
 import BeforeAfter from './BeforeAfter.astro';
+import { lines } from '../lib/lines';
 
-interface Props { before: string; after: string; label: string; heading?: string; id?: string }
-const { before, after, label, heading = 'Before and after', id = 'before-after' } = Astro.props;
+interface Props { before: string; after: string; label: string; heading?: string; id?: string; stage?: string }
+const { before, after, label, heading = 'Before and after', id = 'before-after', stage = 'slate' } = Astro.props;
 ---
 
-<section class="ba-scene relative bg-ground" aria-labelledby={`${id}-heading`} data-ba-scrub>
+<section class="ba-scene relative" aria-labelledby={`${id}-heading`} data-ba-scrub data-stage={stage}>
   <div class="ba-scene-frame frame flex flex-col justify-center py-8 lg:py-10">
     <h2 id={`${id}-heading`} class="text-title">{heading}</h2>
-    <BeforeAfter before={before} after={after} label={label} sizes="(min-width: 1440px) 1360px, 100vw" ratio="h-[58svh] lg:h-[70svh]" class="mt-6" />
+    <BeforeAfter before={before} after={after} label={label} lines={lines(after)} sizes="(min-width: 1440px) 1360px, 100vw" ratio="h-[56svh] lg:h-[68svh]" class="mt-6" />
+    <div class="ba-foot" aria-hidden="true">
+      <span class="display ba-act" data-act-label>Before</span>
+      <span class="text-muted">{label}</span>
+    </div>
   </div>
 </section>
+
+<style>
+  .ba-foot { display: none; }
+  :global(.ba-acts) + .ba-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
+  :global(.ba-acts) :global(figcaption) { display: none; }
+  .ba-act { font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem); line-height: 1; letter-spacing: 0.02em; min-width: 7ch; }
+</style>

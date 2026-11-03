@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 import { site } from '../config/site';
 ---
 
-<BaseLayout title={`Page not found | ${site.name}`} description="Sorry, that page doesn’t exist." canonical={`${site.url}/404/`} noindex>
+<BaseLayout title={`Page not found | ${site.name}`} description="Sorry, that page doesn’t exist." canonical={`${site.url}/404/`} noindex briefHref="/contact-us/#brief">
   <section class="section">
     <div class="frame">
       <h1 class="display text-hero-xl">Not found</h1>

@@ -1,0 +1,57 @@
+---
+/**
+ * Chapter 7, Invitation: every path ends here (docs/redesign/journey/01-plan.md).
+ * A coral card carries one invitation, "Start your project"; the travelling pill lands on its
+ * button (data-pill-land). The page's own closing copy (verbatim, with its links) and the direct
+ * routes follow, then the brief itself (ProjectBrief), which opens as a sheet from any
+ * "Start your project" button. The section sits in the page's stage hue.
+ */
+import Prose from './Prose.astro';
+import Icon from './Icon.astro';
+import ProjectBrief from './ProjectBrief.astro';
+import type { Chapter, Block } from '../lib/content';
+import { site } from '../config/site';
+
+interface Props { closing: Chapter | null; form?: boolean; intro?: Block[]; stage?: string; inline?: boolean }
+const { closing, form = true, intro, stage = 'slate', inline = false } = Astro.props;
+---
+
+<section id="contact" class="section invite" aria-labelledby="contact-heading" data-stage={stage}>
+  <div class="frame">
+    <div class="invite-card">
+      {closing ? <h2 id="contact-heading" class="invite-kicker" set:html={closing.heading} /> : <h2 id="contact-heading" class="invite-kicker">Contact Us</h2>}
+      <p class="display invite-line">Let’s talk about bringing your ideas to life.</p>
+      {form && <p class="invite-sub">Tell us what you are planning in five quick steps, with photos if you have them.</p>}
+      <div class="invite-actions">
+        {form
+          ? <a href="#brief" class="btn btn-ink invite-cta" data-open-brief data-pill-land>Start your project<Icon name="arrowRight" /></a>
+          : <a href={`tel:${site.phone.tel}`} class="btn btn-ink invite-cta" data-track="call"><Icon name="phone" />Call Us<span class="text-small opacity-90">{site.phone.display}</span></a>}
+        {form && <p class="invite-call">Or call us on <a href={`tel:${site.phone.tel}`} data-track="call">{site.phone.display}</a></p>}
+      </div>
+    </div>
+
+    <div class="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12">
+      <Prose blocks={closing ? closing.blocks : (intro ?? [])} class="measure text-muted [&_p]:text-ink lg:col-span-7" />
+      <div class="grid content-start gap-2 sm:max-w-sm lg:col-span-4 lg:col-start-9">
+        <a href={site.whatsapp.href} class="btn btn-quiet justify-start" data-track="whatsapp" target="_blank" rel="noopener"><Icon name="whatsapp" /><span>WhatsApp</span></a>
+        <a href={`mailto:${site.email}`} class="btn btn-quiet justify-start"><Icon name="envelope" /><span>Send an Email</span></a>
+      </div>
+    </div>
+
+    {form && <ProjectBrief inline={inline} />}
+  </div>
+</section>
+
+<style>
+  .invite-card { position: relative; overflow: clip; background: var(--accent); color: #14191e; padding: 2.5rem 1.5rem 2rem; }
+  @media (min-width: 1024px) { .invite-card { padding: 4.5rem 4rem 4rem; } }
+  .invite-kicker { font-size: 1rem; font-weight: 700; letter-spacing: 0; margin: 0; color: #14191e; }
+  .invite-line { font-size: clamp(2rem, 1.1rem + 3.6vw, 4.5rem); line-height: 1.04; margin: 1rem 0 0; max-width: 18ch; color: #14191e; }
+  .invite-sub { margin: 1.25rem 0 0; max-width: 40ch; font-size: var(--text-lead); line-height: 1.45; color: #14191e; }
+  .invite-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 2rem; }
+  .invite-cta { min-height: 4rem; padding-inline: 1.75rem; font-size: 1.125rem; }
+  @media (max-width: 639px) { .invite-cta { width: 100%; } }
+  .invite-call { margin: 0; font-weight: 600; color: #14191e; }
+  .invite-call a { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.2em; font-variant-numeric: tabular-nums; }
+  .invite-card :global(:focus-visible) { outline-color: #14191e; }
+</style>

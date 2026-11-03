@@ -1,0 +1,30 @@
+---
+/**
+ * The travelling call to action (docs/redesign/journey/01-plan.md, decision D13 replaced):
+ * "Start your project", with Call one tap away. It appears once the hero's own buttons have
+ * scrolled away, rides in the thumb zone, and lands on the invitation's button when that arrives
+ * (src/scripts/site.ts). Pages without the brief send it to the contact page.
+ */
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+
+interface Props { briefHref?: string }
+const { briefHref = '#brief' } = Astro.props;
+---
+
+<div class="pill" data-pill inert>
+  <div class="pill-in" data-pill-in>
+    <a href={briefHref} class="btn btn-accent pill-main" data-open-brief>Start your project<Icon name="arrowRight" /></a>
+    <a href={`tel:${site.phone.tel}`} class="pill-call" data-track="call" aria-label={`Call us on ${site.phone.display}`}><Icon name="phone" class="icon size-6" /></a>
+  </div>
+</div>
+
+<style>
+  .pill { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; justify-content: center; padding: 0 var(--gutter) calc(0.9rem + env(safe-area-inset-bottom, 0px)); pointer-events: none; }
+  .pill-in { display: flex; gap: 0.375rem; opacity: 0; transform: translateY(1.5rem); transition: opacity 300ms var(--ease-out-soft), transform 450ms var(--ease-out-soft); transform-origin: 50% 50%; }
+  .pill.is-shown .pill-in { opacity: 1; transform: none; pointer-events: auto; }
+  .pill-main { min-height: 3.5rem; box-shadow: 0 16px 36px -14px rgb(0 0 0 / 0.6); }
+  .pill-call { display: grid; place-items: center; width: 3.5rem; min-height: 3.5rem; background: #14191e; color: #eef1f2; box-shadow: 0 16px 36px -14px rgb(0 0 0 / 0.6); transition: background-color 200ms ease; }
+  .pill-call:hover { background: #28313a; }
+  .pill-call:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>

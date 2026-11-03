@@ -3,6 +3,11 @@
  * Cinematic full-bleed hero: a real photograph that settles in, a neutral slate scrim, and the
  * text block anchored top-left (top padding stays within the Pre-Flight cap). The photo is visible
  * from the first paint (it only scales), so the largest image never waits for an animation.
+ *
+ * intro (home): the shutters open once per visit, a coral chalk line snaps under the name and the
+ * H1 rises letter by letter. All of it is CSS, timed from first paint, so nothing waits for script.
+ * vt: the photo and the H1 display line are shared elements for page morphs (view transitions).
+ * video: an optional silent loop of real work over the photo (the photo is its poster).
  */
 import Photo from './Photo.astro';
 import Icon from './Icon.astro';
@@ -17,26 +22,36 @@ interface Props {
   crumb?: string;
   /** Small line above the H1 (the home page shows the business name here). */
   kicker?: string;
-  contactHref?: string;
   tall?: boolean;
   position?: string;
+  intro?: boolean;
+  vt?: boolean;
+  video?: string;
 }
-const { h1, photo, subtext, crumb, kicker, contactHref = '#contact', tall = false, position = 'center' } = Astro.props;
+const { h1, photo, subtext, crumb, kicker, tall = false, position = 'center', intro = false, vt = false, video } = Astro.props;
+const photoStyle = `object-position:${position}${vt ? ';view-transition-name:svc-photo' : ''}`;
 ---
 
 <section class:list={['on-photo relative isolate flex overflow-hidden bg-deep text-on-deep', tall ? 'min-h-[88svh] lg:min-h-[92svh]' : 'min-h-[74svh] lg:min-h-[78svh]']}>
   <div class="absolute inset-0 -z-10">
-    <Photo id={photo} priority sizes="100vw" widths={[640, 960, 1280, 1600]} class="hero-settle absolute inset-0 size-full object-cover" style={`object-position:${position}`} />
+    <Photo id={photo} priority sizes="100vw" widths={[640, 960, 1280, 1600]} class="hero-settle absolute inset-0 size-full object-cover" style={photoStyle} />
+    {video && <video class="hero-video absolute inset-0 size-full object-cover" muted loop playsinline preload="none" aria-hidden="true" data-hero-video data-src={video}></video>}
     <div class="scrim-top absolute inset-0"></div>
   </div>
+  {intro && (
+    <div class="louvres" aria-hidden="true">
+      {Array.from({ length: 9 }).map((_, i) => <span style={`--i:${i}`}></span>)}
+    </div>
+  )}
   <div class="frame flex w-full flex-col pt-10 pb-12 lg:pt-20 lg:pb-16">
     <div class="max-w-[68rem]">
       {crumb && <div class="hero-rise" style="--d:40"><Breadcrumb crumb={crumb} /></div>}
       {kicker && <p class="hero-rise font-semibold opacity-90" style="--d:40" data-brand-line>{kicker}</p>}
-      <H1 html={h1} class="mt-5 gap-3 lg:mt-7 lg:gap-4" />
-      {subtext && <p class="hero-rise mt-6 max-w-[38ch] text-[1.0625rem] leading-[1.5] opacity-95 min-[380px]:text-lead" style="--d:520" data-hero-subtext>{subtext}</p>}
-      <div class="hero-rise mt-8 flex flex-wrap gap-2" style="--d:640" data-hero-actions>
-        <a href={contactHref} class="btn btn-accent">Contact Us<Icon name="arrowRight" /></a>
+      {intro && <span class="chalk" aria-hidden="true"></span>}
+      <H1 html={h1} chars={intro} vt={vt ? 'svc-title' : undefined} class:list={[intro ? 'mt-0' : 'mt-5 lg:mt-7', 'gap-3 lg:gap-4']} />
+      {subtext && <p class="hero-rise mt-6 max-w-[38ch] text-[1.0625rem] leading-[1.5] opacity-95 min-[380px]:text-lead" style={`--d:${intro ? 1250 : 520}`} data-hero-subtext>{subtext}</p>}
+      <div class="hero-rise mt-8 flex flex-wrap gap-2" style={`--d:${intro ? 1400 : 640}`} data-hero-actions>
+        <a href="#brief" class="btn btn-accent" data-open-brief>Start your project<Icon name="arrowRight" /></a>
         <a href={`tel:${site.phone.tel}`} class="btn btn-line" data-track="call"><Icon name="phone" />Call Us<span class="text-small font-semibold opacity-90">{site.phone.display}</span></a>
       </div>
     </div>

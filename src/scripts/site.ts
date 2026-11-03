@@ -5,6 +5,7 @@
  */
 import { site } from '../config/site';
 import { setBA } from './ba';
+import { stages, stepped } from './stage';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $$ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => [...root.querySelectorAll<T>(sel)] as T[];
@@ -29,29 +30,6 @@ function initMenu() {
   $$('[data-menu-open]').forEach((b) => b.addEventListener('click', () => dialog.showModal()));
   $$('[data-menu-close]', dialog).forEach((b) => b.addEventListener('click', () => dialog.close()));
   dialog.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) dialog.close(); });
-}
-
-/* ---------- Sticky mobile bar: shows once the hero buttons are off screen. ---------- */
-function initStickyBar() {
-  const bar = document.querySelector<HTMLElement>('[data-sticky-bar]');
-  if (!bar) return;
-  const show = (on: boolean) => { bar.classList.toggle('is-shown', on); bar.toggleAttribute('inert', !on); };
-  const anchor = document.querySelector('[data-hero-actions]');
-  const footer = document.querySelector('footer');
-  let pastHero = !anchor;
-  let atContact = false;
-  const update = () => show(pastHero && !atContact);
-  if (anchor) new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; update(); }).observe(anchor);
-  // Step aside while the visitor is at the contact section or footer, where the same actions are on the page.
-  const contact = document.getElementById('contact');
-  const seen = new Set<Element>();
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target)));
-    atContact = seen.size > 0; update();
-  }, { threshold: 0.15 });
-  if (contact) io.observe(contact);
-  if (footer) io.observe(footer);
-  update();
 }
 
 /* ---------- Before/after reveal. ---------- */
@@ -225,6 +203,7 @@ function initForms() {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      form.dispatchEvent(new Event('form:compose')); // the brief writes its choices into the message
       form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
       const invalid = [...form.elements].filter((el) => (el as HTMLInputElement).willValidate && !(el as HTMLInputElement).checkValidity()) as HTMLInputElement[];
       if (invalid.length) {
@@ -242,9 +221,11 @@ function initForms() {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || !data.ok) throw new Error(data.error || 'send failed');
         track('generate_lead', { form: 'contact', page: location.pathname });
+        form.dispatchEvent(new Event('form:sent'));
         form.hidden = true;
         if (success) { success.classList.remove('hidden'); success.focus(); }
       } catch (err) {
+        form.dispatchEvent(new Event('form:failed'));
         status.textContent = `Sorry, that didn’t send. Please try again, or call ${site.phone.display}.`;
         (window as any).turnstile?.reset?.();
       } finally {
@@ -316,15 +297,260 @@ function initGallery() {
   dialog.addEventListener('pointerup', (e) => { const dx = e.clientX - sx; if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1)); });
 }
 
+
+/* ---------- Start your project: the stepped brief, opened as a sheet. ---------- */
+function initBrief() {
+  const host = document.querySelector<HTMLElement>('[data-brief]');
+  const openers = $$<HTMLAnchorElement>('[data-open-brief]');
+  if (!host) {
+    // No brief on this page: "Start your project" goes to the contact page's brief.
+    openers.forEach((a) => { if (a.getAttribute('href') === '#brief') a.href = '/contact-us/#brief'; });
+    return;
+  }
+  const form = host.querySelector<HTMLFormElement>('[data-brief-form]')!;
+  const steps = $$<HTMLFieldSetElement>('.bstep', form);
+  const count = host.querySelector<HTMLElement>('[data-brief-count]')!;
+  const progress = host.querySelector<HTMLElement>('[data-brief-progress]')!;
+  const note = form.querySelector<HTMLTextAreaElement>('[data-brief-note]')!;
+  const first = form.querySelector<HTMLInputElement>('[name="name-1-first-name"]')!;
+  const last = form.querySelector<HTMLInputElement>('[name="name-1-last-name"]')!;
+  const email = form.querySelector<HTMLInputElement>('[name="email-1"]')!;
+  const upload = form.querySelector<HTMLInputElement>('[data-upload]')!;
+  const thumbs = form.querySelector<HTMLElement>('[data-thumbs]')!;
+  const inline = host.hasAttribute('data-inline');
+  const answers: Record<string, string> = {};
+  let current = 1;
+  let opener: HTMLElement | null = null;
+
+  $$('[data-js-only]', host).forEach((el) => (el.hidden = false));
+  note.required = false; // the choices fill the message, so a note is optional
+
+  const show = (n: number, focus = true) => {
+    current = n;
+    steps.forEach((st) => st.classList.toggle('is-current', Number(st.dataset.step) === n));
+    count.textContent = `Step ${n} of ${steps.length}`;
+    progress.style.transform = `scaleX(${n / steps.length})`;
+    const step = steps[n - 1];
+    if (!reduceMotion) step.animate([{ opacity: 0, transform: 'translateX(28px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    if (focus) step.querySelector<HTMLElement>('.bstep-title')?.focus({ preventScroll: true });
+    if (host.classList.contains('is-sheet')) host.scrollTop = 0;
+  };
+  show(1, false);
+
+  $$<HTMLElement>('[data-pick]', form).forEach((group) => {
+    group.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button');
+      if (!btn) return;
+      $$('button', group).forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      answers[group.dataset.pick!] = btn.dataset.value!;
+      window.setTimeout(() => show(current + 1), reduceMotion ? 0 : 280);
+    });
+  });
+  $$('[data-brief-back]', form).forEach((b) => b.addEventListener('click', () => show(Math.max(1, current - 1))));
+  form.querySelector('[data-brief-next]')!.addEventListener('click', () => {
+    const bad = [first, email].find((el) => !el.checkValidity());
+    [first, email].forEach((el) => el.toggleAttribute('aria-invalid', !el.checkValidity()));
+    if (bad) { bad.reportValidity(); bad.focus(); return; }
+    show(5);
+  });
+  upload.addEventListener('change', () => {
+    thumbs.replaceChildren(...[...(upload.files ?? [])].slice(0, 5).filter((f) => f.type.startsWith('image/')).map((f) => {
+      const img = document.createElement('img');
+      img.alt = '';
+      img.src = URL.createObjectURL(f);
+      return img;
+    }));
+  });
+
+  // Choices go into the message (the Worker and the six field names are unchanged).
+  form.addEventListener('form:compose', () => {
+    const lines = Object.entries(answers).map(([k, v]) => `${k}: ${v}`);
+    const text = note.value.replace(/^(Project|Where|Start): .*\n?/gm, '').trim();
+    note.value = [lines.join('\n'), text].filter(Boolean).join('\n\n') || 'Project enquiry';
+  });
+  form.addEventListener('form:sent', () => {
+    const files = upload.files?.length ?? 0;
+    const rows: [string, string][] = [
+      ['Project', answers.Project ?? 'To discuss'],
+      ['Where', answers.Where ?? 'To discuss'],
+      ['Start', answers.Start ?? 'To discuss'],
+      ['Photos', files ? `${files} attached` : 'None yet'],
+      ['Name', `${first.value} ${last.value}`.trim()],
+    ];
+    const dl = host.querySelector<HTMLElement>('[data-ticket]')!;
+    dl.replaceChildren(...rows.map(([k, v], i) => {
+      const row = document.createElement('div');
+      row.style.setProperty('--r', String(i));
+      const dt = document.createElement('dt'); dt.textContent = k;
+      const dd = document.createElement('dd'); dd.textContent = v;
+      row.append(dt, dd);
+      return row;
+    }));
+    host.querySelector<HTMLElement>('[data-done-msg]')!.textContent = `Thank you, ${first.value.trim() || 'and welcome'}. Your brief has reached us.`;
+    count.textContent = 'Sent';
+    progress.style.transform = 'scaleX(1)';
+  });
+
+  // Sheet: grows out of the button that opened it, and shrinks back into it.
+  const pill = document.querySelector<HTMLElement>('[data-pill]');
+  const origin = () => {
+    const r = (opener ?? host).getBoundingClientRect();
+    return `${Math.round(r.left + r.width / 2)}px ${Math.round(r.top + r.height / 2)}px`;
+  };
+  const open = (from: HTMLElement | null) => {
+    opener = from;
+    host.classList.add('is-sheet');
+    host.setAttribute('role', 'dialog');
+    host.setAttribute('aria-modal', 'true');
+    document.documentElement.style.overflow = 'hidden';
+    pill?.setAttribute('inert', '');
+    if (!reduceMotion) host.animate([{ clipPath: `circle(0px at ${origin()})` }, { clipPath: `circle(150% at ${origin()})` }], { duration: 700, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' });
+    steps[current - 1].querySelector<HTMLElement>('.bstep-title')?.focus({ preventScroll: true });
+  };
+  const close = () => {
+    const done = () => {
+      host.classList.remove('is-sheet');
+      host.removeAttribute('role');
+      host.removeAttribute('aria-modal');
+      document.documentElement.style.overflow = '';
+      if (pill?.classList.contains('is-shown')) pill.removeAttribute('inert');
+      opener?.focus({ preventScroll: true });
+    };
+    if (reduceMotion) { done(); return; }
+    host.animate([{ clipPath: `circle(150% at ${origin()})` }, { clipPath: `circle(0px at ${origin()})` }], { duration: 480, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' }).finished.then(done, done);
+  };
+  openers.forEach((a) => a.addEventListener('click', (e) => {
+    if (inline) return; // contact page: the brief is right there; the link scrolls to it
+    e.preventDefault();
+    open(a);
+  }));
+  $$('[data-brief-close]', host).forEach((b) => b.addEventListener('click', close));
+  host.addEventListener('keydown', (e) => { if (e.key === 'Escape' && host.classList.contains('is-sheet')) close(); });
+  // Keep keyboard focus inside the open sheet.
+  host.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !host.classList.contains('is-sheet')) return;
+    const f = $$<HTMLElement>('a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])', host).filter((el) => el.offsetParent !== null);
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  });
+  if (location.hash === '#brief' && !inline) open(null);
+}
+
+/* ---------- The travelling call to action: shows after the hero, lands on the invitation. ---------- */
+function initPill() {
+  const pill = document.querySelector<HTMLElement>('[data-pill]');
+  if (!pill) return;
+  const inner = pill.querySelector<HTMLElement>('[data-pill-in]')!;
+  const target = document.querySelector<HTMLElement>('[data-pill-land]');
+  const anchor = document.querySelector('[data-hero-actions]');
+  const footer = document.querySelector('footer');
+  let pastHero = !anchor, landed = false, atFooter = false, shown = false;
+
+  const set = (on: boolean) => {
+    if (on === shown) return;
+    shown = on;
+    pill.classList.toggle('is-shown', on);
+    pill.toggleAttribute('inert', !on);
+  };
+  const land = () => {
+    if (!target || !shown || reduceMotion) { set(false); return; }
+    // Fly the pill onto the invitation's button, then hand over to it.
+    const a = inner.getBoundingClientRect(), b = target.getBoundingClientRect();
+    const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+    inner.animate([{ transform: 'none', opacity: 1 }, { transform: `translate(${dx}px, ${dy}px) scale(${b.width / a.width}, ${b.height / a.height})`, opacity: 0 }], { duration: 650, easing: 'cubic-bezier(0.65, 0, 0.35, 1)' });
+    target.animate([{ transform: 'scale(0.96)' }, { transform: 'scale(1.03)', offset: 0.6 }, { transform: 'none' }], { duration: 520, delay: 480, easing: 'ease-out' });
+    set(false);
+  };
+  const update = () => {
+    const want = pastHero && !landed && !atFooter;
+    if (!want && shown && landed) land(); else set(want);
+  };
+  if (anchor) new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; update(); }).observe(anchor);
+  if (target) new IntersectionObserver(([e]) => { landed = e.isIntersecting || e.boundingClientRect.top < 0; update(); }, { threshold: 0.9 }).observe(target);
+  if (footer && !target) new IntersectionObserver(([e]) => { atFooter = e.isIntersecting; update(); }).observe(footer);
+  update();
+}
+
+/* ---------- Reviews deck: flick the top card with a thumb, or use Next review. ---------- */
+function initDeck() {
+  $$('[data-deck]').forEach((wrap) => {
+    const deck = wrap.querySelector<HTMLElement>('.deck')!;
+    let cards = $$<HTMLElement>('.deck-card', deck);
+    if (cards.length < 2) return;
+    wrap.classList.add('deck-live');
+    wrap.querySelector<HTMLElement>('[data-deck-ctrl]')!.hidden = false;
+    const tilt = [0, -3, 2.5];
+    const layout = () => cards.forEach((c, i) => {
+      c.style.zIndex = String(cards.length - i);
+      c.style.transform = `translateY(${i * 12}px) rotate(${tilt[i] ?? 0}deg) scale(${1 - i * 0.045})`;
+      c.style.transition = reduceMotion ? 'none' : 'transform 500ms cubic-bezier(0.16, 1, 0.3, 1)';
+      c.setAttribute('aria-hidden', String(i > 0));
+    });
+    layout();
+    const flick = (dir: number) => {
+      const top = cards[0];
+      const next = () => { cards = [...cards.slice(1), top]; layout(); };
+      if (reduceMotion) { next(); return; }
+      top.style.transition = 'transform 320ms cubic-bezier(0.55, 0, 1, 0.45)';
+      top.style.transform = `translateX(${dir * (deck.offsetWidth + 80)}px) rotate(${dir * 16}deg)`;
+      window.setTimeout(next, 320);
+    };
+    wrap.querySelector('[data-deck-next]')!.addEventListener('click', () => flick(1));
+    let drag: { x: number; y: number; dx: number; id: number; on: boolean } | null = null;
+    deck.addEventListener('pointerdown', (e) => { if (cards[0].contains(e.target as Node)) drag = { x: e.clientX, y: e.clientY, dx: 0, id: e.pointerId, on: false }; });
+    deck.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.on) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        if (Math.abs(dy) > Math.abs(dx)) { drag = null; return; } // a vertical swipe scrolls the page
+        drag.on = true; deck.setPointerCapture(e.pointerId); cards[0].style.transition = 'none';
+      }
+      drag.dx = dx;
+      cards[0].style.transform = `translateX(${dx}px) rotate(${dx / 18}deg)`;
+    });
+    const end = () => {
+      if (!drag) return;
+      const { dx, on } = drag; drag = null;
+      if (!on) return;
+      if (Math.abs(dx) > 90) flick(Math.sign(dx)); else layout();
+    };
+    deck.addEventListener('pointerup', end);
+    deck.addEventListener('pointercancel', end);
+  });
+}
+
+/* ---------- Page morph: the tapped service photo grows into the service page's hero. ---------- */
+function initMorph() {
+  $$<HTMLAnchorElement>('[data-craft] a[data-morph]').forEach((a) => a.addEventListener('click', () => {
+    const item = a.closest('[data-craft-item]');
+    if (!item) return;
+    $$<HTMLElement>('[style*="view-transition-name"]').forEach((el) => (el.style.viewTransitionName = ''));
+    const img = item.querySelector<HTMLElement>('.craft-photo img');
+    const title = item.querySelector<HTMLElement>('.craft-title');
+    if (img) img.style.viewTransitionName = 'svc-photo';
+    if (title) title.style.viewTransitionName = 'svc-title';
+  }));
+  // Coming back (bfcache), clear the names so the next tap starts clean.
+  window.addEventListener('pageshow', () => $$<HTMLElement>('[data-craft] [style*="view-transition-name"]').forEach((el) => (el.style.viewTransitionName = '')));
+}
+
 initDropdown();
 initMenu();
-initStickyBar();
 initBeforeAfter();
 initSwipe();
 initConsent();
 initForms();
 initGallery();
 initChapterIndex();
+initBrief();
+initPill();
+initDeck();
+initMorph();
+
+// Stage colour: with reduced motion it steps; otherwise motion.ts morphs it smoothly.
+if (reduceMotion) { const s = stages(); if (s) stepped(s); }
 
 // Choreographed motion (GSAP + ScrollTrigger) only for visitors who have not asked for reduced motion.
 if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) import('./motion');

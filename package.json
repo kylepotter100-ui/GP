@@ -12,7 +12,8 @@
     "check": "astro check",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
-    "audit": "node scripts/dash-audit.mjs && node scripts/preservation-audit.mjs"
+    "audit": "node scripts/dash-audit.mjs && node scripts/preservation-audit.mjs",
+    "line-art": "node scripts/line-art.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

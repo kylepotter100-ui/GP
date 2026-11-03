@@ -2,7 +2,13 @@
 /**
  * Before/after reveal. Drag (pointer), tap, or use the arrow keys on the focused slider.
  * Motion is user-driven only, so it still works with reduced motion. Without script it rests at 50%.
+ *
+ * lines: "the plan", a line drawing made from the real after photo (scripts/line-art.mjs). The
+ * scroll-scrubbed scene draws it over the before photo, then sweeps the after photo in
+ * (src/scripts/motion.ts). It is decorative and stays hidden unless that scene runs.
  */
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Photo from './Photo.astro';
 import Icon from './Icon.astro';
 
@@ -14,8 +20,10 @@ interface Props {
   priority?: boolean;
   class?: string;
   ratio?: string;
+  lines?: ImageMetadata;
 }
-const { before, after, label, sizes, priority = false, class: className, ratio = 'aspect-[4/3]' } = Astro.props;
+const { before, after, label, sizes, priority = false, class: className, ratio = 'aspect-[4/3]', lines } = Astro.props;
+const plan = lines ? await getImage({ src: lines, width: Math.min(1000, lines.width), format: 'webp', quality: 50 }) : null;
 ---
 
 <figure class:list={['ba', className]} data-ba style="--pos: 50%">
@@ -24,6 +32,14 @@ const { before, after, label, sizes, priority = false, class: className, ratio =
     <div class="ba-before absolute inset-0" aria-hidden="false">
       <Photo id={before} sizes={sizes} loading={priority ? 'eager' : 'lazy'} class="absolute inset-0 size-full object-cover" />
     </div>
+    {plan && (
+      <div class="ba-plan" aria-hidden="true">
+        <span class="ba-dim"></span>
+        <span class="ba-grid"></span>
+        <img class="ba-lines" src={plan.src} width={plan.attributes.width} height={plan.attributes.height} alt="" loading="lazy" decoding="async" />
+        <span class="ba-scan"></span>
+      </div>
+    )}
     <div class="ba-handle pointer-events-none absolute inset-y-0 w-0" aria-hidden="true">
       <span class="absolute inset-y-0 -left-px w-[3px] bg-ground"></span>
       <span class="ba-knob absolute top-1/2 left-0 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center bg-ground text-ink shadow-[0_6px_18px_-6px_rgb(21_25_29/0.5)] transition-transform duration-150">
@@ -63,8 +79,25 @@ const { before, after, label, sizes, priority = false, class: className, ratio =
     pointer-events: none;
   }
   .ba-stage:has(.ba-range:focus-visible) .ba-knob {
-    outline: 3px solid var(--color-brand);
+    outline: 3px solid var(--accent);
     outline-offset: 3px;
   }
   .ba-stage:active .ba-knob { transform: translate(-50%, -50%) scale(0.94); }
+
+  /* The plan layer only shows while the scroll-scrubbed scene runs (.ba-acts, set by motion.ts). */
+  .ba-plan { display: none; }
+  :global(.ba-acts) .ba-plan { display: block; position: absolute; inset: 0; pointer-events: none; }
+  .ba-plan > * { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ba-dim { background: #14191e; opacity: 0; }
+  .ba-grid {
+    opacity: 0;
+    background-image: linear-gradient(rgb(238 241 242 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(238 241 242 / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .ba-lines { object-fit: cover; clip-path: inset(0 100% 0 0); mix-blend-mode: screen; }
+  .ba-scan { opacity: 0; }
+  .ba-scan::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 2px; background: var(--accent); box-shadow: 0 0 22px 3px rgb(240 121 87 / 0.55); }
+  /* While the plan is drawn, the drag handle steps back; it returns for the "after". */
+  :global(.ba-acts) .ba-handle { transition: opacity 200ms ease; }
+  :global(.ba-acts[data-act="plan"]) .ba-handle { opacity: 0; }
 </style>

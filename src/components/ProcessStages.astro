@@ -1,0 +1,65 @@
+---
+/**
+ * Chapter 5, Process: "From first sketch to final polish." Each stage starts as a line drawing of
+ * the real photo (scripts/line-art.mjs) and develops into the photograph as it reaches the middle
+ * of the screen; a coral thread draws down the page to link the stages (src/scripts/motion.ts).
+ * At rest the photographs simply show. Every line of copy is lifted from the existing site.
+ */
+import { getImage } from 'astro:assets';
+import Photo from './Photo.astro';
+import { lines } from '../lib/lines';
+
+interface Stage { title: string; text: string; photo: string }
+interface Props { heading: string; stages: Stage[]; stage?: string }
+const { heading, stages, stage = 'sage' } = Astro.props;
+const drawn = await Promise.all(stages.map(async (s) => {
+  const l = lines(s.photo);
+  return l ? getImage({ src: l, width: Math.min(800, l.width), format: 'webp', quality: 50 }) : null;
+}));
+---
+
+<section class="section process" aria-labelledby="process-heading" data-stage={stage} data-process>
+  <div class="frame">
+    <h2 id="process-heading" class="max-w-[22ch] text-title">{heading}</h2>
+    <div class="process-wrap">
+      <span class="thread" aria-hidden="true"><i></i></span>
+      <ol class="stages">
+        {
+          stages.map((s, i) => (
+            <li class="stage" data-stage-step>
+              <div class="stage-media">
+                <Photo id={s.photo} sizes="(min-width: 1024px) 40vw, 100vw" widths={[480, 720, 960]} class="stage-photo" />
+                {drawn[i] && <img class="stage-lines" src={drawn[i]!.src} alt="" aria-hidden="true" loading="lazy" decoding="async" width={drawn[i]!.attributes.width} height={drawn[i]!.attributes.height} />}
+              </div>
+              <div class="stage-copy">
+                <h3 class="text-sub">{s.title}</h3>
+                <p class="mt-2 text-muted">{s.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-wrap { position: relative; margin-top: 3rem; padding-left: 2rem; }
+  .thread { position: absolute; left: 0.3rem; top: 0.5rem; bottom: 0.5rem; width: 2px; background: rgb(238 241 242 / 0.12); }
+  .thread i { display: block; height: 100%; background: var(--accent); transform-origin: 50% 0; }
+  .stages { list-style: none; margin: 0; padding: 0; display: grid; gap: 4rem; }
+  .stage { position: relative; }
+  .stage::before { content: ""; position: absolute; left: -2rem; top: 0.15rem; width: 0.75rem; height: 0.75rem; background: var(--ground); box-shadow: inset 0 0 0 2px var(--accent); }
+  .stage-media { position: relative; aspect-ratio: 4 / 3; overflow: clip; background: var(--surface); }
+  .stage-media :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .stage-lines { opacity: 0; mix-blend-mode: screen; }
+  .stage-copy { margin-top: 1rem; }
+  @media (min-width: 1024px) {
+    .process-wrap { margin-top: 4.5rem; padding-left: 3rem; }
+    .stage::before { left: -3rem; }
+    .stages { gap: 6rem; }
+    .stage { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem; align-items: center; }
+    .stage:nth-child(even) .stage-media { order: 2; }
+    .stage-copy { margin-top: 0; }
+  }
+</style>
